@@ -22,7 +22,7 @@
 - (void)dropTable;
 // insert
 - (void)addDownBox:(NSDictionary*)fileInfo;
-- (void)addMyCast:(NSDictionary*)castInfo;
+- (BOOL)addMyCast:(NSDictionary*)castInfo;
 // update
 - (void)updateMyCastWithNo:(int)idx CastIndex:(int)castIndex;
 // delete
@@ -30,6 +30,7 @@
 - (void)deleteMyCastWithNo:(int)idx;
 // select
 - (int)getMyCastCount;
+- (int)getSameMyCastAddress:(NSString*)xmladdress;
 - (NSMutableArray*)GetRecordsMyCast;
 - (NSMutableArray*)GetRecordsDownList;
 - (NSMutableArray*)GetRecordsDownListSection;

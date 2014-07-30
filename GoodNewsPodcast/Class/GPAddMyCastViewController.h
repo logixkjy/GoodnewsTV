@@ -13,5 +13,6 @@
 @property (nonatomic, strong) IBOutlet UIButton *btn_mycast_add;
 @property (nonatomic, strong) IBOutlet UITextField *tf_xml_address;
 @property (nonatomic, strong) IBOutlet UIImageView *img_xml_address;
+@property (nonatomic, strong) NSMutableDictionary *parserObject;
 
 @end

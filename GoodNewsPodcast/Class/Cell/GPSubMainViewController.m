@@ -7,7 +7,7 @@
 //
 
 #import "GPSubMainViewController.h"
-#import "GPGNCastCell.h"
+#import "GPGNCastSubCell.h"
 #import "GPSettingViewController.h"
 #import "GPContentsViewController.h"
 
@@ -31,7 +31,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self.tableView reloadData];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -41,6 +41,8 @@
                                              selector:@selector(moveSettingView)
                                                  name:_CMD_MOVE_SETTING_VIEW
                                                object:nil];
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -131,12 +133,12 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellIdentifier = @"GNCastCell";
+    static NSString *cellIdentifier = @"GNCastSubCell";
     
-    GPGNCastCell *cell = (GPGNCastCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    GPGNCastSubCell *cell = (GPGNCastSubCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (cell == nil) {
-        cell = [[GPGNCastCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[GPGNCastSubCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
     [cell setGNCastListData:[self.arr_mainList objectAtIndex:indexPath.row]];
@@ -153,6 +155,10 @@
     if ([dic_selected_data objectForKey:@"pcSub"] == nil) {
         GPContentsViewController *contentsCont = [self.storyboard instantiateViewControllerWithIdentifier:@"ContentsView"];
         contentsCont.dic_contents_data = [NSMutableDictionary dictionaryWithDictionary:dic_selected_data];
+        [self.navigationController pushViewController:contentsCont animated:YES];
+    } else {
+        GPSubMainViewController *contentsCont = [self.storyboard instantiateViewControllerWithIdentifier:@"subMainView"];
+        contentsCont.arr_mainList = [[NSMutableArray alloc] initWithArray:[dic_selected_data objectForKey:@"pcSub"]];
         [self.navigationController pushViewController:contentsCont animated:YES];
     }
 }

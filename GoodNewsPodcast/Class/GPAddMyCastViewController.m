@@ -8,6 +8,8 @@
 
 #import "GPAddMyCastViewController.h"
 #import "NinePatch.h"
+#import "GPSQLiteController.h"
+#import "SMXMLDocument.h"
 
 @interface GPAddMyCastViewController ()
 
@@ -48,6 +50,74 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)addMyCastItem
+{
+    [self connectionNetwork];
+}
+
+- (void)connectionNetwork {
+    NSError                 *error  = nil;
+    NSMutableURLRequest *request = [NSMutableURLRequest
+                                    requestWithURL:[[NSURL alloc] initWithString:self.tf_xml_address.text]
+                                    cachePolicy:NSURLRequestReloadIgnoringCacheData
+                                    timeoutInterval:60.0f];
+//    NSMutableURLRequest *request = [NSMutableURLRequest
+//                                    requestWithURL:[[NSURL alloc] initWithString:@"http://wizard2.sbs.co.kr/w3/podcast/V0000364436.xml"]
+//                                    cachePolicy:NSURLRequestReloadIgnoringCacheData
+//                                    timeoutInterval:60.0f];
+
+    //    @"http://goodnewstv.kr/xml/6mins.xml"
+    //    @"http://goodnewstv.kr/xml/41wcdd.xml"
+    //    @"http://wizard2.sbs.co.kr/w3/podcast/V0000328482.xml"
+    //    @"http://wizard2.sbs.co.kr/w3/podcast/V0000364436.xml"
+    NSData *dataBuffer = [NSURLConnection sendSynchronousRequest:request returningResponse: nil error: &error];
+    
+    if (error) {
+        [GPAlertUtil alertWithMessage:@"주소가 잘못되었습니다.\n다시 확인하여 주시기 바랍니다."];
+    }else {
+        SMXMLDocument *document = [SMXMLDocument documentWithData:dataBuffer error:&error];
+        if (error) {
+            [GPAlertUtil alertWithMessage:@"주소가 잘못되었습니다.\n다시 확인하여 주시기 바랍니다."];
+            return;
+        }
+        int cnt = [GetGPSQLiteController getSameMyCastAddress:self.tf_xml_address.text];
+        if (cnt > 0) {
+            [GPAlertUtil alertWithMessage:@"이미 등록하신 주소입나다."];
+            self.tf_xml_address.text = @"http://";
+            return;
+        }
+        // demonstrate -description of document/element classes
+        
+        // Pull out the <channel> node
+        SMXMLElement *channel = [document childNamed:@"channel"];
+        
+        SMXMLElement *itunes_image = [channel childNamed:@"image"];
+        
+        NSString *img_url = @"";
+        
+        if ([[itunes_image attributeNamed:@"href"] length] == 0 ||
+            [[itunes_image attributeNamed:@"href"] isEqualToString:@""]) {
+            img_url = [itunes_image valueWithPath:@"url"];
+        }else{
+            img_url = [itunes_image attributeNamed:@"href"];
+        }
+        
+        self.parserObject = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                             [channel valueWithPath:@"title"],          @"prTitle",
+                             [channel valueWithPath:@"description"],    @"prSubTitle",
+                             self.tf_xml_address.text,                  @"prXmlAddress",
+                             img_url,                                   @"prThumb",
+                             nil];
+        
+        
+        [self.parserObject setValue:self.tf_xml_address.text forKey:@"prXmlAddress"];
+        if ([GetGPSQLiteController addMyCast:self.parserObject]) {
+            [GPAlertUtil alertWithMessage:@"등록되었습니다."];
+            self.tf_xml_address.text = @"http://";
+        }
+    }
+}
 
 - (IBAction)closeAddView
 {

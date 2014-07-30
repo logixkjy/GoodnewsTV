@@ -172,16 +172,14 @@
     viewSize = [[self.dic_contents_data objectForKey:@"prContent"] boundingRectWithSize:maxSize options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin
                                                                              attributes:attributes  context:nil].size;
 
-    [self.lbl_subTitle setFrame:CGRectMake(119, 37, viewSize.width, viewSize.height)];
+    [self.lbl_subTitle setFrame:CGRectMake(119, 40, viewSize.width, viewSize.height)];
     
-    int img_line_y = viewSize.height < 46 ? 92 : viewSize.height + 46;
+    int img_line_y = viewSize.height < 46 ? 92 : viewSize.height + 50;
     [self.img_line setFrame:CGRectMake(10, img_line_y, 300, 1)];
     
     CGSize size = MAIN_SIZE();
     
     [self.tableView setFrame:CGRectMake(0, img_line_y+1, 320, size.height - img_line_y - 65)];
-    
-    
     
 //    [self.tv_contents setText:[self.dic_contents_data objectForKey:@"prContent"]];
 }

@@ -47,7 +47,11 @@
     UIColor *textColor2 = UIColorFromRGB(0x002085);
     dic_fileinfo = [NSMutableDictionary dictionaryWithDictionary:datas];
     _prCode = prCode;
-    [self.lbl_name setText:[NSString stringWithFormat:@"%@(%@)",[dic_fileinfo objectForKey:@"ctName"],[dic_fileinfo objectForKey:@"ctPhrase"]]];
+    NSString *ctName = [dic_fileinfo objectForKey:@"ctName"];
+    if ([[dic_fileinfo objectForKey:@"ctPhrase"] length] != 0) {
+        ctName = [ctName stringByAppendingString:[dic_fileinfo objectForKey:@"ctPhrase"]];
+    }
+    [self.lbl_name setText:ctName];
     [self.lbl_date setText:[NSString stringWithFormat:@"%@  재생시간 : %@",[dic_fileinfo objectForKey:@"ctEventDate"],[dic_fileinfo objectForKey:@"ctDuration"]]];
     
     [self.img_btn_background setImage:[TUNinePatchCache imageOfSize:[self.img_btn_background bounds].size forNinePatchNamed:@"box_down"]];

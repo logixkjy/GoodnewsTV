@@ -132,7 +132,7 @@ static GPSQLiteController* g_GPSQLiteControllerInstance = nil;
     [_database close];
 }
 
-- (void)addMyCast:(NSDictionary*)castInfo
+- (BOOL)addMyCast:(NSDictionary*)castInfo
 {
     NSString *sql = @"INSERT INTO TBL_MY_CAST (PR_CODE, PR_TITLE, PR_SUB_TITLE,\
     PR_THUMB, PR_XML_ADDRESS, PR_CAST_INDEX) VALUES(?,?,?,?,?,?)";
@@ -140,14 +140,16 @@ static GPSQLiteController* g_GPSQLiteControllerInstance = nil;
     _database = [FMDatabase databaseWithPath:self.databasePath];
     int index = [self getMyCastCount];
     [_database open];
-    [_database executeUpdate:sql,
-     [NSString stringWithFormat:@"MC%06d",index+1],
+    BOOL isSuc = [_database executeUpdate:sql,
+     [NSString stringWithFormat:@"99%04d",index+1],
      [castInfo objectForKey:@"prTitle"],
      [castInfo objectForKey:@"prSubTitle"],
      [castInfo objectForKey:@"prThumb"],
      [castInfo objectForKey:@"prXmlAddress"],
      [NSNumber numberWithInt:index]];
     [_database close];
+    
+    return isSuc;
 }
 
 #pragma mark --------------------------------------------
@@ -194,8 +196,24 @@ static GPSQLiteController* g_GPSQLiteControllerInstance = nil;
 - (int)getMyCastCount
 {
     NSString *sql = @"SELECT COUNT(PR_CODE) FROM TBL_MY_CAST";
+    _database = [FMDatabase databaseWithPath:self.databasePath];
+    [_database open];
     FMResultSet *results = [_database executeQuery:sql];
+    int cnt = 0;
     
+    while ([results next]) {
+        cnt = [results intForColumnIndex:0];
+    }
+    
+    [_database close];
+    return cnt;
+}
+
+- (int)getSameMyCastAddress:(NSString*)xmladdress
+{
+    NSString *sql = @"SELECT COUNT(PR_CODE) FROM TBL_MY_CAST WHERE PR_XML_ADDRESS = ?";
+    FMResultSet *results = [_database executeQuery:sql,xmladdress];
+    [_database open];
     int cnt = 0;
     
     while ([results next]) {

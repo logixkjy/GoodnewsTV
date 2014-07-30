@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "REFrostedViewController.h"
 
-@interface GPMyCastViewController : UIViewController
+@interface GPMyCastViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     IBOutlet UIImageView    *_img_btn;
+    
+    UIPanGestureRecognizer *panGesture;
 }
+
+@property (nonatomic, strong) NSMutableArray *arr_myCast;
+@property (strong, nonatomic) IBOutlet UITableView  *tableView;
 
 - (IBAction)showMenu;
 

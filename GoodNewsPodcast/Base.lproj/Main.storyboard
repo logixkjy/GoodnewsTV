@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A261i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="XDP-fZ-kTK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="XDP-fZ-kTK">
     <dependencies>
         <deployment version="1552" identifier="iOS"/>
         <development version="5100" identifier="xcode"/>
@@ -308,9 +308,9 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </imageView>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumFontSize="9" id="cZN-kR-Vcp">
-                                                <rect key="frame" x="119" y="13" width="188" height="19"/>
+                                                <rect key="frame" x="119" y="11" width="188" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="fkj-e0-3Ee">
@@ -470,7 +470,7 @@ as</string>
                                                     <outlet property="delegate" destination="EyJ-oC-a2b" id="0O5-qB-f37"/>
                                                 </connections>
                                             </tableView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumFontSize="6" id="Qhh-E9-6ZJ">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qhh-E9-6ZJ">
                                                 <rect key="frame" x="119" y="37" width="188" height="46"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -546,20 +546,23 @@ as</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QQ9-EK-pnj">
-                                                <rect key="frame" x="12" y="7" width="30" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="46" height="43"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="편집">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="editTable" destination="Cnl-V5-T8P" eventType="touchUpInside" id="P4x-L7-aiC"/>
+                                                </connections>
                                             </button>
                                             <imageView appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_add_normal.png" highlightedImage="icon_add_press.png" id="YVI-bC-BVs">
-                                                <rect key="frame" x="252" y="9" width="26" height="26"/>
+                                                <rect key="frame" x="47" y="8" width="26" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="16E-Yp-phd">
-                                                <rect key="frame" x="241" y="0.0" width="40" height="44"/>
+                                                <rect key="frame" x="41" y="-1" width="40" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -571,20 +574,14 @@ as</string>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
-                                    <tableView appearanceType="aqua" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="n98-27-qSs">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EYV-yI-b9Z">
                                         <rect key="frame" x="0.0" y="44" width="320" height="504"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <prototypes>
-                                            <tableViewCell appearanceType="aqua" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="GOc-ku-GJ8">
-                                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GOc-ku-GJ8" id="928-xT-qWu">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </tableViewCellContentView>
-                                            </tableViewCell>
-                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="Cnl-V5-T8P" id="QWJ-hk-vae"/>
+                                            <outlet property="delegate" destination="Cnl-V5-T8P" id="tch-eA-Pil"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -600,6 +597,9 @@ as</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="zU5-Ms-Wqf"/>
+                    <connections>
+                        <outlet property="tableView" destination="EYV-yI-b9Z" id="Q96-ew-Iir"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vGc-2f-SZB" sceneMemberID="firstResponder"/>
             </objects>
@@ -670,7 +670,7 @@ as</string>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GNCastCell" id="k4u-Lk-jkM" customClass="GPGNCastCell">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GNCastSubCell" id="k4u-Lk-jkM" customClass="GPGNCastSubCell">
                                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k4u-Lk-jkM" id="ewG-qS-d4t">
@@ -678,9 +678,9 @@ as</string>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cvd-Zv-jlp">
-                                                            <rect key="frame" x="20" y="11" width="264" height="21"/>
+                                                            <rect key="frame" x="28" y="11" width="256" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -688,11 +688,16 @@ as</string>
                                                             <rect key="frame" x="292" y="13" width="17" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_2depth_new.png" id="I30-l1-DI3">
+                                                            <rect key="frame" x="10" y="17" width="10" height="10"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
                                                     </subviews>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="img_plus" destination="lbv-YL-8Y3" id="Jd3-Ac-fwA"/>
-                                                    <outlet property="lbl_mainTitle" destination="cvd-Zv-jlp" id="6RI-zT-pcH"/>
+                                                    <outlet property="img_new" destination="I30-l1-DI3" id="UQc-dJ-1pc"/>
+                                                    <outlet property="img_plus" destination="lbv-YL-8Y3" id="HnR-Wd-myw"/>
+                                                    <outlet property="lbl_mainTitle" destination="cvd-Zv-jlp" id="qBA-u8-Ugh"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -837,7 +842,7 @@ as</string>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     </view>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" id="UPx-jo-1fu">
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" id="UPx-jo-1fu">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="398"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1435,11 +1440,11 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
                                                 <rect key="frame" x="20" y="164" width="280" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <textField appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="http://" minimumFontSize="17" id="5Ay-lJ-AYd">
+                                            <textField appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://" placeholder="http://" minimumFontSize="17" id="5Ay-lJ-AYd">
                                                 <rect key="frame" x="25" y="166" width="270" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="URL"/>
                                             </textField>
                                             <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RCM-kA-ufw">
                                                 <rect key="frame" x="20" y="205" width="280" height="34"/>
@@ -1447,6 +1452,9 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
                                                 <state key="normal" title="GO!">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="addMyCastItem" destination="Dnx-mJ-UgC" eventType="touchUpInside" id="G2R-Jw-FjA"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.94117647059999998" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="deviceRGB"/>
@@ -1478,6 +1486,7 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
     </scenes>
     <resources>
         <image name="download_cancel_btn.png" width="126" height="126"/>
+        <image name="icon_2depth_new.png" width="32" height="32"/>
         <image name="icon_Plus_normal.png" width="34" height="34"/>
         <image name="icon_add_normal.png" width="50" height="50"/>
         <image name="icon_add_press.png" width="50" height="50"/>
