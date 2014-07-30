@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1FEE5A99-D1B7-4E53-B004-952D49647CDF</string>
+	<key>IDESourceControlProjectName</key>
+	<string>GoodNewsPodcast</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>FA14B18C-B615-4491-8F62-C5CB7237BF04</key>
+		<string>https://kimjooyoung-macbook-pro.local/git/GoodNewsPodcast.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GoodNewsPodcast.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>FA14B18C-B615-4491-8F62-C5CB7237BF04</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://kimjooyoung-macbook-pro.local/git/GoodNewsPodcast.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>FA14B18C-B615-4491-8F62-C5CB7237BF04</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FA14B18C-B615-4491-8F62-C5CB7237BF04</string>
+			<key>IDESourceControlWCCName</key>
+			<string>GoodNewsPodcast</string>
+		</dict>
+	</array>
+</dict>
+</plist>
