@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "iVersion.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@class GPDownloadController;
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate, iVersionDelegate> {
+    GPDownloadController *_downloadController;
+}
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) GPDownloadController *downloadController;
 
 @end

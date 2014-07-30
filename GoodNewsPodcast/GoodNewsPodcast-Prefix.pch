@@ -12,5 +12,14 @@
 
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
-    #import <Foundation/Foundation.h>
+#import <Foundation/Foundation.h>
+#import "UINavigationController+Rotate.h"
+#import "GPCommonDefine.h"
+#import "UIImageView+AFNetworking.h"
+#import "NSNumber+ByteUnit.h"
+#import "GPCommonUtil.h"
+#import "GPDataCenter.h"
+#import "AppDelegate.h"
+#import "GPAlertUtil.h"
+#import "GPSQLiteController.h"
 #endif
