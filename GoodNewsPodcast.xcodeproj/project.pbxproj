@@ -72,8 +72,6 @@
 		31E336411979F7500027A68B /* ios_icon_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 31E3363B1979F7500027A68B /* ios_icon_1024.png */; };
 		31E336441979F9400027A68B /* NSNumber+ByteUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 31E336431979F9400027A68B /* NSNumber+ByteUnit.m */; };
 		31E7381E1987545600B7D368 /* GPLiveCastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31E7381D1987545600B7D368 /* GPLiveCastViewController.m */; };
-		31E7382319876B4500B7D368 /* iVersion.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 31E7382019876B4500B7D368 /* iVersion.bundle */; };
-		31E7382419876B4500B7D368 /* iVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 31E7382219876B4500B7D368 /* iVersion.m */; };
 		31E8FE2C19890C800029D294 /* icon_live.png in Resources */ = {isa = PBXBuildFile; fileRef = 31E8FE1E19890C800029D294 /* icon_live.png */; };
 		31E8FE2D19890C800029D294 /* live_btn_bg.9.png in Resources */ = {isa = PBXBuildFile; fileRef = 31E8FE1F19890C800029D294 /* live_btn_bg.9.png */; };
 		31E8FE2E19890C800029D294 /* live_icon_audio_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 31E8FE2019890C800029D294 /* live_icon_audio_press.png */; };
@@ -170,6 +168,8 @@
 		31EDCE2A1973DF6A00F8D50E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EDCE251973DF6A00F8D50E /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9808BBB71987F2A90031232F /* GPAddMyCastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9808BBB61987F2A90031232F /* GPAddMyCastViewController.m */; };
 		9814FAAF1986AC160025C40B /* AFDownloadRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9814FAAE1986AC160025C40B /* AFDownloadRequestOperation.m */; };
+		98FF3679198AAA02003F89A5 /* iVersion.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 98FF3676198AAA02003F89A5 /* iVersion.bundle */; };
+		98FF367A198AAA02003F89A5 /* iVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF3678198AAA02003F89A5 /* iVersion.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -298,9 +298,6 @@
 		31E3364A197D09540027A68B /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		31E7381C1987545600B7D368 /* GPLiveCastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPLiveCastViewController.h; sourceTree = "<group>"; };
 		31E7381D1987545600B7D368 /* GPLiveCastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPLiveCastViewController.m; sourceTree = "<group>"; };
-		31E7382019876B4500B7D368 /* iVersion.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iVersion.bundle; sourceTree = "<group>"; };
-		31E7382119876B4500B7D368 /* iVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iVersion.h; sourceTree = "<group>"; };
-		31E7382219876B4500B7D368 /* iVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iVersion.m; sourceTree = "<group>"; };
 		31E8FE1E19890C800029D294 /* icon_live.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_live.png; sourceTree = "<group>"; };
 		31E8FE1F19890C800029D294 /* live_btn_bg.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = live_btn_bg.9.png; sourceTree = "<group>"; };
 		31E8FE2019890C800029D294 /* live_icon_audio_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = live_icon_audio_press.png; sourceTree = "<group>"; };
@@ -431,6 +428,9 @@
 		9808BBB61987F2A90031232F /* GPAddMyCastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPAddMyCastViewController.m; sourceTree = "<group>"; };
 		9814FAAD1986AC160025C40B /* AFDownloadRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadRequestOperation.h; sourceTree = "<group>"; };
 		9814FAAE1986AC160025C40B /* AFDownloadRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadRequestOperation.m; sourceTree = "<group>"; };
+		98FF3676198AAA02003F89A5 /* iVersion.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iVersion.bundle; sourceTree = "<group>"; };
+		98FF3677198AAA02003F89A5 /* iVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iVersion.h; sourceTree = "<group>"; };
+		98FF3678198AAA02003F89A5 /* iVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iVersion.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -554,16 +554,6 @@
 				3177B20319824570002049F9 /* FMResultSet.m */,
 			);
 			path = FMDB;
-			sourceTree = "<group>";
-		};
-		31E7381F19876B4500B7D368 /* iVersion */ = {
-			isa = PBXGroup;
-			children = (
-				31E7382019876B4500B7D368 /* iVersion.bundle */,
-				31E7382119876B4500B7D368 /* iVersion.h */,
-				31E7382219876B4500B7D368 /* iVersion.m */,
-			);
-			path = iVersion;
 			sourceTree = "<group>";
 		};
 		31EDCD4819736DD300F8D50E = {
@@ -797,9 +787,9 @@
 		31EDCE0D1973C58D00F8D50E /* common */ = {
 			isa = PBXGroup;
 			children = (
+				98FF3675198AAA02003F89A5 /* iVersion */,
 				311443AB1988BFD600077EAE /* SMXMLDocument.h */,
 				311443AC1988BFD600077EAE /* SMXMLDocument.m */,
-				31E7381F19876B4500B7D368 /* iVersion */,
 				31E33645197D09540027A68B /* FMDB */,
 				316E8B741978ADF4009F0B79 /* AFNetworking */,
 				316E8B881978ADF4009F0B79 /* UIKit+AFNetworking */,
@@ -848,6 +838,16 @@
 				31EDCE251973DF6A00F8D50E /* SBJsonWriter.m */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		98FF3675198AAA02003F89A5 /* iVersion */ = {
+			isa = PBXGroup;
+			children = (
+				98FF3676198AAA02003F89A5 /* iVersion.bundle */,
+				98FF3677198AAA02003F89A5 /* iVersion.h */,
+				98FF3678198AAA02003F89A5 /* iVersion.m */,
+			);
+			path = iVersion;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -963,6 +963,7 @@
 				31EDCDF51973759C00F8D50E /* sidemenu_icon_home.png in Resources */,
 				31E3363F1979F7500027A68B /* ios_icon_152.png in Resources */,
 				314D3E231982C6A20079A974 /* player_btn_pause_press.png in Resources */,
+				98FF3679198AAA02003F89A5 /* iVersion.bundle in Resources */,
 				31EDCDF41973759C00F8D50E /* sidemenu_icon_folder.png in Resources */,
 				31E336401979F7500027A68B /* ios_icon_512.png in Resources */,
 				31EDCDF11973759C00F8D50E /* player_volum_handle.png in Resources */,
@@ -976,7 +977,6 @@
 				31EDCDF01973759C00F8D50E /* player_btn_pre_press.png in Resources */,
 				31EDCDEC1973759C00F8D50E /* player_btn_next_press.png in Resources */,
 				31EDCDD71973759C00F8D50E /* btn_witch_off.png in Resources */,
-				31E7382319876B4500B7D368 /* iVersion.bundle in Resources */,
 				31EDCD6D19736DD300F8D50E /* Images.xcassets in Resources */,
 				31EDCDEF1973759C00F8D50E /* player_btn_pre.png in Resources */,
 				31E8FE3019890C800029D294 /* live_icon_tv_press.png in Resources */,
@@ -1049,7 +1049,6 @@
 				31EDCD9C197370AA00F8D50E /* UIViewController+REFrostedViewController.m in Sources */,
 				316E8BA91978ADF5009F0B79 /* UIRefreshControl+AFNetworking.m in Sources */,
 				31E7381E1987545600B7D368 /* GPLiveCastViewController.m in Sources */,
-				31E7382419876B4500B7D368 /* iVersion.m in Sources */,
 				3177B20619824570002049F9 /* FMDatabasePool.m in Sources */,
 				313B2DC41974E6D6000781AC /* GPContentsViewController.m in Sources */,
 				31EDCE2A1973DF6A00F8D50E /* SBJsonWriter.m in Sources */,
@@ -1106,6 +1105,7 @@
 				313B2DBE1974C1FC000781AC /* GPGNCastCell.m in Sources */,
 				316E8BA81978ADF5009F0B79 /* UIProgressView+AFNetworking.m in Sources */,
 				31E8FE3C19890D0E0029D294 /* GPGNCastSubCell.m in Sources */,
+				98FF367A198AAA02003F89A5 /* iVersion.m in Sources */,
 				31EDCE261973DF6A00F8D50E /* NSObject+SBJSON.m in Sources */,
 				31EDCD99197370AA00F8D50E /* REFrostedViewController.m in Sources */,
 				313B2DC7197502BE000781AC /* GPGNContentCell.m in Sources */,
@@ -1244,8 +1244,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = armv7;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jaewoo Lee (JV7FM94CF8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jaewoo Lee (JV7FM94CF8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoodNewsPodcast/GoodNewsPodcast-Prefix.pch";
 				INFOPLIST_FILE = "GoodNewsPodcast/GoodNewsPodcast-Info.plist";
@@ -1255,7 +1255,7 @@
 					"$(PROJECT_DIR)/GoodNewsPodcast/Class/common/FMDB",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5FAF7684-E0C3-4197-9A5A-173293AED2B0";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;

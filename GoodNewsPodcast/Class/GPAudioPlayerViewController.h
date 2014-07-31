@@ -18,6 +18,10 @@
     
     MPMoviePlayerController		*audioPlayer;
     BOOL                        isFileOpenFail;
+    
+    NSTimer                     *silderTimer;
+    
+    AppDelegate                 *mainDelegate;
 }
 
 @property (nonatomic, strong) IBOutlet UIView *playerView;
@@ -25,7 +29,7 @@
 
 @property (nonatomic, strong) IBOutlet UIView *toolbarView;
 @property (nonatomic, strong) IBOutlet UIView *volumeView;
-@property (nonatomic, strong) IBOutlet UIProgressView *timeProgress;
+@property (nonatomic, strong) IBOutlet UISlider *timeProgress;
 @property (nonatomic, strong) IBOutlet UILabel *lbl_title;
 @property (nonatomic, strong) IBOutlet UILabel *lbl_subtitle;
 @property (nonatomic, strong) IBOutlet UILabel *lbl_playtime;

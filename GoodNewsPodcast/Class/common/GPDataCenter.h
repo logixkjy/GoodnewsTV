@@ -16,6 +16,7 @@
 @property (nonatomic) BOOL      isExistingDownload;
 @property (nonatomic) BOOL      isFirstMove;
 @property (nonatomic) BOOL      isFirstView;
+@property (nonatomic) BOOL      isAudioPlaying;
 
 @property (nonatomic, strong) NSMutableArray *sendQueue;
 @property (nonatomic, strong) NSMutableArray *sendQueueForFileType;
