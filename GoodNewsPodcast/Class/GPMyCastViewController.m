@@ -9,6 +9,7 @@
 #import "GPMyCastViewController.h"
 #import "GPSettingViewController.h"
 #import "GPAddMyCastViewController.h"
+#import "GPMyCastContentsViewController.h"
 #import "GPSQLiteController.h"
 
 @interface GPMyCastViewController ()
@@ -159,7 +160,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary *item1 = [NSDictionary dictionaryWithDictionary:[self.arr_myCast objectAtIndex:indexPath.row]];
     
+    GPMyCastContentsViewController *contentsCont = [self.storyboard instantiateViewControllerWithIdentifier:@"MCContentsView"];
+    contentsCont.dic_contents_data = [NSMutableDictionary dictionaryWithDictionary:item1];
+    [self.navigationController pushViewController:contentsCont animated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -243,7 +243,7 @@ static GPSQLiteController* g_GPSQLiteControllerInstance = nil;
          [results stringForColumnIndex:1],                          @"prCode",
          [results stringForColumnIndex:2],                          @"prTitle",
          [results stringForColumnIndex:3],                          @"prSubTitle",
-         [results stringForColumnIndex:4],                          @"prThumb",
+         [results stringForColumnIndex:4] == nil ? @"" : [results stringForColumnIndex:4], @"prThumb",
          [results stringForColumnIndex:5],                          @"prXmlAddress",
          [NSNumber numberWithInt:[results intForColumnIndex:6]],    @"prCastIndex",
          nil];

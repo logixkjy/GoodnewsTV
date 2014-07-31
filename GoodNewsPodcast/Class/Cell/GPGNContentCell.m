@@ -260,7 +260,7 @@
             _downCont = mainDelegate.downloadController;
         }
         
-        [_downCont downlodResource:dic_fileinfo :sel_btn];
+        [_downCont downloadFileCheck:dic_fileinfo FileType:sel_btn isDown:YES];
     }
 }
 

@@ -235,7 +235,7 @@ static GPDownloadController* g_GPDownloadControllerInstance = nil;
         case FILE_TYPE_VIDEO_NORMAL:
             str_type = @"Video";
             sel_btn = FILE_TYPE_VIDEO_NORMAL;
-            file_url = [dic_fileinfo objectForKey:@"ctVideoNormal"];
+            file_url = [dic_fileinfo objectForKey:@"ctVideoNormal"] == nil ? [dic_fileinfo objectForKey:@"ctFileUrl"] : [dic_fileinfo objectForKey:@"ctVideoNormal"];
             break;
         case FILE_TYPE_VIDEO_LOW:
             str_type = @"Video";
@@ -246,9 +246,9 @@ static GPDownloadController* g_GPDownloadControllerInstance = nil;
             str_type = @"Audio";
             sel_btn = FILE_TYPE_AUDIO;
             if (isFileDownload) {
-                file_url = [dic_fileinfo objectForKey:@"ctAudioDown"];
+                file_url = [dic_fileinfo objectForKey:@"ctAudioDown"] == nil ? [dic_fileinfo objectForKey:@"ctFileUrl"] : [dic_fileinfo objectForKey:@"ctAudioDown"] ;
             }else{
-                file_url = [dic_fileinfo objectForKey:@"ctAudioStream"];
+                file_url = [dic_fileinfo objectForKey:@"ctAudioStream"] == nil ? [dic_fileinfo objectForKey:@"ctFileUrl"] : [dic_fileinfo objectForKey:@"ctAudioStream"] ;
             }
             break;
         default:

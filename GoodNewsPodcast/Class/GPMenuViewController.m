@@ -12,6 +12,7 @@
 #import "GPGoodNewsCastViewController.h"
 #import "GPMyCastViewController.h"
 #import "GPDownloadBoxViewController.h"
+#import "GPLiveCastViewController.h"
 
 @interface GPMenuViewController ()
 
@@ -68,9 +69,12 @@
         GPGoodNewsCastViewController *goodNewsCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GoodNewsCast"];
         navigationController.viewControllers = @[goodNewsCastViewController];
     } else if (indexPath.row == 1) {
+        GPLiveCastViewController *liveCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LiveCast"];
+        navigationController.viewControllers = @[liveCastViewController];
+    } else if (indexPath.row == 2) {
         GPMyCastViewController *myCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyCast"];
         navigationController.viewControllers = @[myCastViewController];
-    } else if (indexPath.row == 2) {
+    } else if (indexPath.row == 3) {
         GPGoodNewsCastViewController *myCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DownloadBox"];
         navigationController.viewControllers = @[myCastViewController];
     }
@@ -89,7 +93,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -102,10 +106,10 @@
         cell = [[GPSettingTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    NSArray *icons = @[@"sidemenu_icon_home.png", @"sidemenu_icon_mycast.png", @"sidemenu_icon_folder.png"];
+    NSArray *icons = @[@"sidemenu_icon_home.png", @"sidemenu_icon_live.png", @"sidemenu_icon_mycast.png", @"sidemenu_icon_folder.png"];
     cell.img_icon.image = [UIImage imageNamed:icons[indexPath.row]];
     
-    NSArray *titles = @[@"홈", @"마이 캐스트", @"다운로드"];
+    NSArray *titles = @[@"홈", @"생중계", @"마이 캐스트", @"다운로드"];
     cell.lbl_title.text = titles[indexPath.row];
     
     return cell;

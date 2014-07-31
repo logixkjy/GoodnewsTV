@@ -8,12 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GPGNContentCell : UITableViewCell <NSURLConnectionDataDelegate, UIAlertViewDelegate> {
+@interface GPGNContentCell : UITableViewCell <UIAlertViewDelegate> {
     NSMutableDictionary *dic_fileinfo;
     NSInteger sel_btn;
     NSString *str_type;
     NSString *_prCode;
-    NSURLConnection *theConnection;
     GPDownloadController *_downCont;
     
     BOOL isFileDown;
