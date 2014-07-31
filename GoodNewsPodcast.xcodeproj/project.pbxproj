@@ -1334,7 +1334,7 @@
 				31EDCD8219736DD400F8D50E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		31EDCD8319736DD400F8D50E /* Build configuration list for PBXNativeTarget "GoodNewsPodcast" */ = {
 			isa = XCConfigurationList;
@@ -1343,7 +1343,7 @@
 				31EDCD8519736DD400F8D50E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		31EDCD8619736DD400F8D50E /* Build configuration list for PBXNativeTarget "GoodNewsPodcastTests" */ = {
 			isa = XCConfigurationList;
@@ -1352,7 +1352,7 @@
 				31EDCD8819736DD400F8D50E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
