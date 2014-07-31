@@ -15,6 +15,7 @@
 @property (nonatomic) BOOL      isShow3GPopup;
 @property (nonatomic) BOOL      isExistingDownload;
 @property (nonatomic) BOOL      isFirstMove;
+@property (nonatomic) BOOL      isFirstView;
 
 @property (nonatomic, strong) NSMutableArray *sendQueue;
 @property (nonatomic, strong) NSMutableArray *sendQueueForFileType;

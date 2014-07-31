@@ -34,16 +34,16 @@
     NSString *file_name = @"";
     switch ([fileType integerValue]) {
         case FILE_TYPE_VIDEO_NORMAL:
-            file_url = [fileInfo objectForKey:@"ctVideoNormal"];
-            file_name = [NSString stringWithFormat:@"%@_%@_N.mp4",[fileInfo objectForKey:@"ctName"],[fileInfo objectForKey:@"ctSpeaker"]];
+            file_url = [fileInfo objectForKey:@"ctVideoNormal"] == nil ? [fileInfo objectForKey:@"ctFileUrl"] : [fileInfo objectForKey:@"ctVideoNormal"];
+            file_name = [fileInfo objectForKey:@"ctFileName"] != nil ? [fileInfo objectForKey:@"ctFileName"] : [NSString stringWithFormat:@"%@_%@_N.mp4",[fileInfo objectForKey:@"ctName"],[fileInfo objectForKey:@"ctSpeaker"]];
             break;
         case FILE_TYPE_VIDEO_LOW:
-            file_url = [fileInfo objectForKey:@"ctVideoLow"];
-            file_name = [NSString stringWithFormat:@"%@_%@_L.mp4",[fileInfo objectForKey:@"ctName"],[fileInfo objectForKey:@"ctSpeaker"]];
+            file_url = [fileInfo objectForKey:@"ctVideoLow"] == nil ? [fileInfo objectForKey:@"ctFileUrl"] : [fileInfo objectForKey:@"ctVideoLow"];
+            file_name = [fileInfo objectForKey:@"ctFileName"] != nil ? [fileInfo objectForKey:@"ctFileName"] : [NSString stringWithFormat:@"%@_%@_L.mp4",[fileInfo objectForKey:@"ctName"],[fileInfo objectForKey:@"ctSpeaker"]];
             break;
         case FILE_TYPE_AUDIO:
-            file_url = [fileInfo objectForKey:@"ctAudioDown"];
-            file_name = [NSString stringWithFormat:@"%@_%@.mp3",[fileInfo objectForKey:@"ctName"],[fileInfo objectForKey:@"ctSpeaker"]];
+            file_url = [fileInfo objectForKey:@"ctAudioDown"] == nil ? [fileInfo objectForKey:@"ctFileUrl"] : [fileInfo objectForKey:@"ctAudioDown"];
+            file_name = [fileInfo objectForKey:@"ctFileName"] != nil ? [fileInfo objectForKey:@"ctFileName"] : [NSString stringWithFormat:@"%@_%@.mp3",[fileInfo objectForKey:@"ctName"],[fileInfo objectForKey:@"ctSpeaker"]];
             break;
         default:
             break;

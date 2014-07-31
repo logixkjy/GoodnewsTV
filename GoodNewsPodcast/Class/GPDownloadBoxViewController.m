@@ -73,6 +73,20 @@
     self.arr_downBoxSection= [[NSMutableArray alloc] initWithCapacity:5];
     self.arr_downBoxSection = [GetGPSQLiteController GetRecordsDownListSection];
     
+    if (!GetGPDataCenter.isFirstView) {
+        GetGPDataCenter.isFirstView = !GetGPDataCenter.isFirstView;
+        self.lbl_naviTitle.text = @"GOODNEWS TV";
+        
+        [NSTimer scheduledTimerWithTimeInterval: 5.0f
+                                         target: self
+                                       selector: @selector(changeNaviTitle)
+                                       userInfo: nil
+                                        repeats: NO];
+    }
+}
+
+- (void)changeNaviTitle{
+    self.lbl_naviTitle.text = @"다운로드";
 }
 
 - (void)didReceiveMemoryWarning

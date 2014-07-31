@@ -40,6 +40,7 @@ static GPDataCenter* g_GPDataCenterInstance = nil;
         self.isShow3GPopup          = NO;
         self.isExistingDownload     = NO;
         self.isFirstMove            = NO;
+        self.isFirstView            = NO;
         
         self.sendQueue              = [[NSMutableArray alloc] initWithCapacity:10];
         self.sendQueueForFileType   = [[NSMutableArray alloc] initWithCapacity:10];

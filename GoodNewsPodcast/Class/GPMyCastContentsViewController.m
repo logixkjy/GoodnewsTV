@@ -486,8 +486,8 @@
                 [tableView scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionNone animated:YES];
             } else {
                 self.dic_selected_data = [NSMutableDictionary dictionaryWithDictionary:[self.arr_contents_list objectAtIndex:indexPath.row]];
-                if ([[self.dic_contents_data objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_AUDIO) {
-                    
+                if ([[self.dic_selected_data objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_AUDIO) {
+                    [self playAudio];
                 } else {
                     [self playMovie];
                 }
@@ -500,16 +500,16 @@
             [tableView scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionNone animated:YES];
         } else {
             self.dic_selected_data = [NSMutableDictionary dictionaryWithDictionary:[self.arr_contents_list objectAtIndex:indexPath.row]];
-            if ([[self.dic_contents_data objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_AUDIO) {
-                
+            if ([[self.dic_selected_data objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_AUDIO) {
+                [self playAudio];
             } else {
                 [self playMovie];
             }
         }
     } else {
         self.dic_selected_data = [NSMutableDictionary dictionaryWithDictionary:[self.arr_contents_list objectAtIndex:indexPath.row]];
-        if ([[self.dic_contents_data objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_AUDIO) {
-            
+        if ([[self.dic_selected_data objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_AUDIO) {
+            [self playAudio];
         } else {
             [self playMovie];
         }
@@ -538,7 +538,7 @@
         url_path = [NSURL URLWithString:str_file_path];
     }
     
-    NSRange range = [str_file_path rangeOfString: @"file://"];
+    NSRange range = [[url_path absoluteString] rangeOfString: @"file://"];
     if (range.location == NSNotFound) {
         if (GetGPDataCenter.gpNetowrkStatus == NETWORK_3G_LTE && !isUse3G) {
             [GPAlertUtil alertWithMessage:netStatus_3G_view delegate:self tag:1];
@@ -555,10 +555,51 @@
     [self presentMoviePlayerViewControllerAnimated:_mpv_playVideo];
 }
 
+- (void)playAudio
+{
+    if (_downCont == nil) {
+        AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
+        _downCont = mainDelegate.downloadController;
+    }
+    BOOL isUse3G = [GPCommonUtil readBoolFromDefault:@"USE_3G"];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *str_file_path = @"";
+    
+    str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@",
+                     [documentPath objectAtIndex:0],
+                     [self.dic_contents_data objectForKey:@"prCode"],
+                     [self.dic_selected_data objectForKey:@"ctFileName"]];
+    
+    if ([fileManager fileExistsAtPath:str_file_path]) {
+        url_path = [NSURL fileURLWithPath:str_file_path];
+    } else {
+        str_file_path = [self.dic_selected_data objectForKey:@"ctFileUrl"];
+        url_path = [NSURL URLWithString:str_file_path];
+    }
+    
+    NSRange range = [[url_path absoluteString] rangeOfString: @"file://"];
+    if (range.location == NSNotFound) {
+        if (GetGPDataCenter.gpNetowrkStatus == NETWORK_3G_LTE && !isUse3G) {
+            [GPAlertUtil alertWithMessage:netStatus_3G_view delegate:self tag:1];
+            return;
+        }else{
+            [_downCont downloadFileCheck:self.dic_selected_data FileType:[[self.dic_selected_data objectForKey:@"ctFileType"] integerValue] isDown:NO];
+            return;
+        }
+    }
+    
+    GPAudioPlayerViewController *audioPlayer = [self.storyboard instantiateViewControllerWithIdentifier:@"AudioPlayer"];
+    audioPlayer.dic_contents_data = [NSMutableDictionary dictionaryWithDictionary:self.dic_selected_data];
+    audioPlayer.prCode = [self.dic_contents_data objectForKey:@"prCode"];
+    [self.navigationController pushViewController:audioPlayer animated:YES];
+}
+
 - (void)fileStreaming:(NSNotification*)noti
 {
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:noti.userInfo];
-    switch ([[userInfo objectForKey:@"FILE_TYPE"] integerValue]) {
+    switch ([[userInfo objectForKey:@"ctFileType"] integerValue]) {
         case 0:
         {
             url_path = [NSURL URLWithString:[userInfo objectForKey:@"ctFileUrl"]];

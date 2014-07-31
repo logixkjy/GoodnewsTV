@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) NSMutableArray *arr_myCast;
 @property (strong, nonatomic) IBOutlet UITableView  *tableView;
+@property (nonatomic, strong) IBOutlet UILabel *lbl_naviTitle;
 
 - (IBAction)showMenu;
 

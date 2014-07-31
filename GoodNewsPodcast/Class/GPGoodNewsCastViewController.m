@@ -65,6 +65,10 @@
         }
     }
     
+    if ([GPCommonUtil readIntFromDefault:@"ROOT_MENU_ID"] != 0) {
+        return;
+    }
+    
     self.arr_mainList = [[NSMutableArray alloc] initWithCapacity:10];
     [self connectionNetwork];
     [self.tableView reloadData];
@@ -79,6 +83,20 @@
             [GPAlertUtil alertWithMessage:netStatus_none delegate:self];
         }
     }
+    if (!GetGPDataCenter.isFirstView) {
+        GetGPDataCenter.isFirstView = !GetGPDataCenter.isFirstView;
+        self.lbl_naviTitle.text = @"GOODNEWS TV";
+        
+        [NSTimer scheduledTimerWithTimeInterval: 5.0f
+                                         target: self
+                                       selector: @selector(changeNaviTitle)
+                                       userInfo: nil
+                                        repeats: NO];
+    }
+}
+
+- (void)changeNaviTitle{
+    self.lbl_naviTitle.text = @"다시보기";
 }
 
 - (void)viewWillAppear:(BOOL)animated

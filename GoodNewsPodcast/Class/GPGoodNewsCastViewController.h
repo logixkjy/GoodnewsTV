@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSMutableArray *arr_mainList;
 @property (nonatomic, strong) NSMutableArray *arr_subList;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UILabel *lbl_naviTitle;
 
 - (IBAction)showMenu;
 

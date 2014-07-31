@@ -129,6 +129,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="JFa-BD-RyX"/>
+                    <connections>
+                        <outlet property="lbl_naviTitle" destination="aBb-sn-R4C" id="MfD-UF-ZI3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -598,6 +601,7 @@ as</string>
                     </view>
                     <navigationItem key="navigationItem" id="zU5-Ms-Wqf"/>
                     <connections>
+                        <outlet property="lbl_naviTitle" destination="SxE-M9-qxe" id="VOq-cP-fml"/>
                         <outlet property="tableView" destination="EYV-yI-b9Z" id="Q96-ew-Iir"/>
                     </connections>
                 </viewController>
@@ -761,8 +765,8 @@ as</string>
                                                     <action selector="showMenu" destination="H42-uQ-Unf" eventType="touchUpInside" id="5Lt-OQ-kuE"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다운로드" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xbl-dj-ZBT">
-                                                <rect key="frame" x="122" y="9" width="77" height="27"/>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다운로드" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8eO-i6-8fW">
+                                                <rect key="frame" x="41" y="8" width="239" height="27"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -945,6 +949,7 @@ as</string>
                         <outlet property="btn_downStart" destination="SRV-up-qXE" id="l1e-Q4-SFr"/>
                         <outlet property="img_downPause" destination="ghi-DK-BO9" id="olV-l1-cTT"/>
                         <outlet property="img_downStart" destination="mHX-tq-yWz" id="4qH-Bl-qwS"/>
+                        <outlet property="lbl_naviTitle" destination="8eO-i6-8fW" id="byB-2d-Nld"/>
                         <outlet property="sc_selectView" destination="x9g-7c-66M" id="FMg-hZ-cad"/>
                         <outlet property="tb_downList" destination="UPx-jo-1fu" id="jrC-qJ-xL9"/>
                         <outlet property="tb_fileList" destination="Dbz-jF-p7J" id="npJ-oE-wgY"/>
@@ -1755,7 +1760,7 @@ as</string>
         <image name="player_btn_pre_press.png" width="50" height="50"/>
         <image name="player_volum_max.png" width="50" height="50"/>
         <image name="player_volum_min.png" width="50" height="50"/>
-        <image name="sidemenu_icon_home.png" width="75" height="75"/>
+        <image name="sidemenu_icon_home.png" width="76" height="76"/>
         <image name="tit_setting.png" width="270" height="50"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

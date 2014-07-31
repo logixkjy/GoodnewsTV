@@ -43,17 +43,21 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
-    NSString *str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@_%@_A.mp3",
-                     [documentPath objectAtIndex:0],self.prCode,
-                     [self.dic_contents_data objectForKey:@"ctEventDate"],
-                     [self.dic_contents_data objectForKey:@"ctSpeaker"]];
+    NSString *str_file_path = [NSString stringWithFormat:@"%@/Contents/%@",
+                               [documentPath objectAtIndex:0],self.prCode];
+    if ([self.dic_contents_data objectForKey:@"ctFileNmae"] != nil) {
+        str_file_path = [str_file_path stringByAppendingPathComponent:[self.dic_contents_data objectForKey:@"ctFileNmae"]];
+    }else {
+        str_file_path = [str_file_path stringByAppendingFormat:@"/%@_%@.mp3", [self.dic_contents_data objectForKey:@"ctEventDate"], [self.dic_contents_data objectForKey:@"ctSpeaker"]];
+    }
+    
     
     NSURL *url_path = nil;
     
     if ([fileManager fileExistsAtPath:str_file_path]) {
         url_path = [NSURL fileURLWithPath:str_file_path];
     } else {
-        url_path = [NSURL URLWithString:[self.dic_contents_data objectForKey:@"ctAudioStream"]];
+        url_path = [NSURL URLWithString:[self.dic_contents_data objectForKey:@"ctAudioStream"] != nil ? [self.dic_contents_data objectForKey:@"ctAudioStream"] : [self.dic_contents_data objectForKey:@"ctFileUrl"]];
     }
     
     audioPlayer =  [[MPMoviePlayerController alloc] initWithContentURL:url_path];
@@ -79,7 +83,7 @@
         [self.playerView bringSubviewToFront:self.toolbarView];
         [self.toolbarView setFrame:CGRectMake(0, self.playerView.frame.size.height - self.toolbarView.frame.size.height, self.toolbarView.frame.size.width , self.toolbarView.frame.size.height)];
     }
-    [self.img_thumb setImageWithURL:[NSURL URLWithString:[self.dic_contents_data objectForKey:@"prThumb"]]];
+    [self.img_thumb setImageWithURL:[NSURL URLWithString:[self.dic_contents_data objectForKey:@"prThumb"]]  placeholderImage:[UIImage imageNamed:@"thumbnail_none.png"]];
     [self.lbl_title setText:[NSString stringWithFormat:@"%@ %@",[self.dic_contents_data objectForKey:@"ctEventDate"],[self.dic_contents_data objectForKey:@"ctPhrase"]]];
     [self.lbl_subtitle setText:[self.dic_contents_data objectForKey:@"ctName"]];
  
@@ -161,17 +165,12 @@
 
 - (void)moviePlayerLoadStateChanged:(NSNotification*)notification
 {
-    NSLog(@"%@",[self.dic_contents_data objectForKey:@"prThumb"]);
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[self.dic_contents_data objectForKey:@"prThumb"]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60.0f];
-    NSError *error = nil;
-    NSData *dataBuffer = [NSURLConnection sendSynchronousRequest:request returningResponse: nil error: &error];
-    UIImage *def_img = [UIImage imageWithData:dataBuffer];
     Class playingInfoCenter = NSClassFromString(@"MPNowPlayingInfoCenter");
     
     if (playingInfoCenter) {
         NSMutableDictionary *songInfo = [[NSMutableDictionary alloc] init];
         
-        MPMediaItemArtwork *albumArt = [[MPMediaItemArtwork alloc] initWithImage:def_img];
+        MPMediaItemArtwork *albumArt = [[MPMediaItemArtwork alloc] initWithImage:[self.img_thumb image]];
         
         [songInfo setObject:[self.dic_contents_data objectForKey:@"ctPhrase"] forKey:MPMediaItemPropertyTitle];
         [songInfo setObject:[self.dic_contents_data objectForKey:@"ctSpeaker"] forKey:MPMediaItemPropertyArtist];

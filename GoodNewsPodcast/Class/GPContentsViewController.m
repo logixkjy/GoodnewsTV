@@ -570,7 +570,7 @@
                 }
             }
             
-            NSRange range = [str_file_path rangeOfString: @"file://"];
+            NSRange range = [[url_path absoluteString] rangeOfString: @"file://"];
             if (range.location == NSNotFound) {
                 if (GetGPDataCenter.gpNetowrkStatus == NETWORK_3G_LTE && !isUse3G) {
                     [GPAlertUtil alertWithMessage:netStatus_3G_view delegate:self tag:1];
@@ -595,7 +595,7 @@
             
             NSString *str_file_path = @"";
             
-            str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@_%@_A.mp3",
+            str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@_%@.mp3",
                              [documentPath objectAtIndex:0],
                              [self.dic_contents_data objectForKey:@"prCode"],
                              [self.dic_selected_data objectForKey:@"ctEventDate"],
@@ -608,7 +608,7 @@
                 url_path = [NSURL URLWithString:[self.dic_selected_data objectForKey:@"ctAudioStream"]];
             }
             
-            NSRange range = [str_file_path rangeOfString: @"file://"];
+            NSRange range = [[url_path absoluteString] rangeOfString: @"file://"];
             if (range.location == NSNotFound) {
                 if (GetGPDataCenter.gpNetowrkStatus == NETWORK_3G_LTE && !isUse3G) {
                     [GPAlertUtil alertWithMessage:netStatus_3G_view delegate:self tag:1];
