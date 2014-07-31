@@ -1755,7 +1755,7 @@ as</string>
         <image name="player_btn_pre_press.png" width="50" height="50"/>
         <image name="player_volum_max.png" width="50" height="50"/>
         <image name="player_volum_min.png" width="50" height="50"/>
-        <image name="sidemenu_icon_home.png" width="44" height="44"/>
+        <image name="sidemenu_icon_home.png" width="75" height="75"/>
         <image name="tit_setting.png" width="270" height="50"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
