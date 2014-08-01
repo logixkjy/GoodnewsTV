@@ -989,15 +989,18 @@ as</string>
                                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                     <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.89411764709999997" alpha="1" colorSpace="deviceRGB"/>
                                                                                 </imageView>
-                                                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0LJ-B0-pYd">
+                                                                                <button opaque="NO" tag="2001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0LJ-B0-pYd">
                                                                                     <rect key="frame" x="97" y="0.0" width="96" height="28"/>
                                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                                     <state key="normal">
                                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                                     </state>
+                                                                                    <connections>
+                                                                                        <action selector="buttonTouchUpInside:" destination="KcA-Gx-iJv" eventType="touchUpInside" id="HGl-8g-uRa"/>
+                                                                                    </connections>
                                                                                 </button>
-                                                                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wxz-L7-bSh">
+                                                                                <button opaque="NO" tag="2002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wxz-L7-bSh">
                                                                                     <rect key="frame" x="194" y="-3" width="96" height="34"/>
                                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1005,6 +1008,9 @@ as</string>
                                                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                                     </state>
+                                                                                    <connections>
+                                                                                        <action selector="buttonTouchUpInside:" destination="KcA-Gx-iJv" eventType="touchUpInside" id="0Dh-2O-JVf"/>
+                                                                                    </connections>
                                                                                 </button>
                                                                             </subviews>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

@@ -123,8 +123,8 @@
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(fileDownStart:)
-                                                 name:_CMD_FILE_DOWN_FINISHED
+                                             selector:@selector(downBoxEvent:)
+                                                 name:_CMD_DOWN_BOX_EVENT
                                                object:nil];
     
     self.btn_nowplay.hidden = !GetGPDataCenter.isAudioPlaying;
@@ -137,6 +137,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:_CMD_MOVE_SETTING_VIEW object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:_CMD_FILE_DOWN_CANCEL object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:_CMD_FILE_DOWN_FINISHED object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:_CMD_DOWN_BOX_EVENT object:nil];
 }
 
 /*

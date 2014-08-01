@@ -82,14 +82,14 @@
                                            message:message
                                           delegate:aDelegate
                                  cancelButtonTitle:nil
-                                 otherButtonTitles:NSLocalizedString(@"삭재", @"삭제"),NSLocalizedString(@"취소", @"취소"),nil ];
+                                 otherButtonTitles:NSLocalizedString(@"삭제", @"삭제"),NSLocalizedString(@"취소", @"취소"),nil ];
         [alert setTag:1004];
     } else if (tag == 4) {
         alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"다운로드 항목 삭제", @"다운로드 항목 삭제")
                                            message:message
                                           delegate:aDelegate
                                  cancelButtonTitle:nil
-                                 otherButtonTitles:NSLocalizedString(@"삭재", @"삭제"),NSLocalizedString(@"취소", @"취소"),nil ];
+                                 otherButtonTitles:NSLocalizedString(@"삭제", @"삭제"),NSLocalizedString(@"취소", @"취소"),nil ];
         [alert setTag:1005];
     }
 	[alert show];

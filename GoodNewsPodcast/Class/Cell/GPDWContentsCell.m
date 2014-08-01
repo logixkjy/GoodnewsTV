@@ -55,10 +55,6 @@
     [self.btn_play setTitleColor:textColor2 forState:UIControlStateHighlighted];
     [self.btn_delete setTitleColor:textColor forState:UIControlStateNormal];
     [self.btn_delete setTitleColor:textColor2 forState:UIControlStateHighlighted];
-    [self.btn_play setTag:2001];
-    [self.btn_delete setTag:2001];
-    [self.btn_play addTarget:self action:@selector(buttonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
-    [self.btn_delete addTarget:self action:@selector(buttonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     
     switch ([[dic_fileinfo objectForKey:@"ctFileType"] integerValue]) {
         case FILE_TYPE_VIDEO_NORMAL:
@@ -82,8 +78,8 @@
     }
 }
 
-- (void)buttonTouchUpInside:(UIButton*)sender{
-switch (sender.tag) {
+- (IBAction)buttonTouchUpInside:(UIButton*)sender{
+    switch (sender.tag) {
         case 2001:
         {
             userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -107,7 +103,7 @@ switch (sender.tag) {
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (alertView.tag == 1004) {
+    if (alertView.tag == 1005) {
         if (buttonIndex == 0) {
             userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                         @"D",           @"ButtonType",
