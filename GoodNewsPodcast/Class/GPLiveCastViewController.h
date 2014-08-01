@@ -9,5 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface GPLiveCastViewController : UIViewController
+{
+    IBOutlet UIImageView    *_img_btn;
+    
+}
+
+@property (nonatomic, strong) IBOutlet UIButton *btn_nowplay;
+
+- (IBAction)showMenu;
 
 @end

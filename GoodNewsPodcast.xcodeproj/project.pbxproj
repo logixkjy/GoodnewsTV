@@ -61,6 +61,8 @@
 		3177B20619824570002049F9 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3177B20119824570002049F9 /* FMDatabasePool.m */; };
 		3177B20719824570002049F9 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3177B20219824570002049F9 /* FMDatabaseQueue.m */; };
 		3177B20819824570002049F9 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3177B20319824570002049F9 /* FMResultSet.m */; };
+		31923385198B44BE000B1E25 /* icon_nowPlaying_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 31923383198B44BE000B1E25 /* icon_nowPlaying_normal.png */; };
+		31923386198B44BE000B1E25 /* icon_nowPlaying_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 31923384198B44BE000B1E25 /* icon_nowPlaying_press.png */; };
 		31C1C0481975394F0048BB78 /* GPMoviePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C1C0471975394F0048BB78 /* GPMoviePlayerViewController.m */; };
 		31E1C3C7197FD18300E66DE0 /* GPSQLiteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31E1C3C6197FD18300E66DE0 /* GPSQLiteController.m */; };
 		31E1C3C9197FD1AE00E66DE0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E1C3C8197FD1AE00E66DE0 /* libsqlite3.0.dylib */; };
@@ -278,6 +280,8 @@
 		3177B20119824570002049F9 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
 		3177B20219824570002049F9 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
 		3177B20319824570002049F9 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		31923383198B44BE000B1E25 /* icon_nowPlaying_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_nowPlaying_normal.png; sourceTree = "<group>"; };
+		31923384198B44BE000B1E25 /* icon_nowPlaying_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_nowPlaying_press.png; sourceTree = "<group>"; };
 		31C1C0461975394F0048BB78 /* GPMoviePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPMoviePlayerViewController.h; sourceTree = "<group>"; };
 		31C1C0471975394F0048BB78 /* GPMoviePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPMoviePlayerViewController.m; sourceTree = "<group>"; };
 		31E1C3C5197FD18300E66DE0 /* GPSQLiteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSQLiteController.h; sourceTree = "<group>"; };
@@ -690,6 +694,8 @@
 		31EDCDA61973759C00F8D50E /* Img */ = {
 			isa = PBXGroup;
 			children = (
+				31923383198B44BE000B1E25 /* icon_nowPlaying_normal.png */,
+				31923384198B44BE000B1E25 /* icon_nowPlaying_press.png */,
 				31EDCDA71973759C00F8D50E /* box_add.9.png */,
 				31EDCDA81973759C00F8D50E /* box_btn.9.png */,
 				31EDCDA91973759C00F8D50E /* box_down.9.png */,
@@ -936,6 +942,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31EDCDE91973759C00F8D50E /* mask_circle_100.png in Resources */,
+				31923385198B44BE000B1E25 /* icon_nowPlaying_normal.png in Resources */,
 				31EDCDE51973759C00F8D50E /* icon_move.png in Resources */,
 				314D3E251982C6A20079A974 /* player_btn_stop_press.png in Resources */,
 				31EDCDE71973759C00F8D50E /* icon_setting_normal.png in Resources */,
@@ -974,6 +981,7 @@
 				31E3363C1979F7500027A68B /* LaunchImages_640-960.png in Resources */,
 				31EDCDE61973759C00F8D50E /* icon_Plus_normal.png in Resources */,
 				31EDCDD81973759C00F8D50E /* btn_witch_on.png in Resources */,
+				31923386198B44BE000B1E25 /* icon_nowPlaying_press.png in Resources */,
 				31EDCDF01973759C00F8D50E /* player_btn_pre_press.png in Resources */,
 				31EDCDEC1973759C00F8D50E /* player_btn_next_press.png in Resources */,
 				31EDCDD71973759C00F8D50E /* btn_witch_off.png in Resources */,
@@ -1244,8 +1252,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = armv7;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jaewoo Lee (JV7FM94CF8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jaewoo Lee (JV7FM94CF8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoodNewsPodcast/GoodNewsPodcast-Prefix.pch";
 				INFOPLIST_FILE = "GoodNewsPodcast/GoodNewsPodcast-Info.plist";
@@ -1255,7 +1263,7 @@
 					"$(PROJECT_DIR)/GoodNewsPodcast/Class/common/FMDB",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5FAF7684-E0C3-4197-9A5A-173293AED2B0";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;

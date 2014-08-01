@@ -41,9 +41,15 @@
     [session setActive:YES error:nil];
     
     mainDelegate = MAIN_APP_DELEGATE();
-    NSLog(@"mainDelegate.audioPlayer.playbackState [%d]",mainDelegate.audioPlayer.playbackState);
     
-    if (!GetGPDataCenter.isAudioPlaying) {
+    if (![[GetGPDataCenter.dic_playInfo objectForKey:@"ctName"] isEqualToString:[self.dic_contents_data objectForKey:@"ctName"]]) {
+        [mainDelegate.audioPlayer stop];
+        GetGPDataCenter.isAudioPlaying = NO;
+    }
+    
+    if (!GetGPDataCenter.isAudioPlaying ||
+        mainDelegate.audioPlayer.playbackState == MPMoviePlaybackStateStopped)
+    {
         NSFileManager *fileManager = [NSFileManager defaultManager];
         NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         
@@ -66,15 +72,7 @@
         
         mainDelegate.audioPlayer =  [[MPMoviePlayerController alloc] initWithContentURL:url_path];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(moviePlayerLoadStateChanged:)
-                                                     name:MPMoviePlayerLoadStateDidChangeNotification
-                                                   object:nil];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(moviePlayBackDidFinish:)
-                                                     name:MPMoviePlayerPlaybackDidFinishNotification
-                                                   object:mainDelegate.audioPlayer];
         
         mainDelegate.audioPlayer.controlStyle = MPMovieControlStyleNone;
         mainDelegate.audioPlayer.shouldAutoplay = YES;
@@ -83,8 +81,26 @@
         
         [mainDelegate.audioPlayer prepareToPlay];
         
+        GetGPDataCenter.dic_playInfo = [NSMutableDictionary dictionaryWithDictionary:self.dic_contents_data];
+        
 //        mainDelegate.audioPlayer = audioPlayer;
+    }else {
+        self.btn_play.selected = YES;
+        self.timeProgress.maximumValue = mainDelegate.audioPlayer.duration;
     }
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerLoadStateDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:mainDelegate.audioPlayer];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(moviePlayerLoadStateChanged:)
+                                                 name:MPMoviePlayerLoadStateDidChangeNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(moviePlayBackDidFinish:)
+                                                 name:MPMoviePlayerPlaybackDidFinishNotification
+                                               object:mainDelegate.audioPlayer];
     
     [[UISlider appearance] setThumbImage:[UIImage imageNamed:@"player_time_handle.png"] forState:UIControlStateNormal];
     
@@ -92,7 +108,7 @@
         [self.playerView bringSubviewToFront:self.toolbarView];
         [self.toolbarView setFrame:CGRectMake(0, self.playerView.frame.size.height - self.toolbarView.frame.size.height, self.toolbarView.frame.size.width , self.toolbarView.frame.size.height)];
     }
-    [self.img_thumb setImageWithURL:[NSURL URLWithString:[self.dic_contents_data objectForKey:@"prThumb"]]  placeholderImage:[UIImage imageNamed:@"thumbnail_none.png"]];
+    [self.img_thumb setImageWithURL:[NSURL URLWithString:[self.dic_contents_data objectForKey:@"prThumb"]]  placeholderImage:[UIImage imageNamed:@"thumbnail_none_square.png"]];
     [self.lbl_title setText:[NSString stringWithFormat:@"%@ %@",[self.dic_contents_data objectForKey:@"ctEventDate"],[self.dic_contents_data objectForKey:@"ctPhrase"]]];
     [self.lbl_subtitle setText:[self.dic_contents_data objectForKey:@"ctName"]];
     
@@ -315,6 +331,13 @@
         default:
             break;
     }
+}
+
+- (IBAction)valueChanged
+{
+    [mainDelegate.audioPlayer pause];
+    [mainDelegate.audioPlayer setCurrentPlaybackTime:self.timeProgress.value];
+    [mainDelegate.audioPlayer play];
 }
 
 - (BOOL)shouldAutorotate

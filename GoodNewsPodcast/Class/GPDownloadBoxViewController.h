@@ -35,6 +35,7 @@
 @property (nonatomic, strong) NSMutableArray *arr_downBoxSection;
 
 @property (nonatomic, strong) IBOutlet UILabel *lbl_naviTitle;
+@property (nonatomic, strong) IBOutlet UIButton *btn_nowplay;
 
 - (IBAction)showMenu;
 

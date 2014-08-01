@@ -47,6 +47,7 @@ static GPDataCenter* g_GPDataCenterInstance = nil;
         self.sendQueueForFileType   = [[NSMutableArray alloc] initWithCapacity:10];
         
         self.dic_fileInfo           = [[NSMutableDictionary alloc] init];
+        self.dic_playInfo           = [[NSMutableDictionary alloc] init];
         
         self.str_fileType           = @"";
         self.str_AppStore           = @"";

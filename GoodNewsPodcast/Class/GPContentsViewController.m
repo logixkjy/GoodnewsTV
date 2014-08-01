@@ -79,6 +79,9 @@
                                              selector:@selector(fileStreaming:)
                                                  name:_CMD_FILE_STREAMING
                                                object:nil];
+    
+    self.btn_nowplay.hidden = !GetGPDataCenter.isAudioPlaying;
+    [self.btn_nowplay addTarget:self action:@selector(moveAudioPlayView) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -159,6 +162,13 @@
     // Present the view controller
     //
     [self.frostedViewController panGestureRecognized:sender];
+}
+
+- (void)moveAudioPlayView
+{
+    GPAudioPlayerViewController *audioPlayer = [self.storyboard instantiateViewControllerWithIdentifier:@"AudioPlayer"];
+    audioPlayer.dic_contents_data = [NSMutableDictionary dictionaryWithDictionary:GetGPDataCenter.dic_playInfo];
+    [self.navigationController pushViewController:audioPlayer animated:YES];
 }
 
 - (void)setDatas

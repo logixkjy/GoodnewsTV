@@ -10,6 +10,7 @@
 #import "GPSettingViewController.h"
 #import "GPDownloadController.h"
 #import "GPProgressCell.h"
+#import "GPAudioPlayerViewController.h"
 
 @interface GPDownloadBoxViewController ()
 
@@ -30,7 +31,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
+    if (GetGPDataCenter.gpNetowrkStatus != NETWORK_NONE) {
+        [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
+    } else {
+        _img_btn.hidden = YES;
+        self.sc_selectView.selectedSegmentIndex = 0;
+    }
+    
     isEdit = NO;
     
     self.arr_downList = [[NSMutableArray alloc] initWithCapacity:5];
@@ -112,6 +119,9 @@
                                              selector:@selector(fileDownStart:)
                                                  name:_CMD_FILE_DOWN_FINISHED
                                                object:nil];
+    
+    self.btn_nowplay.hidden = !GetGPDataCenter.isAudioPlaying;
+    [self.btn_nowplay addTarget:self action:@selector(moveAudioPlayView) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -215,6 +225,13 @@
     [self.frostedViewController panGestureRecognized:sender];
 }
 
+- (void)moveAudioPlayView
+{
+    GPAudioPlayerViewController *audioPlayer = [self.storyboard instantiateViewControllerWithIdentifier:@"AudioPlayer"];
+    audioPlayer.dic_contents_data = [NSMutableDictionary dictionaryWithDictionary:GetGPDataCenter.dic_playInfo];
+    [self.navigationController pushViewController:audioPlayer animated:YES];
+}
+
 - (IBAction)pressBtn:(UIButton*)sender
 {
     switch (sender.tag) {
@@ -234,6 +251,10 @@
 
 - (IBAction)showMenu
 {
+    if (GetGPDataCenter.gpNetowrkStatus == NETWORK_NONE) {
+        return;
+    }
+    
     // Dismiss keyboard (optional)
     //
     [self.view endEditing:YES];
@@ -278,6 +299,11 @@
 
 - (IBAction)valueChanged
 {
+    if (GetGPDataCenter.gpNetowrkStatus == NETWORK_NONE) {
+        self.sc_selectView.selectedSegmentIndex = 0;
+        return;
+    }
+    
     if (self.sc_selectView.selectedSegmentIndex == 1) {
         self.view_downList.hidden = NO;
         self.view_fileList.hidden = YES;

@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoodNewsPodcast/Class/GPContentsViewController.m"
-            timestampString = "428487410.073821"
+            timestampString = "428560958.618468"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "-fileDownloadFinished:"
             landmarkType = "5">
          </BreakpointContent>
@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoodNewsPodcast/Class/GPMyCastContentsViewController.m"
-            timestampString = "428488002.217165"
+            timestampString = "428560958.618468"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "521"
-            endingLineNumber = "521"
+            startingLineNumber = "532"
+            endingLineNumber = "532"
             landmarkName = "-playMovie"
             landmarkType = "5">
          </BreakpointContent>
@@ -68,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoodNewsPodcast/Class/GPMyCastContentsViewController.m"
-            timestampString = "428488028.965658"
+            timestampString = "428560958.618468"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "488"
-            endingLineNumber = "488"
+            startingLineNumber = "499"
+            endingLineNumber = "499"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -84,28 +84,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoodNewsPodcast/Class/GPMyCastContentsViewController.m"
-            timestampString = "428488070.646364"
+            timestampString = "428560958.618468"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "511"
-            endingLineNumber = "511"
+            startingLineNumber = "522"
+            endingLineNumber = "522"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoodNewsPodcast/Class/GPGoodNewsCastViewController.m"
-            timestampString = "428490866.414161"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

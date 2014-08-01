@@ -16,6 +16,7 @@
 #import "GPMyCastViewController.h"
 #import "GPDownloadBoxViewController.h"
 #import "GPLiveCastViewController.h"
+#import "GPAudioPlayerViewController.h"
 
 @interface GPGoodNewsCastViewController ()
 
@@ -69,10 +70,6 @@
         return;
     }
     
-    self.arr_mainList = [[NSMutableArray alloc] initWithCapacity:10];
-    [self connectionNetwork];
-    [self.tableView reloadData];
-    
     if (!GetGPDataCenter.isShow3GPopup)
     {
         GetGPDataCenter.isShow3GPopup= !GetGPDataCenter.isShow3GPopup;
@@ -80,9 +77,15 @@
         if (GetGPDataCenter.gpNetowrkStatus == NETWORK_3G_LTE) {
             [GPAlertUtil alertWithMessage:netStatus_3G delegate:self];
         } else if (GetGPDataCenter.gpNetowrkStatus == NETWORK_NONE) {
-            [GPAlertUtil alertWithMessage:netStatus_none delegate:self];
+            [GPAlertUtil alertWithMessage:netStatus_none tag:8888 delegate:self];
+            return;
         }
     }
+    
+    self.arr_mainList = [[NSMutableArray alloc] initWithCapacity:10];
+    [self connectionNetwork];
+    [self.tableView reloadData];
+    
     if (!GetGPDataCenter.isFirstView) {
         GetGPDataCenter.isFirstView = !GetGPDataCenter.isFirstView;
         self.lbl_naviTitle.text = @"GOODNEWS TV";
@@ -106,6 +109,9 @@
                                              selector:@selector(moveSettingView)
                                                  name:_CMD_MOVE_SETTING_VIEW
                                                object:nil];
+    
+    self.btn_nowplay.hidden = !GetGPDataCenter.isAudioPlaying;
+    [self.btn_nowplay addTarget:self action:@selector(moveAudioPlayView) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning
@@ -130,6 +136,13 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)moveAudioPlayView
+{
+    GPAudioPlayerViewController *audioPlayer = [self.storyboard instantiateViewControllerWithIdentifier:@"AudioPlayer"];
+    audioPlayer.dic_contents_data = [NSMutableDictionary dictionaryWithDictionary:GetGPDataCenter.dic_playInfo];
+    [self.navigationController pushViewController:audioPlayer animated:YES];
+}
 
 - (void)moveSettingView
 {
@@ -165,6 +178,9 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView.tag == 9999) {
         exit(0);
+    } else if (alertView.tag == 8888){
+        GPDownloadBoxViewController *downBoxViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DownloadBox"];
+        [self.navigationController pushViewController:downBoxViewController animated:YES];
     }
 }
 
