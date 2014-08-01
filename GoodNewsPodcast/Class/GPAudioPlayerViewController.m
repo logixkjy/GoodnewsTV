@@ -74,9 +74,8 @@
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(moviePlayBackDidFinish:)
                                                      name:MPMoviePlayerPlaybackDidFinishNotification
-                                                   object:audioPlayer];
+                                                   object:mainDelegate.audioPlayer];
         
-        [self.timeProgress setThumbImage:[UIImage imageNamed:@"player_time_handle.png"]	 forState:UIControlStateNormal];
         mainDelegate.audioPlayer.controlStyle = MPMovieControlStyleNone;
         mainDelegate.audioPlayer.shouldAutoplay = YES;
         
@@ -84,20 +83,24 @@
         
         [mainDelegate.audioPlayer prepareToPlay];
         
-        if (!IS_4_INCH) {
-            [self.playerView bringSubviewToFront:self.toolbarView];
-            [self.toolbarView setFrame:CGRectMake(0, self.playerView.frame.size.height - self.toolbarView.frame.size.height, self.toolbarView.frame.size.width , self.toolbarView.frame.size.height)];
-        }
-        [self.img_thumb setImageWithURL:[NSURL URLWithString:[self.dic_contents_data objectForKey:@"prThumb"]]  placeholderImage:[UIImage imageNamed:@"thumbnail_none.png"]];
-        [self.lbl_title setText:[NSString stringWithFormat:@"%@ %@",[self.dic_contents_data objectForKey:@"ctEventDate"],[self.dic_contents_data objectForKey:@"ctPhrase"]]];
-        [self.lbl_subtitle setText:[self.dic_contents_data objectForKey:@"ctName"]];
-        
-        MPVolumeView *volumeView = [[MPVolumeView alloc] initWithFrame:self.volumeView.bounds];
-        [self.volumeView addSubview:volumeView];
-        [volumeView sizeToFit];
-        
-        [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePlaybackProgressFromTimer:) userInfo:nil repeats:YES];
+//        mainDelegate.audioPlayer = audioPlayer;
     }
+    
+    [[UISlider appearance] setThumbImage:[UIImage imageNamed:@"player_time_handle.png"] forState:UIControlStateNormal];
+    
+    if (!IS_4_INCH) {
+        [self.playerView bringSubviewToFront:self.toolbarView];
+        [self.toolbarView setFrame:CGRectMake(0, self.playerView.frame.size.height - self.toolbarView.frame.size.height, self.toolbarView.frame.size.width , self.toolbarView.frame.size.height)];
+    }
+    [self.img_thumb setImageWithURL:[NSURL URLWithString:[self.dic_contents_data objectForKey:@"prThumb"]]  placeholderImage:[UIImage imageNamed:@"thumbnail_none.png"]];
+    [self.lbl_title setText:[NSString stringWithFormat:@"%@ %@",[self.dic_contents_data objectForKey:@"ctEventDate"],[self.dic_contents_data objectForKey:@"ctPhrase"]]];
+    [self.lbl_subtitle setText:[self.dic_contents_data objectForKey:@"ctName"]];
+    
+    MPVolumeView *volumeView = [[MPVolumeView alloc] initWithFrame:self.volumeView.bounds];
+    [self.volumeView addSubview:volumeView];
+    [volumeView sizeToFit];
+    
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePlaybackProgressFromTimer:) userInfo:nil repeats:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -150,13 +153,11 @@
     if (([UIApplication sharedApplication].applicationState == UIApplicationStateActive) &&
         (mainDelegate.audioPlayer.playbackState == MPMoviePlaybackStatePlaying)) {
         
-        CGFloat progress = mainDelegate.audioPlayer.currentPlaybackTime / mainDelegate.audioPlayer.duration;
+        self.timeProgress.value = mainDelegate.audioPlayer.currentPlaybackTime;
         
-//        self.timeProgress.progress = progress;
+        self.lbl_playtime.text = [NSString stringWithFormat:@"%@",[self convertIntToTime:(int)mainDelegate.audioPlayer.currentPlaybackTime]];
         
-        self.lbl_playtime.text = [NSString stringWithFormat:@"%@",[self convertIntToTime:(int)audioPlayer.currentPlaybackTime]];
-        
-        self.lbl_lasttime.text = [NSString stringWithFormat:@"-%@",[self convertIntToTime:fabs((int)(audioPlayer.currentPlaybackTime-audioPlayer.duration))]];
+        self.lbl_lasttime.text = [NSString stringWithFormat:@"-%@",[self convertIntToTime:fabs((int)(mainDelegate.audioPlayer.currentPlaybackTime-mainDelegate.audioPlayer.duration))]];
     }
 }
 
@@ -190,6 +191,7 @@
     
     self.btn_play.selected = YES;
     GetGPDataCenter.isAudioPlaying = YES;
+    self.timeProgress.maximumValue = mainDelegate.audioPlayer.duration;
 }
 
 -(void)remoteControlReceivedWithEvent:(UIEvent *)event{
