@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "GPDataCenter.h"
 #import "GPCommonUtil.h"
-@import MediaPlayer;
 #import "GPNavigationController.h"
 #import "GPDownloadController.h"
 #import "GPSQLiteController.h"

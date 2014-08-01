@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "iVersion.h"
 
-@interface GPSettingViewController : UIViewController <UIActionSheetDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UIAlertViewDelegate> {
+@interface GPSettingViewController : UIViewController <UIActionSheetDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UIAlertViewDelegate, iVersionDelegate> {
     IBOutlet UIImageView    *_img_btn;
     
     IBOutlet UISwitch       *_sw_use3G;

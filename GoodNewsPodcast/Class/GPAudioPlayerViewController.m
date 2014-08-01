@@ -40,58 +40,64 @@
     [session setCategory:AVAudioSessionCategoryPlayback error:nil];
     [session setActive:YES error:nil];
     
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    mainDelegate = MAIN_APP_DELEGATE();
+    NSLog(@"mainDelegate.audioPlayer.playbackState [%d]",mainDelegate.audioPlayer.playbackState);
     
-    NSString *str_file_path = [NSString stringWithFormat:@"%@/Contents/%@",
-                               [documentPath objectAtIndex:0],self.prCode];
-    if ([self.dic_contents_data objectForKey:@"ctFileNmae"] != nil) {
-        str_file_path = [str_file_path stringByAppendingPathComponent:[self.dic_contents_data objectForKey:@"ctFileNmae"]];
-    }else {
-        str_file_path = [str_file_path stringByAppendingFormat:@"/%@_%@.mp3", [self.dic_contents_data objectForKey:@"ctEventDate"], [self.dic_contents_data objectForKey:@"ctSpeaker"]];
+    if (!GetGPDataCenter.isAudioPlaying) {
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        
+        NSString *str_file_path = [NSString stringWithFormat:@"%@/Contents/%@",
+                                   [documentPath objectAtIndex:0],self.prCode];
+        if ([self.dic_contents_data objectForKey:@"ctFileName"] != nil) {
+            str_file_path = [str_file_path stringByAppendingPathComponent:[self.dic_contents_data objectForKey:@"ctFileName"]];
+        }else {
+            str_file_path = [str_file_path stringByAppendingFormat:@"/%@_%@.mp3", [self.dic_contents_data objectForKey:@"ctEventDate"], [self.dic_contents_data objectForKey:@"ctSpeaker"]];
+        }
+        
+        
+        NSURL *url_path = nil;
+        
+        if ([fileManager fileExistsAtPath:str_file_path]) {
+            url_path = [NSURL fileURLWithPath:str_file_path];
+        } else {
+            url_path = [NSURL URLWithString:[self.dic_contents_data objectForKey:@"ctAudioStream"] != nil ? [self.dic_contents_data objectForKey:@"ctAudioStream"] : [self.dic_contents_data objectForKey:@"ctFileUrl"]];
+        }
+        
+        mainDelegate.audioPlayer =  [[MPMoviePlayerController alloc] initWithContentURL:url_path];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(moviePlayerLoadStateChanged:)
+                                                     name:MPMoviePlayerLoadStateDidChangeNotification
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(moviePlayBackDidFinish:)
+                                                     name:MPMoviePlayerPlaybackDidFinishNotification
+                                                   object:audioPlayer];
+        
+        [self.timeProgress setThumbImage:[UIImage imageNamed:@"player_time_handle.png"]	 forState:UIControlStateNormal];
+        mainDelegate.audioPlayer.controlStyle = MPMovieControlStyleNone;
+        mainDelegate.audioPlayer.shouldAutoplay = YES;
+        
+        mainDelegate.audioPlayer.view.hidden = YES;
+        
+        [mainDelegate.audioPlayer prepareToPlay];
+        
+        if (!IS_4_INCH) {
+            [self.playerView bringSubviewToFront:self.toolbarView];
+            [self.toolbarView setFrame:CGRectMake(0, self.playerView.frame.size.height - self.toolbarView.frame.size.height, self.toolbarView.frame.size.width , self.toolbarView.frame.size.height)];
+        }
+        [self.img_thumb setImageWithURL:[NSURL URLWithString:[self.dic_contents_data objectForKey:@"prThumb"]]  placeholderImage:[UIImage imageNamed:@"thumbnail_none.png"]];
+        [self.lbl_title setText:[NSString stringWithFormat:@"%@ %@",[self.dic_contents_data objectForKey:@"ctEventDate"],[self.dic_contents_data objectForKey:@"ctPhrase"]]];
+        [self.lbl_subtitle setText:[self.dic_contents_data objectForKey:@"ctName"]];
+        
+        MPVolumeView *volumeView = [[MPVolumeView alloc] initWithFrame:self.volumeView.bounds];
+        [self.volumeView addSubview:volumeView];
+        [volumeView sizeToFit];
+        
+        [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePlaybackProgressFromTimer:) userInfo:nil repeats:YES];
     }
-    
-    
-    NSURL *url_path = nil;
-    
-    if ([fileManager fileExistsAtPath:str_file_path]) {
-        url_path = [NSURL fileURLWithPath:str_file_path];
-    } else {
-        url_path = [NSURL URLWithString:[self.dic_contents_data objectForKey:@"ctAudioStream"] != nil ? [self.dic_contents_data objectForKey:@"ctAudioStream"] : [self.dic_contents_data objectForKey:@"ctFileUrl"]];
-    }
-    
-    audioPlayer =  [[MPMoviePlayerController alloc] initWithContentURL:url_path];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(moviePlayerLoadStateChanged:)
-                                                 name:MPMoviePlayerLoadStateDidChangeNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(moviePlayBackDidFinish:)
-                                                 name:MPMoviePlayerPlaybackDidFinishNotification
-                                               object:audioPlayer];
-    
-    audioPlayer.controlStyle = MPMovieControlStyleNone;
-    audioPlayer.shouldAutoplay = YES;
-    
-    audioPlayer.view.hidden = YES;
-    
-    [audioPlayer prepareToPlay];
-    
-    if (!IS_4_INCH) {
-        [self.playerView bringSubviewToFront:self.toolbarView];
-        [self.toolbarView setFrame:CGRectMake(0, self.playerView.frame.size.height - self.toolbarView.frame.size.height, self.toolbarView.frame.size.width , self.toolbarView.frame.size.height)];
-    }
-    [self.img_thumb setImageWithURL:[NSURL URLWithString:[self.dic_contents_data objectForKey:@"prThumb"]]  placeholderImage:[UIImage imageNamed:@"thumbnail_none.png"]];
-    [self.lbl_title setText:[NSString stringWithFormat:@"%@ %@",[self.dic_contents_data objectForKey:@"ctEventDate"],[self.dic_contents_data objectForKey:@"ctPhrase"]]];
-    [self.lbl_subtitle setText:[self.dic_contents_data objectForKey:@"ctName"]];
- 
-    MPVolumeView *volumeView = [[MPVolumeView alloc] initWithFrame:self.volumeView.bounds];
-	[self.volumeView addSubview:volumeView];
-	[volumeView sizeToFit];
-    
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePlaybackProgressFromTimer:) userInfo:nil repeats:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -142,11 +148,11 @@
 - (void) updatePlaybackProgressFromTimer:(NSTimer *)timer {
     
     if (([UIApplication sharedApplication].applicationState == UIApplicationStateActive) &&
-        (audioPlayer.playbackState == MPMoviePlaybackStatePlaying)) {
+        (mainDelegate.audioPlayer.playbackState == MPMoviePlaybackStatePlaying)) {
         
-        CGFloat progress = audioPlayer.currentPlaybackTime / audioPlayer.duration;
+        CGFloat progress = mainDelegate.audioPlayer.currentPlaybackTime / mainDelegate.audioPlayer.duration;
         
-        self.timeProgress.progress = progress;
+//        self.timeProgress.progress = progress;
         
         self.lbl_playtime.text = [NSString stringWithFormat:@"%@",[self convertIntToTime:(int)audioPlayer.currentPlaybackTime]];
         
@@ -183,6 +189,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(remoteControlEventNotification:) name:@"RemoteControlEventReceived" object:nil];
     
     self.btn_play.selected = YES;
+    GetGPDataCenter.isAudioPlaying = YES;
 }
 
 -(void)remoteControlReceivedWithEvent:(UIEvent *)event{
@@ -195,13 +202,13 @@
     if ( event.type == UIEventTypeRemoteControl ) {
         switch (event.subtype) {
             case UIEventSubtypeRemoteControlPlay:
-                [audioPlayer play];
+                [mainDelegate.audioPlayer play];
                 break;
             case UIEventSubtypeRemoteControlPause:
-                [audioPlayer pause];
+                [mainDelegate.audioPlayer pause];
                 break;
             case UIEventSubtypeRemoteControlStop:
-                [audioPlayer stop];
+                [mainDelegate.audioPlayer stop];
                 break;
             case UIEventSubtypeRemoteControlBeginSeekingBackward:
             case UIEventSubtypeRemoteControlBeginSeekingForward:
@@ -219,7 +226,7 @@
 }
 
 - (void) moviePlayBackDidFinish:(NSNotification*)notification {
-    
+    [mainDelegate.audioPlayer stop];
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:MPMoviePlayerPlaybackDidFinishNotification
                                                   object:nil];
@@ -296,10 +303,10 @@
         case 2:
             if ( sender.selected ) {
                 sender.selected = !sender.selected;
-                [audioPlayer pause];
+                [mainDelegate.audioPlayer pause];
             } else {
                 sender.selected = !sender.selected;
-                [audioPlayer play];
+                [mainDelegate.audioPlayer play];
             }
             break;
             

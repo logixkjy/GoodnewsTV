@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "iVersion.h"
+@import MediaPlayer;
 
 @class GPDownloadController;
 
@@ -17,5 +18,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) GPDownloadController *downloadController;
+@property (strong, nonatomic) MPMoviePlayerController		*audioPlayer;
 
 @end

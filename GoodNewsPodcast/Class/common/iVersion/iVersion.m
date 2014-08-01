@@ -599,31 +599,31 @@ static NSString *const iVersionMacAppStoreURLFormat = @"macappstore://itunes.app
             //show details
             if (showDetails && !self.visibleRemoteAlert)
             {
-                NSString *title = self.updateAvailableTitle;
-                if (!self.groupNotesByVersion)
-                {
-                    title = [title stringByAppendingFormat:@" (%@)", mostRecentVersion];
-                }
-                
+//                NSString *title = self.updateAvailableTitle;
+//                if (!self.groupNotesByVersion)
+//                {
+//                    title = [title stringByAppendingFormat:@" (%@)", mostRecentVersion];
+//                }
+//                
 //                self.visibleRemoteAlert = [self alertViewWithTitle:title
 //                                                           details:details
 //                                                     defaultButton:self.downloadButtonLabel
 //                                                      cancelButton:self.ignoreButtonLabel];
-                
-                if ([self.remindButtonLabel length])
-                {
-                    [self.visibleRemoteAlert addButtonWithTitle:self.remindButtonLabel];
-                }
-                
-#if TARGET_OS_IPHONE
-                
-                [self.visibleRemoteAlert show];
-#else
-                [self.visibleRemoteAlert beginSheetModalForWindow:[[NSApplication sharedApplication] mainWindow]
-                                                    modalDelegate:self
-                                                   didEndSelector:@selector(remoteAlertDidEnd:returnCode:contextInfo:)
-                                                      contextInfo:nil];
-#endif
+//                
+//                if ([self.remindButtonLabel length])
+//                {
+//                    [self.visibleRemoteAlert addButtonWithTitle:self.remindButtonLabel];
+//                }
+//                
+//#if TARGET_OS_IPHONE
+//                
+//                [self.visibleRemoteAlert show];
+//#else
+//                [self.visibleRemoteAlert beginSheetModalForWindow:[[NSApplication sharedApplication] mainWindow]
+//                                                    modalDelegate:self
+//                                                   didEndSelector:@selector(remoteAlertDidEnd:returnCode:contextInfo:)
+//                                                      contextInfo:nil];
+//#endif
                 
             }
         }
