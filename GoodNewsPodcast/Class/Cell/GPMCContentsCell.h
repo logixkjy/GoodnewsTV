@@ -15,6 +15,8 @@
     GPDownloadController *_downCont;
     
     BOOL isFileDown;
+    
+    AppDelegate *mainDelegate;
 }
 
 @property (nonatomic, strong) IBOutlet UILabel *lbl_name;

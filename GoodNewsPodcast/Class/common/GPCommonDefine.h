@@ -70,6 +70,7 @@ typedef NSInteger MENU_ID;
 #define _CMD_FILE_DOWN_ADD      @"file_down_add"
 #define _CMD_FILE_DOWN_CANCEL   @"file_down_cancel"
 #define _CMD_FILE_STREAMING     @"file_streaming"
+#define _CMD_DOWN_BOX_EVENT     @"down_box_event"
 
 #define DEFAULT_URL @"http://goodnewstv.kr/assets/podcast"
 

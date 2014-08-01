@@ -47,27 +47,26 @@
             {
                 GPMyCastViewController *myCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyCast"];
                 [self.navigationController pushViewController:myCastViewController animated:YES];
+                return;
             }
                 break;
             case MENU_ID_DOWN_BOX:
             {
                 GPDownloadBoxViewController *downBoxViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DownloadBox"];
                 [self.navigationController pushViewController:downBoxViewController animated:YES];
+                return;
             }
                 break;
             case MENU_ID_LIVE_TV:
             {
-//                GPLiveCastViewController *liveCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LiveTV"];
-//                [self.navigationController pushViewController:liveCastViewController animated:YES];
+                GPLiveCastViewController *liveCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LiveTV"];
+                [self.navigationController pushViewController:liveCastViewController animated:YES];
+                return;
             }
                 break;
             default:
                 break;
         }
-    }
-    
-    if ([GPCommonUtil readIntFromDefault:@"ROOT_MENU_ID"] != 0) {
-        return;
     }
     
     if (!GetGPDataCenter.isShow3GPopup)
@@ -250,7 +249,7 @@
 {
     NSMutableDictionary *dic_selected_data = [self.arr_mainList objectAtIndex:indexPath.row];
     
-    if ([dic_selected_data objectForKey:@"pcSub"] == nil) {
+    if (![[dic_selected_data objectForKey:@"pcSub"] isKindOfClass:[NSArray class]]) {
         GPContentsViewController *contentsCont = [self.storyboard instantiateViewControllerWithIdentifier:@"ContentsView"];
         contentsCont.dic_contents_data = [NSMutableDictionary dictionaryWithDictionary:dic_selected_data];
         [self.navigationController pushViewController:contentsCont animated:YES];

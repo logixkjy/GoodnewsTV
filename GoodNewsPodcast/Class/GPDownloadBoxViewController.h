@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "REFrostedViewController.h"
+@import MediaPlayer;
 
-@interface GPDownloadBoxViewController : UIViewController < UITableViewDataSource, UITableViewDelegate>
+@interface GPDownloadBoxViewController : UIViewController < UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 {
     IBOutlet UIImageView    *_img_btn;
     GPDownloadController    *_downCont;
     BOOL                    isEdit;
+    
+    MPMoviePlayerController *_mp_playVideo;
+    MPMoviePlayerViewController *_mpv_playVideo;
 }
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl *sc_selectView;

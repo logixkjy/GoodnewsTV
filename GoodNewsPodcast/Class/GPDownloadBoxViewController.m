@@ -10,7 +10,9 @@
 #import "GPSettingViewController.h"
 #import "GPDownloadController.h"
 #import "GPProgressCell.h"
+#import "GPMoviePlayerViewController.h"
 #import "GPAudioPlayerViewController.h"
+#import "GPDWContentsCell.h"
 
 @interface GPDownloadBoxViewController ()
 
@@ -120,6 +122,11 @@
                                                  name:_CMD_FILE_DOWN_FINISHED
                                                object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(fileDownStart:)
+                                                 name:_CMD_FILE_DOWN_FINISHED
+                                               object:nil];
+    
     self.btn_nowplay.hidden = !GetGPDataCenter.isAudioPlaying;
     [self.btn_nowplay addTarget:self action:@selector(moveAudioPlayView) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -208,6 +215,13 @@
     }
     
     [self.tb_downList performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    
+    self.arr_downBox = [[NSMutableArray alloc] initWithCapacity:5];
+    self.arr_downBox = [GetGPSQLiteController GetRecordsDownList];
+    self.arr_downBoxSection= [[NSMutableArray alloc] initWithCapacity:5];
+    self.arr_downBoxSection = [GetGPSQLiteController GetRecordsDownListSection];
+    
+    [self.tb_fileList performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
 
 #pragma mark -
@@ -326,13 +340,27 @@
     return 1;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	if (tableView == self.searchDisplayController.searchResultsTableView) {
-		return nil;
-	} else if (tableView == self.tb_fileList) {
-		return [[self.arr_downBoxSection objectAtIndex:section] objectForKey:@"prTitle"];
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//	if (tableView == self.tb_fileList) {
+//		return [[self.arr_downBoxSection objectAtIndex:section] objectForKey:@"prTitle"];
+//	}
+//    return nil;
+//}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (tableView == self.tb_fileList) {
+		UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 58)];
+        headerView.backgroundColor = UIColorFromRGB(0xf0eff4);
+        UILabel *lblTitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 31, 300, 18)];
+        lblTitle.font = [UIFont systemFontOfSize:17];
+        lblTitle.text = [[self.arr_downBoxSection objectAtIndex:section] objectForKey:@"prTitle"];
+        lblTitle.textColor = UIColorFromRGB(0x002085);
+        [headerView addSubview:lblTitle];
+        return headerView;
 	}
     return nil;
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -360,10 +388,10 @@
         
         return cell;
     } else if (tableView == self.tb_fileList) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DownListCell"];
+        GPDWContentsCell *cell = (GPDWContentsCell*)[tableView dequeueReusableCellWithIdentifier:@"DWContentCell"];
         
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"DownListCell"];
+            cell = [[GPDWContentsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"DWContentCell"];
         }
         
         int indexNow = 0;
@@ -374,9 +402,9 @@
         
         indexNow += indexPath.row;
         
-        NSDictionary *dic = [self.arr_downBox objectAtIndex:indexNow];
+        NSDictionary *dic_fileInfo = [self.arr_downBox objectAtIndex:indexNow];
         
-        cell.textLabel.text = [dic objectForKey:@"ctName"];
+        [cell setContentsData:dic_fileInfo indexPath:indexPath];
         return cell;
     }
     
@@ -388,7 +416,105 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (tableView == self.tb_fileList) {
+        int indexNow = 0;
+        for (int i = 0; i < indexPath.section; i++) {
+            NSNumber *number = [[self.arr_downBoxSection objectAtIndex:i] objectForKey:@"prCount"];
+            indexNow += [number intValue];
+        }
+        
+        indexNow += indexPath.row;
+        
+        NSDictionary *dic_fileInfo = [self.arr_downBox objectAtIndex:indexNow];
+        
+        [self showPlayerView:dic_fileInfo];
+    }
+}
+
+- (void)downBoxEvent:(NSNotification*)noti{
+    NSDictionary *userInfo = noti.userInfo;
     
+    NSIndexPath *indexPath = [userInfo objectForKey:@"indexPath"];
+    int indexNow = 0;
+    for (int i = 0; i < indexPath.section; i++) {
+        NSNumber *number = [[self.arr_downBoxSection objectAtIndex:i] objectForKey:@"prCount"];
+        indexNow += [number intValue];
+    }
+    
+    indexNow += indexPath.row;
+    
+    NSDictionary *dic_fileInfo = [self.arr_downBox objectAtIndex:indexNow];
+    
+    if ([[userInfo objectForKey:@"ButtonType"] isEqualToString:@"P"]) {
+        [self showPlayerView:dic_fileInfo];
+    } else {
+        [GetGPSQLiteController deleteDownFileWithNo:[[dic_fileInfo objectForKey:@"_ID"] intValue]];
+        
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        
+        NSString *str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@",
+                                   [documentPath objectAtIndex:0],
+                                   [dic_fileInfo objectForKey:@"prCode"],
+                                   [dic_fileInfo objectForKey:@"ctFileName"]];
+        
+        if ([fileManager removeItemAtPath:str_file_path error:nil]) {
+            [GPAlertUtil alertWithMessage:@"삭제 되었습니다." tag:7777 delegate:self];
+        }
+    }
+}
+
+- (void)showPlayerView:(NSDictionary*)fileDic
+{
+    if ([[fileDic objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_AUDIO) {
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        
+        NSString *str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@",
+                                   [documentPath objectAtIndex:0],
+                                   [fileDic objectForKey:@"prCode"],
+                                   [fileDic objectForKey:@"ctFileName"]];
+       
+        if (![fileManager fileExistsAtPath:str_file_path]) {
+            return;
+        }
+        
+        GPAudioPlayerViewController *audioPlayer = [self.storyboard instantiateViewControllerWithIdentifier:@"AudioPlayer"];
+        audioPlayer.dic_contents_data = [NSMutableDictionary dictionaryWithDictionary:fileDic];
+        audioPlayer.prCode = [fileDic objectForKey:@"prCode"];
+        [self.navigationController pushViewController:audioPlayer animated:YES];
+    } else {
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        
+        NSString *str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@",
+                                   [documentPath objectAtIndex:0],
+                                   [fileDic objectForKey:@"prCode"],
+                                   [fileDic objectForKey:@"ctFileName"]];
+        
+        if (![fileManager fileExistsAtPath:str_file_path]) {
+            return;
+        }
+        
+        _mpv_playVideo = [[GPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:str_file_path]];
+        _mpv_playVideo.view.backgroundColor = [UIColor blackColor];
+        _mpv_playVideo.moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
+        [self presentMoviePlayerViewControllerAnimated:_mpv_playVideo];
+
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 7777) {
+        self.arr_downBox = [[NSMutableArray alloc] initWithCapacity:5];
+        self.arr_downBox = [GetGPSQLiteController GetRecordsDownList];
+        self.arr_downBoxSection= [[NSMutableArray alloc] initWithCapacity:5];
+        self.arr_downBoxSection = [GetGPSQLiteController GetRecordsDownListSection];
+        
+        [self.tb_fileList performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+
+    }
 }
 
 @end

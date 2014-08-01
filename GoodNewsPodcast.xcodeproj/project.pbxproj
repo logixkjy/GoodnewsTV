@@ -63,6 +63,12 @@
 		3177B20819824570002049F9 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3177B20319824570002049F9 /* FMResultSet.m */; };
 		31923385198B44BE000B1E25 /* icon_nowPlaying_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 31923383198B44BE000B1E25 /* icon_nowPlaying_normal.png */; };
 		31923386198B44BE000B1E25 /* icon_nowPlaying_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 31923384198B44BE000B1E25 /* icon_nowPlaying_press.png */; };
+		31923389198B7C19000B1E25 /* GPDWContentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 31923388198B7C19000B1E25 /* GPDWContentsCell.m */; };
+		3192338D198B9A25000B1E25 /* ActivityIndicatorCommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3192338B198B9A25000B1E25 /* ActivityIndicatorCommonViewController.m */; };
+		31923393198B9AE5000B1E25 /* loading_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3192338F198B9AE5000B1E25 /* loading_01@2x.png */; };
+		31923394198B9AE5000B1E25 /* loading_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31923390198B9AE5000B1E25 /* loading_02@2x.png */; };
+		31923395198B9AE5000B1E25 /* loading_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31923391198B9AE5000B1E25 /* loading_03@2x.png */; };
+		31923396198B9AE5000B1E25 /* loading_04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31923392198B9AE5000B1E25 /* loading_04@2x.png */; };
 		31C1C0481975394F0048BB78 /* GPMoviePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C1C0471975394F0048BB78 /* GPMoviePlayerViewController.m */; };
 		31E1C3C7197FD18300E66DE0 /* GPSQLiteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31E1C3C6197FD18300E66DE0 /* GPSQLiteController.m */; };
 		31E1C3C9197FD1AE00E66DE0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E1C3C8197FD1AE00E66DE0 /* libsqlite3.0.dylib */; };
@@ -282,6 +288,14 @@
 		3177B20319824570002049F9 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		31923383198B44BE000B1E25 /* icon_nowPlaying_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_nowPlaying_normal.png; sourceTree = "<group>"; };
 		31923384198B44BE000B1E25 /* icon_nowPlaying_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_nowPlaying_press.png; sourceTree = "<group>"; };
+		31923387198B7C19000B1E25 /* GPDWContentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPDWContentsCell.h; sourceTree = "<group>"; };
+		31923388198B7C19000B1E25 /* GPDWContentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPDWContentsCell.m; sourceTree = "<group>"; };
+		3192338A198B9A25000B1E25 /* ActivityIndicatorCommonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIndicatorCommonViewController.h; sourceTree = "<group>"; };
+		3192338B198B9A25000B1E25 /* ActivityIndicatorCommonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIndicatorCommonViewController.m; sourceTree = "<group>"; };
+		3192338F198B9AE5000B1E25 /* loading_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading_01@2x.png"; sourceTree = "<group>"; };
+		31923390198B9AE5000B1E25 /* loading_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading_02@2x.png"; sourceTree = "<group>"; };
+		31923391198B9AE5000B1E25 /* loading_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading_03@2x.png"; sourceTree = "<group>"; };
+		31923392198B9AE5000B1E25 /* loading_04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading_04@2x.png"; sourceTree = "<group>"; };
 		31C1C0461975394F0048BB78 /* GPMoviePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPMoviePlayerViewController.h; sourceTree = "<group>"; };
 		31C1C0471975394F0048BB78 /* GPMoviePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPMoviePlayerViewController.m; sourceTree = "<group>"; };
 		31E1C3C5197FD18300E66DE0 /* GPSQLiteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSQLiteController.h; sourceTree = "<group>"; };
@@ -694,6 +708,10 @@
 		31EDCDA61973759C00F8D50E /* Img */ = {
 			isa = PBXGroup;
 			children = (
+				3192338F198B9AE5000B1E25 /* loading_01@2x.png */,
+				31923390198B9AE5000B1E25 /* loading_02@2x.png */,
+				31923391198B9AE5000B1E25 /* loading_03@2x.png */,
+				31923392198B9AE5000B1E25 /* loading_04@2x.png */,
 				31923383198B44BE000B1E25 /* icon_nowPlaying_normal.png */,
 				31923384198B44BE000B1E25 /* icon_nowPlaying_press.png */,
 				31EDCDA71973759C00F8D50E /* box_add.9.png */,
@@ -786,6 +804,8 @@
 				31E8FE3B19890D0E0029D294 /* GPGNCastSubCell.m */,
 				31E8FE401989D1510029D294 /* GPMCContentsCell.h */,
 				31E8FE411989D1510029D294 /* GPMCContentsCell.m */,
+				31923387198B7C19000B1E25 /* GPDWContentsCell.h */,
+				31923388198B7C19000B1E25 /* GPDWContentsCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -793,6 +813,8 @@
 		31EDCE0D1973C58D00F8D50E /* common */ = {
 			isa = PBXGroup;
 			children = (
+				3192338A198B9A25000B1E25 /* ActivityIndicatorCommonViewController.h */,
+				3192338B198B9A25000B1E25 /* ActivityIndicatorCommonViewController.m */,
 				98FF3675198AAA02003F89A5 /* iVersion */,
 				311443AB1988BFD600077EAE /* SMXMLDocument.h */,
 				311443AC1988BFD600077EAE /* SMXMLDocument.m */,
@@ -943,6 +965,7 @@
 			files = (
 				31EDCDE91973759C00F8D50E /* mask_circle_100.png in Resources */,
 				31923385198B44BE000B1E25 /* icon_nowPlaying_normal.png in Resources */,
+				31923396198B9AE5000B1E25 /* loading_04@2x.png in Resources */,
 				31EDCDE51973759C00F8D50E /* icon_move.png in Resources */,
 				314D3E251982C6A20079A974 /* player_btn_stop_press.png in Resources */,
 				31EDCDE71973759C00F8D50E /* icon_setting_normal.png in Resources */,
@@ -979,6 +1002,7 @@
 				31E8FE3119890C800029D294 /* live_icon_tv.png in Resources */,
 				31EDCDE31973759C00F8D50E /* icon_menu_normal.png in Resources */,
 				31E3363C1979F7500027A68B /* LaunchImages_640-960.png in Resources */,
+				31923394198B9AE5000B1E25 /* loading_02@2x.png in Resources */,
 				31EDCDE61973759C00F8D50E /* icon_Plus_normal.png in Resources */,
 				31EDCDD81973759C00F8D50E /* btn_witch_on.png in Resources */,
 				31923386198B44BE000B1E25 /* icon_nowPlaying_press.png in Resources */,
@@ -1002,6 +1026,7 @@
 				31EDCDE11973759C00F8D50E /* icon_downed.png in Resources */,
 				31EDCD5F19736DD300F8D50E /* InfoPlist.strings in Resources */,
 				31E8FE2F19890C800029D294 /* live_icon_audio.png in Resources */,
+				31923395198B9AE5000B1E25 /* loading_03@2x.png in Resources */,
 				314D3E291982C6A20079A974 /* thumbnail_none_square.png in Resources */,
 				31E8FE3219890C800029D294 /* live_bg.png in Resources */,
 				31EDCDF81973759C00F8D50E /* tabmenu_box_left_press.9.png in Resources */,
@@ -1009,6 +1034,7 @@
 				31EDCDE21973759C00F8D50E /* icon_downloading.png in Resources */,
 				31EDCDEE1973759C00F8D50E /* player_btn_play_press.png in Resources */,
 				314D3E211982C6A20079A974 /* icon_TOP.png in Resources */,
+				31923393198B9AE5000B1E25 /* loading_01@2x.png in Resources */,
 				31E8FE2C19890C800029D294 /* icon_live.png in Resources */,
 				31EDCDDB1973759C00F8D50E /* icon_back_normal.png in Resources */,
 				31EDCDF71973759C00F8D50E /* tabmenu_box_left.9.png in Resources */,
@@ -1085,6 +1111,7 @@
 				316E8BAA1978ADF5009F0B79 /* UIWebView+AFNetworking.m in Sources */,
 				31EDCE131973C7F800F8D50E /* GPCommonUtil.m in Sources */,
 				3177B20419824570002049F9 /* FMDatabase.m in Sources */,
+				31923389198B7C19000B1E25 /* GPDWContentsCell.m in Sources */,
 				3177B20519824570002049F9 /* FMDatabaseAdditions.m in Sources */,
 				31E1C3C7197FD18300E66DE0 /* GPSQLiteController.m in Sources */,
 				313B2DC11974C573000781AC /* UIImageView+AsyncAndCache.m in Sources */,
@@ -1107,6 +1134,7 @@
 				316E8B9C1978ADF5009F0B79 /* AFHTTPSessionManager.m in Sources */,
 				313B2DE51975136A000781AC /* UIImage-TUNinePatch.m in Sources */,
 				31EDCD6519736DD300F8D50E /* AppDelegate.m in Sources */,
+				3192338D198B9A25000B1E25 /* ActivityIndicatorCommonViewController.m in Sources */,
 				31EDCD6119736DD300F8D50E /* main.m in Sources */,
 				31EDCE161973CE3E00F8D50E /* GPAlertUtil.m in Sources */,
 				31EDCD97197370AA00F8D50E /* RECommonFunctions.m in Sources */,

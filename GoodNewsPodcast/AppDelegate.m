@@ -12,6 +12,7 @@
 #import "GPNavigationController.h"
 #import "GPDownloadController.h"
 #import "GPSQLiteController.h"
+#import "ActivityIndicatorCommonViewController.h"
 
 #define degreesToRadian(x) (M_PI * (x) / 180.0)
 @implementation AppDelegate
@@ -83,6 +84,28 @@
     } else { // iOS >= 5.1
         return [URL setResourceValue:[NSNumber numberWithBool:YES] forKey:NSURLIsExcludedFromBackupKey error:nil];
     }
+}
+
+#pragma mark -
+#pragma mark Animation View part
+
+- (void)startAnimatedLodingView
+{
+    if (processingController == nil) {
+        processingController = [[ActivityIndicatorCommonViewController alloc] initWithNibName:nil bundle:nil];
+        [self.window addSubview:processingController.view];
+    }
+    [self.window bringSubviewToFront:processingController.view];
+    NSLog(@"startAnimatedLodingView");
+}
+
+- (void)stopAnimatedLodingView
+{
+    if (processingController) {
+        [processingController removeFromSuperViewFadeout];
+        processingController = nil;
+    }
+    NSLog(@"stopAnimatedLodingView");
 }
 					
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -41,7 +41,7 @@
     [self.lbl_mainTitle setText:[datas objectForKey:@"prTitle"]];
     [self.lbl_subTitle setText:[datas objectForKey:@"prSubTitle"]];
 
-    if ([datas objectForKey:@"pcSub"] != nil) {
+    if ([[datas objectForKey:@"pcSub"] isKindOfClass:[NSArray class]]) {
         [self.img_plus setHidden:NO];
         maxSize = CGSizeMake(197, 18);
     } else {
