@@ -71,8 +71,14 @@
     
     [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     
-    self.btn_nowplay.hidden = !GetGPDataCenter.isAudioPlaying;
-    [self.btn_nowplay addTarget:self action:@selector(moveAudioPlayView) forControlEvents:UIControlEventTouchUpInside];
+    AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
+    if (mainDelegate.audioPlayer.playbackState == MPMoviePlaybackStatePlaying) {
+        self.btn_nowplay.hidden = NO;
+        [self.btn_nowplay addTarget:self action:@selector(moveAudioPlayView) forControlEvents:UIControlEventTouchUpInside];
+    }else{
+        self.btn_nowplay.hidden = YES;
+        GetGPDataCenter.isAudioPlaying = NO;
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated

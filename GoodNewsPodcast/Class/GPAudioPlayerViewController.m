@@ -41,11 +41,6 @@
     [session setActive:YES error:nil];
     
     mainDelegate = MAIN_APP_DELEGATE();
-<<<<<<< HEAD
-    NSLog(@"mainDelegate.audioPlayer.playbackState [%d]",mainDelegate.audioPlayer.playbackState);
-    
-    if (!GetGPDataCenter.isAudioPlaying) {
-=======
     
     if (![[GetGPDataCenter.dic_playInfo objectForKey:@"ctName"] isEqualToString:[self.dic_contents_data objectForKey:@"ctName"]]) {
         [mainDelegate.audioPlayer stop];
@@ -55,7 +50,6 @@
     if (!GetGPDataCenter.isAudioPlaying ||
         mainDelegate.audioPlayer.playbackState == MPMoviePlaybackStateStopped)
     {
->>>>>>> FETCH_HEAD
         NSFileManager *fileManager = [NSFileManager defaultManager];
         NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         
@@ -78,22 +72,8 @@
         
         mainDelegate.audioPlayer =  [[MPMoviePlayerController alloc] initWithContentURL:url_path];
         
-<<<<<<< HEAD
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(moviePlayerLoadStateChanged:)
-                                                     name:MPMoviePlayerLoadStateDidChangeNotification
-                                                   object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(moviePlayBackDidFinish:)
-                                                     name:MPMoviePlayerPlaybackDidFinishNotification
-                                                   object:audioPlayer];
-        
-        [self.timeProgress setThumbImage:[UIImage imageNamed:@"player_time_handle.png"]	 forState:UIControlStateNormal];
-=======
         
         
->>>>>>> FETCH_HEAD
         mainDelegate.audioPlayer.controlStyle = MPMovieControlStyleNone;
         mainDelegate.audioPlayer.shouldAutoplay = YES;
         
@@ -101,25 +81,9 @@
         
         [mainDelegate.audioPlayer prepareToPlay];
         
-<<<<<<< HEAD
-        if (!IS_4_INCH) {
-            [self.playerView bringSubviewToFront:self.toolbarView];
-            [self.toolbarView setFrame:CGRectMake(0, self.playerView.frame.size.height - self.toolbarView.frame.size.height, self.toolbarView.frame.size.width , self.toolbarView.frame.size.height)];
-        }
-        [self.img_thumb setImageWithURL:[NSURL URLWithString:[self.dic_contents_data objectForKey:@"prThumb"]]  placeholderImage:[UIImage imageNamed:@"thumbnail_none.png"]];
-        [self.lbl_title setText:[NSString stringWithFormat:@"%@ %@",[self.dic_contents_data objectForKey:@"ctEventDate"],[self.dic_contents_data objectForKey:@"ctPhrase"]]];
-        [self.lbl_subtitle setText:[self.dic_contents_data objectForKey:@"ctName"]];
-        
-        MPVolumeView *volumeView = [[MPVolumeView alloc] initWithFrame:self.volumeView.bounds];
-        [self.volumeView addSubview:volumeView];
-        [volumeView sizeToFit];
-        
-        [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePlaybackProgressFromTimer:) userInfo:nil repeats:YES];
-    }
-=======
         GetGPDataCenter.dic_playInfo = [NSMutableDictionary dictionaryWithDictionary:self.dic_contents_data];
         
-//        mainDelegate.audioPlayer = audioPlayer;
+        //        mainDelegate.audioPlayer = audioPlayer;
     }else {
         self.btn_play.selected = YES;
         self.timeProgress.maximumValue = mainDelegate.audioPlayer.duration;
@@ -153,7 +117,6 @@
     [volumeView sizeToFit];
     
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePlaybackProgressFromTimer:) userInfo:nil repeats:YES];
->>>>>>> FETCH_HEAD
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -164,7 +127,7 @@
                                              selector:@selector(moveSettingView)
                                                  name:_CMD_MOVE_SETTING_VIEW
                                                object:nil];
-
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -184,15 +147,15 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (void)moveSettingView
 {
@@ -205,15 +168,8 @@
     
     if (([UIApplication sharedApplication].applicationState == UIApplicationStateActive) &&
         (mainDelegate.audioPlayer.playbackState == MPMoviePlaybackStatePlaying)) {
-<<<<<<< HEAD
-        
-        CGFloat progress = mainDelegate.audioPlayer.currentPlaybackTime / mainDelegate.audioPlayer.duration;
-        
-//        self.timeProgress.progress = progress;
-=======
         
         self.timeProgress.value = mainDelegate.audioPlayer.currentPlaybackTime;
->>>>>>> FETCH_HEAD
         
         self.lbl_playtime.text = [NSString stringWithFormat:@"%@",[self convertIntToTime:(int)mainDelegate.audioPlayer.currentPlaybackTime]];
         
@@ -251,10 +207,7 @@
     
     self.btn_play.selected = YES;
     GetGPDataCenter.isAudioPlaying = YES;
-<<<<<<< HEAD
-=======
     self.timeProgress.maximumValue = mainDelegate.audioPlayer.duration;
->>>>>>> FETCH_HEAD
 }
 
 -(void)remoteControlReceivedWithEvent:(UIEvent *)event{
@@ -375,6 +328,12 @@
             }
             break;
             
+        case 3:
+        {
+            [mainDelegate.audioPlayer stop];
+            self.timeProgress.value = 0;
+        }
+            break;
         default:
             break;
     }

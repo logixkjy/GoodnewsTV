@@ -59,7 +59,7 @@
                 break;
             case MENU_ID_LIVE_TV:
             {
-                GPLiveCastViewController *liveCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LiveTV"];
+                GPLiveCastViewController *liveCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LiveCast"];
                 [self.navigationController pushViewController:liveCastViewController animated:YES];
                 return;
             }
@@ -109,8 +109,14 @@
                                                  name:_CMD_MOVE_SETTING_VIEW
                                                object:nil];
     
-    self.btn_nowplay.hidden = !GetGPDataCenter.isAudioPlaying;
-    [self.btn_nowplay addTarget:self action:@selector(moveAudioPlayView) forControlEvents:UIControlEventTouchUpInside];
+    AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
+    if (mainDelegate.audioPlayer.playbackState == MPMoviePlaybackStatePlaying) {
+        self.btn_nowplay.hidden = NO;
+        [self.btn_nowplay addTarget:self action:@selector(moveAudioPlayView) forControlEvents:UIControlEventTouchUpInside];
+    }else{
+        self.btn_nowplay.hidden = YES;
+        GetGPDataCenter.isAudioPlaying = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -216,6 +222,10 @@
     _img_btn.highlighted = !_img_btn.highlighted;
 }
 
+- (IBAction)goLive{
+    GPLiveCastViewController *liveCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LiveCast"];
+    [self.navigationController pushViewController:liveCastViewController animated:YES];
+}
 #pragma mark -
 #pragma mark UITableView Datasource
 
