@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSMutableArray *arr_mainList;
 @property (nonatomic, strong) NSMutableArray *arr_subList;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UIButton *btn_nowplay;
 
 - (IBAction)showMenu;
 

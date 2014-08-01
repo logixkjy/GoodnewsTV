@@ -10,6 +10,7 @@
 #import "GPGNCastSubCell.h"
 #import "GPSettingViewController.h"
 #import "GPContentsViewController.h"
+#import "GPAudioPlayerViewController.h"
 
 @interface GPSubMainViewController ()
 
@@ -43,6 +44,9 @@
                                                object:nil];
     
     [self.tableView reloadData];
+    
+    self.btn_nowplay.hidden = !GetGPDataCenter.isAudioPlaying;
+    [self.btn_nowplay addTarget:self action:@selector(moveAudioPlayView) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning
@@ -117,6 +121,14 @@
     //
     [self.frostedViewController presentMenuViewController];
     _img_menu_btn.highlighted = !_img_menu_btn.highlighted;
+}
+
+
+- (void)moveAudioPlayView
+{
+    GPAudioPlayerViewController *audioPlayer = [self.storyboard instantiateViewControllerWithIdentifier:@"AudioPlayer"];
+    audioPlayer.dic_contents_data = [NSMutableDictionary dictionaryWithDictionary:GetGPDataCenter.dic_playInfo];
+    [self.navigationController pushViewController:audioPlayer animated:YES];
 }
 
 #pragma mark -

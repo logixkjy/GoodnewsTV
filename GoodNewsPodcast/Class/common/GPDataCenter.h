@@ -24,6 +24,8 @@
 @property (nonatomic, strong) NSString *str_fileType;
 @property (nonatomic, strong) NSString *str_AppStore;
 
+@property (nonatomic, strong) NSMutableDictionary *dic_playInfo;
+
 + (GPDataCenter*)shared;
 + (void)terminate;
 

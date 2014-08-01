@@ -58,6 +58,14 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oA4-oN-u6R">
+                                                <rect key="frame" x="222" y="9" width="55" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="icon_nowPlaying_normal.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted" image="icon_nowPlaying_press.png"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.12549019607843137" blue="0.52156862745098043" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
@@ -130,6 +138,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="JFa-BD-RyX"/>
                     <connections>
+                        <outlet property="btn_nowplay" destination="oA4-oN-u6R" id="DYX-Kt-Eg5"/>
                         <outlet property="lbl_naviTitle" destination="aBb-sn-R4C" id="MfD-UF-ZI3"/>
                     </connections>
                 </viewController>
@@ -299,6 +308,14 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MIN-xe-vHa">
+                                                <rect key="frame" x="223" y="9" width="55" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="icon_nowPlaying_normal.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted" image="icon_nowPlaying_press.png"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
@@ -500,6 +517,7 @@ as</string>
                     <connections>
                         <outlet property="_img_back_btn" destination="iZv-1f-zbx" id="lRt-W0-RTT"/>
                         <outlet property="_img_menu_btn" destination="G21-Nu-R3y" id="VdZ-SY-z5f"/>
+                        <outlet property="btn_nowplay" destination="MIN-xe-vHa" id="KbN-W5-Ekx"/>
                         <outlet property="img_line" destination="fkj-e0-3Ee" id="U0s-xF-E7j"/>
                         <outlet property="img_thumb" destination="p97-MR-vkc" id="e7J-9L-ZlB"/>
                         <outlet property="lbl_Title" destination="cZN-kR-Vcp" id="qHa-7F-8S3"/>
@@ -548,6 +566,14 @@ as</string>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="10E-r0-uHC">
+                                                <rect key="frame" x="223" y="9" width="55" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="icon_nowPlaying_normal.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted" image="icon_nowPlaying_press.png"/>
+                                            </button>
                                             <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QQ9-EK-pnj">
                                                 <rect key="frame" x="0.0" y="0.0" width="46" height="43"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -601,6 +627,7 @@ as</string>
                     </view>
                     <navigationItem key="navigationItem" id="zU5-Ms-Wqf"/>
                     <connections>
+                        <outlet property="btn_nowplay" destination="10E-r0-uHC" id="hAL-QP-f3P"/>
                         <outlet property="lbl_naviTitle" destination="SxE-M9-qxe" id="VOq-cP-fml"/>
                         <outlet property="tableView" destination="EYV-yI-b9Z" id="Q96-ew-Iir"/>
                     </connections>
@@ -666,6 +693,14 @@ as</string>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="U4d-fv-Ske">
+                                                <rect key="frame" x="223" y="9" width="55" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="icon_nowPlaying_normal.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted" image="icon_nowPlaying_press.png"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
@@ -727,6 +762,7 @@ as</string>
                     <connections>
                         <outlet property="_img_back_btn" destination="Vl2-fA-v7B" id="d72-ej-iQo"/>
                         <outlet property="_img_menu_btn" destination="0u4-4Z-fK9" id="Qzj-f1-nfU"/>
+                        <outlet property="btn_nowplay" destination="U4d-fv-Ske" id="CpU-5M-5CM"/>
                         <outlet property="tableView" destination="BbD-tR-eoC" id="BfK-dU-6No"/>
                     </connections>
                 </viewController>
@@ -772,6 +808,14 @@ as</string>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Q2W-A2-8fL">
+                                                <rect key="frame" x="223" y="9" width="55" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="icon_nowPlaying_normal.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted" image="icon_nowPlaying_press.png"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
@@ -846,13 +890,13 @@ as</string>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     </view>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" id="UPx-jo-1fu">
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="65" sectionHeaderHeight="1" sectionFooterHeight="22" id="UPx-jo-1fu">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="398"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <prototypes>
                                                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="progressCell" id="i4C-iZ-hzw" customClass="GPProgressCell">
-                                                                <rect key="frame" x="0.0" y="22" width="320" height="65"/>
+                                                                <rect key="frame" x="0.0" y="1" width="320" height="65"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i4C-iZ-hzw" id="JGy-AQ-kd1">
                                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
@@ -905,18 +949,81 @@ as</string>
                                                 <rect key="frame" x="0.0" y="46" width="320" height="458"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Dbz-jF-p7J">
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="58" sectionFooterHeight="22" id="Dbz-jF-p7J">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="458"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <prototypes>
-                                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DownListCell" id="yUm-Wo-II7">
-                                                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DWContentCell" id="KcA-Gx-iJv" customClass="GPDWContentsCell">
+                                                                <rect key="frame" x="0.0" y="58" width="320" height="100"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yUm-Wo-II7" id="7tb-68-6gx">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KcA-Gx-iJv" id="0eY-kJ-31y">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GEE-F1-CHd">
+                                                                            <rect key="frame" x="15" y="7" width="290" height="36"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <string key="text">Label
+as</string>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="06c-O2-Nxm">
+                                                                            <rect key="frame" x="15" y="46" width="290" height="13"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                            <color key="textColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="1" colorSpace="deviceRGB"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <view contentMode="scaleToFill" id="P9u-Oe-Vnf">
+                                                                            <rect key="frame" x="15" y="66" width="290" height="28"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <subviews>
+                                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Knx-Tt-vmU">
+                                                                                    <rect key="frame" x="97" y="0.0" width="193" height="28"/>
+                                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                                </imageView>
+                                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="cZq-7w-TCO">
+                                                                                    <rect key="frame" x="193" y="0.0" width="1" height="28"/>
+                                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                                    <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.89411764709999997" alpha="1" colorSpace="deviceRGB"/>
+                                                                                </imageView>
+                                                                                <button opaque="NO" tag="2001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0LJ-B0-pYd">
+                                                                                    <rect key="frame" x="97" y="0.0" width="96" height="28"/>
+                                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                                    <state key="normal">
+                                                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                    </state>
+                                                                                    <connections>
+                                                                                        <action selector="buttonTouchUpInside:" destination="KcA-Gx-iJv" eventType="touchUpInside" id="HGl-8g-uRa"/>
+                                                                                    </connections>
+                                                                                </button>
+                                                                                <button opaque="NO" tag="2002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wxz-L7-bSh">
+                                                                                    <rect key="frame" x="194" y="-3" width="96" height="34"/>
+                                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                                    <state key="normal" title="삭제">
+                                                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                    </state>
+                                                                                    <connections>
+                                                                                        <action selector="buttonTouchUpInside:" destination="KcA-Gx-iJv" eventType="touchUpInside" id="0Dh-2O-JVf"/>
+                                                                                    </connections>
+                                                                                </button>
+                                                                            </subviews>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                                        </view>
+                                                                    </subviews>
                                                                 </tableViewCellContentView>
+                                                                <connections>
+                                                                    <outlet property="btn_delete" destination="wxz-L7-bSh" id="iRO-y7-Fqx"/>
+                                                                    <outlet property="btn_play" destination="0LJ-B0-pYd" id="Rg4-UY-UOk"/>
+                                                                    <outlet property="img_btn_background" destination="Knx-Tt-vmU" id="DAL-bK-Wr7"/>
+                                                                    <outlet property="lbl_date" destination="06c-O2-Nxm" id="OSm-YP-oRh"/>
+                                                                    <outlet property="lbl_name" destination="GEE-F1-CHd" id="ifI-Me-Sc1"/>
+                                                                </connections>
                                                             </tableViewCell>
                                                         </prototypes>
                                                         <connections>
@@ -928,7 +1035,7 @@ as</string>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.94117647058823528" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -945,8 +1052,10 @@ as</string>
                     </view>
                     <navigationItem key="navigationItem" id="Ubo-WI-zEw"/>
                     <connections>
+                        <outlet property="_img_btn" destination="B3i-gW-GrR" id="SSd-dq-24o"/>
                         <outlet property="btn_downPause" destination="ouV-B1-3Jy" id="P2I-Gp-oeB"/>
                         <outlet property="btn_downStart" destination="SRV-up-qXE" id="l1e-Q4-SFr"/>
+                        <outlet property="btn_nowplay" destination="Q2W-A2-8fL" id="7cj-of-gjE"/>
                         <outlet property="img_downPause" destination="ghi-DK-BO9" id="olV-l1-cTT"/>
                         <outlet property="img_downStart" destination="mHX-tq-yWz" id="4qH-Bl-qwS"/>
                         <outlet property="lbl_naviTitle" destination="8eO-i6-8fW" id="byB-2d-Nld"/>
@@ -1342,9 +1451,18 @@ as</string>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </view>
+<<<<<<< HEAD
                                                     <slider appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="lpS-fB-qiS">
                                                         <rect key="frame" x="61" y="20" width="193" height="31"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+=======
+                                                    <slider appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" id="lpS-fB-qiS">
+                                                        <rect key="frame" x="61" y="20" width="193" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <connections>
+                                                            <action selector="valueChanged" destination="keS-NJ-qyG" eventType="valueChanged" id="vlA-IY-Ljq"/>
+                                                        </connections>
+>>>>>>> FETCH_HEAD
                                                     </slider>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.77254901960784317" green="0.77254901960784317" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
@@ -1537,6 +1655,14 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zTw-ve-5G4">
+                                                <rect key="frame" x="223" y="9" width="55" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="icon_nowPlaying_normal.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted" image="icon_nowPlaying_press.png"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
@@ -1668,6 +1794,7 @@ as</string>
                     <connections>
                         <outlet property="_img_back_btn" destination="DG7-c5-4FY" id="vBP-Rz-YvG"/>
                         <outlet property="_img_menu_btn" destination="tzF-qL-rDA" id="5Lm-Nx-Gic"/>
+                        <outlet property="btn_nowplay" destination="zTw-ve-5G4" id="0zz-Is-tS1"/>
                         <outlet property="img_line" destination="EGJ-Tx-KGk" id="jOV-FI-HJe"/>
                         <outlet property="img_thumb" destination="KuJ-kE-c1o" id="ZDB-np-dA8"/>
                         <outlet property="lbl_Title" destination="NZm-FC-o6p" id="MX9-ea-xCG"/>
@@ -1713,6 +1840,14 @@ as</string>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dgd-PD-XXZ">
+                                        <rect key="frame" x="223" y="9" width="55" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="icon_nowPlaying_normal.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="icon_nowPlaying_press.png"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
@@ -1727,6 +1862,9 @@ as</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="vLZ-jr-TTP"/>
+                    <connections>
+                        <outlet property="btn_nowplay" destination="dgd-PD-XXZ" id="es3-uV-Nml"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lpc-q6-ZNw" sceneMemberID="firstResponder"/>
             </objects>
@@ -1746,6 +1884,8 @@ as</string>
         <image name="icon_menu_normal.png" width="50" height="50"/>
         <image name="icon_menu_press.png" width="50" height="50"/>
         <image name="icon_new.png" width="96" height="96"/>
+        <image name="icon_nowPlaying_normal.png" width="198" height="84"/>
+        <image name="icon_nowPlaying_press.png" width="198" height="84"/>
         <image name="icon_setting_normal.png" width="50" height="50"/>
         <image name="icon_setting_press.png" width="50" height="50"/>
         <image name="player_btn_pause.png" width="84" height="86"/>

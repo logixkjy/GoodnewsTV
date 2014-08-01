@@ -11,6 +11,7 @@
 #import "GPAddMyCastViewController.h"
 #import "GPMyCastContentsViewController.h"
 #import "GPSQLiteController.h"
+#import "GPAudioPlayerViewController.h"
 
 @interface GPMyCastViewController ()
 
@@ -69,6 +70,9 @@
     self.arr_myCast = [GetGPSQLiteController GetRecordsMyCast];
     
     [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    
+    self.btn_nowplay.hidden = !GetGPDataCenter.isAudioPlaying;
+    [self.btn_nowplay addTarget:self action:@selector(moveAudioPlayView) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -109,6 +113,13 @@
         //
         [self.frostedViewController panGestureRecognized:sender];
     }
+}
+
+- (void)moveAudioPlayView
+{
+    GPAudioPlayerViewController *audioPlayer = [self.storyboard instantiateViewControllerWithIdentifier:@"AudioPlayer"];
+    audioPlayer.dic_contents_data = [NSMutableDictionary dictionaryWithDictionary:GetGPDataCenter.dic_playInfo];
+    [self.navigationController pushViewController:audioPlayer animated:YES];
 }
 
 - (IBAction)showMenu

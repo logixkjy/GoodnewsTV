@@ -43,6 +43,7 @@
 
 - (void)setContentsData:(NSDictionary *)datas :(NSString*)prCode
 {
+    mainDelegate = MAIN_APP_DELEGATE();
     UIColor *textColor = UIColorFromRGB(0x949494);
     UIColor *textColor2 = UIColorFromRGB(0x002085);
     dic_fileinfo = [NSMutableDictionary dictionaryWithDictionary:datas];
@@ -209,6 +210,7 @@
 {
     BOOL isUse3G = [GPCommonUtil readBoolFromDefault:@"USE_3G"];
     
+    [mainDelegate startAnimatedLodingView];
     UIColor *textColor = UIColorFromRGB(0x949494);
     [dic_fileinfo setValue:_prCode forKey:@"prCode"];
     switch (sender.tag) {
@@ -232,6 +234,7 @@
     }
     
     if (GetGPDataCenter.gpNetowrkStatus == NETWORK_3G_LTE && !isUse3G) {
+        [mainDelegate stopAnimatedLodingView];
         [GPAlertUtil alertWithMessage:netStatus_3G_down delegate:self tag:1];
         return;
     }
@@ -240,12 +243,12 @@
         [GPAlertUtil alertWithMessage:existingDownlad tag:1003 delegate:self];
     }else{
         if (_downCont == nil) {
-            AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
             _downCont = mainDelegate.downloadController;
         }
         
         [_downCont downloadFileCheck:dic_fileinfo FileType:sel_btn isDown:YES];
     }
+    [mainDelegate stopAnimatedLodingView];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -256,7 +259,6 @@
         }
     } else if (alertView.tag == 1003) {
         if (_downCont == nil) {
-            AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
             _downCont = mainDelegate.downloadController;
         }
         

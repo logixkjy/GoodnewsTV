@@ -38,5 +38,6 @@
 @property (nonatomic, strong) NSMutableDictionary *dic_selected_data;
 @property (nonatomic, strong) NSMutableArray *arr_contents_list;
 @property (nonatomic, strong) NSMutableArray *arr_moreView;
+@property (nonatomic, strong) IBOutlet UIButton *btn_nowplay;
 
 @end

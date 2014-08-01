@@ -204,7 +204,9 @@
             }
         }
     } else if (alertView.tag == 1004) {
-        [self funcDeleteDownloadDatas];
+        if (buttonIndex == 0) {
+            [self funcDeleteDownloadDatas];
+        }
     }
 }
 
