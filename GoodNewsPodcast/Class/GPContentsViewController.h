@@ -9,14 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "REFrostedViewController.h"
 #import "GPDownloadController.h"
-@import MediaPlayer;
+#import "GPMoviePlayerViewController.h"
 
 @interface GPContentsViewController : UIViewController < UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate > {
     IBOutlet UIImageView *_img_back_btn;
     IBOutlet UIImageView *_img_menu_btn;
     
-    MPMoviePlayerController *_mp_playVideo;
-    MPMoviePlayerViewController *_mpv_playVideo;
+    GPMoviePlayerViewController *_mpv_playVideo;
     
     BOOL _isRotation;
     

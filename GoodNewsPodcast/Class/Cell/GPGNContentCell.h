@@ -21,7 +21,9 @@
 }
 
 @property (nonatomic, strong) IBOutlet UILabel *lbl_name;
+@property (nonatomic, strong) IBOutlet UILabel *lbl_phrase;
 @property (nonatomic, strong) IBOutlet UILabel *lbl_date;
+@property (nonatomic, strong) IBOutlet UILabel *lbl_speaker;
 @property (nonatomic, strong) IBOutlet UIImageView *img_btn_background;
 @property (nonatomic, strong) IBOutlet UIButton *btn_video_n;
 @property (nonatomic, strong) IBOutlet UIButton *btn_video_l;
@@ -35,6 +37,8 @@
 @property (nonatomic, strong) IBOutlet UIImageView *img_video_n2;
 @property (nonatomic, strong) IBOutlet UIImageView *img_video_l2;
 @property (nonatomic, strong) IBOutlet UIImageView *img_audio2;
+@property (nonatomic, strong) IBOutlet UIImageView *img_line_1;
+@property (nonatomic, strong) IBOutlet UIImageView *img_line_2;
 
 - (void)setContentsData:(NSDictionary *)datas :(NSString*)prCode;
 

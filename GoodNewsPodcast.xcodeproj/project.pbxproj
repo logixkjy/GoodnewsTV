@@ -69,7 +69,7 @@
 		31923394198B9AE5000B1E25 /* loading_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31923390198B9AE5000B1E25 /* loading_02@2x.png */; };
 		31923395198B9AE5000B1E25 /* loading_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31923391198B9AE5000B1E25 /* loading_03@2x.png */; };
 		31923396198B9AE5000B1E25 /* loading_04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31923392198B9AE5000B1E25 /* loading_04@2x.png */; };
-		31C1C0481975394F0048BB78 /* GPMoviePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C1C0471975394F0048BB78 /* GPMoviePlayerViewController.m */; };
+		31C1C0481975394F0048BB78 /* GPMoviePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C1C0471975394F0048BB78 /* GPMoviePlayerViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		31E1C3C7197FD18300E66DE0 /* GPSQLiteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31E1C3C6197FD18300E66DE0 /* GPSQLiteController.m */; };
 		31E1C3C9197FD1AE00E66DE0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E1C3C8197FD1AE00E66DE0 /* libsqlite3.0.dylib */; };
 		31E3363C1979F7500027A68B /* LaunchImages_640-960.png in Resources */ = {isa = PBXBuildFile; fileRef = 31E336361979F7500027A68B /* LaunchImages_640-960.png */; };
@@ -176,6 +176,7 @@
 		98021B07198BDA9600347EF3 /* player_time_handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 98021B06198BDA9600347EF3 /* player_time_handle.png */; };
 		9808BBB71987F2A90031232F /* GPAddMyCastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9808BBB61987F2A90031232F /* GPAddMyCastViewController.m */; };
 		9814FAAF1986AC160025C40B /* AFDownloadRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9814FAAE1986AC160025C40B /* AFDownloadRequestOperation.m */; };
+		98EB2011198C6AFA00605D22 /* CBAutoScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EB2010198C6AFA00605D22 /* CBAutoScrollLabel.m */; };
 		98FF3679198AAA02003F89A5 /* iVersion.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 98FF3676198AAA02003F89A5 /* iVersion.bundle */; };
 		98FF367A198AAA02003F89A5 /* iVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF3678198AAA02003F89A5 /* iVersion.m */; };
 /* End PBXBuildFile section */
@@ -446,6 +447,8 @@
 		9808BBB61987F2A90031232F /* GPAddMyCastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPAddMyCastViewController.m; sourceTree = "<group>"; };
 		9814FAAD1986AC160025C40B /* AFDownloadRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadRequestOperation.h; sourceTree = "<group>"; };
 		9814FAAE1986AC160025C40B /* AFDownloadRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadRequestOperation.m; sourceTree = "<group>"; };
+		98EB200F198C6AFA00605D22 /* CBAutoScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAutoScrollLabel.h; sourceTree = "<group>"; };
+		98EB2010198C6AFA00605D22 /* CBAutoScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAutoScrollLabel.m; sourceTree = "<group>"; };
 		98FF3676198AAA02003F89A5 /* iVersion.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iVersion.bundle; sourceTree = "<group>"; };
 		98FF3677198AAA02003F89A5 /* iVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iVersion.h; sourceTree = "<group>"; };
 		98FF3678198AAA02003F89A5 /* iVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iVersion.m; sourceTree = "<group>"; };
@@ -813,6 +816,7 @@
 		31EDCE0D1973C58D00F8D50E /* common */ = {
 			isa = PBXGroup;
 			children = (
+				98EB200E198C6AFA00605D22 /* CBAutoScrollLabel */,
 				3192338A198B9A25000B1E25 /* ActivityIndicatorCommonViewController.h */,
 				3192338B198B9A25000B1E25 /* ActivityIndicatorCommonViewController.m */,
 				98FF3675198AAA02003F89A5 /* iVersion */,
@@ -866,6 +870,15 @@
 				31EDCE251973DF6A00F8D50E /* SBJsonWriter.m */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		98EB200E198C6AFA00605D22 /* CBAutoScrollLabel */ = {
+			isa = PBXGroup;
+			children = (
+				98EB200F198C6AFA00605D22 /* CBAutoScrollLabel.h */,
+				98EB2010198C6AFA00605D22 /* CBAutoScrollLabel.m */,
+			);
+			path = CBAutoScrollLabel;
 			sourceTree = "<group>";
 		};
 		98FF3675198AAA02003F89A5 /* iVersion */ = {
@@ -1137,6 +1150,7 @@
 				3192338D198B9A25000B1E25 /* ActivityIndicatorCommonViewController.m in Sources */,
 				31EDCD6119736DD300F8D50E /* main.m in Sources */,
 				31EDCE161973CE3E00F8D50E /* GPAlertUtil.m in Sources */,
+				98EB2011198C6AFA00605D22 /* CBAutoScrollLabel.m in Sources */,
 				31EDCD97197370AA00F8D50E /* RECommonFunctions.m in Sources */,
 				313B2DBE1974C1FC000781AC /* GPGNCastCell.m in Sources */,
 				316E8BA81978ADF5009F0B79 /* UIProgressView+AFNetworking.m in Sources */,
@@ -1280,8 +1294,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = armv7;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jaewoo Lee (JV7FM94CF8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jaewoo Lee (JV7FM94CF8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoodNewsPodcast/GoodNewsPodcast-Prefix.pch";
 				INFOPLIST_FILE = "GoodNewsPodcast/GoodNewsPodcast-Info.plist";
@@ -1291,7 +1305,7 @@
 					"$(PROJECT_DIR)/GoodNewsPodcast/Class/common/FMDB",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5FAF7684-E0C3-4197-9A5A-173293AED2B0";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -1313,7 +1327,7 @@
 					"$(PROJECT_DIR)/GoodNewsPodcast/Class/common/FMDB",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B6042098-4089-42B9-8505-EF314AC733EE";
+				PROVISIONING_PROFILE = "2F3CFA03-E30F-4EF1-818A-161A36F2B7F6";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;

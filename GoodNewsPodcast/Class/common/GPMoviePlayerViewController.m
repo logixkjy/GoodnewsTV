@@ -7,6 +7,8 @@
 //
 
 #import "GPMoviePlayerViewController.h"
+@import AVFoundation;
+@import AudioToolbox;
 
 @interface GPMoviePlayerViewController ()
 
@@ -32,12 +34,45 @@
 - (id) initWithContentURL:(NSURL *)contentURL {
     self = [super initWithContentURL:contentURL];
     if (self) {
+        //이걸 지우면 전화걸때... 꺼짐
+        [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: nil];
+        
+        //백그라운드에서 재생
+        AVAudioSession*session =[AVAudioSession sharedInstance];
+        [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+        [session setActive:YES error:nil];
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(detectOrientation) name:@"UIDeviceOrientationDidChangeNotification" object:nil];
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(moviePlayerLoadStateChanged:)
+                                                     name:MPMoviePlayerLoadStateDidChangeNotification
+                                                   object:nil];
+        
+        
     }
     return self;
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    NSLog(@"%lf",self.moviePlayer.currentPlaybackTime);
+    GetGPDataCenter.playbackTime = self.moviePlayer.currentPlaybackTime;
+    self.isPlaying = NO;
+    
+    [self.moviePlayer stop];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerLoadStateDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"UIDeviceOrientationDidChangeNotification" object:nil];
+}
+
+- (void)moviePlayerLoadStateChanged:(NSNotification*)notification
+{
+    self.moviePlayer.currentPlaybackTime = GetGPDataCenter.playbackTime;
+}
+
 -(void)dealloc {
+    [super dealloc];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -70,5 +105,6 @@
     
     [[UIApplication sharedApplication] setStatusBarOrientation:[self interfaceOrientation] animated:NO];
 }
+
 
 @end

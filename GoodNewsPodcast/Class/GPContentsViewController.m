@@ -11,7 +11,6 @@
 #import "GPAlertUtil.h"
 #import "JSON.h"
 #import "GPGNContentCell.h"
-#import "GPMoviePlayerViewController.h"
 #import "GPAudioPlayerViewController.h"
 #import "GPDataCenter.h"
 
@@ -35,6 +34,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
+    [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: nil];
+    
+    //백그라운드에서 재생
+    AVAudioSession*session =[AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [session setActive:YES error:nil];
     
     self.arr_contents_list = [[NSMutableArray alloc] initWithCapacity:10];
     [self setDatas];
@@ -80,14 +85,8 @@
                                                  name:_CMD_FILE_STREAMING
                                                object:nil];
     
-    AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
-    if (mainDelegate.audioPlayer.playbackState == MPMoviePlaybackStatePlaying) {
-        self.btn_nowplay.hidden = NO;
-        [self.btn_nowplay addTarget:self action:@selector(moveAudioPlayView) forControlEvents:UIControlEventTouchUpInside];
-    }else{
-        self.btn_nowplay.hidden = YES;
-        GetGPDataCenter.isAudioPlaying = NO;
-    }
+    self.btn_nowplay.hidden = !GetGPDataCenter.isAudioPlaying;
+    [self.btn_nowplay addTarget:self action:@selector(moveAudioPlayView) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -172,9 +171,126 @@
 
 - (void)moveAudioPlayView
 {
-    GPAudioPlayerViewController *audioPlayer = [self.storyboard instantiateViewControllerWithIdentifier:@"AudioPlayer"];
-    audioPlayer.dic_contents_data = [NSMutableDictionary dictionaryWithDictionary:GetGPDataCenter.dic_playInfo];
-    [self.navigationController pushViewController:audioPlayer animated:YES];
+    if ([[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_AUDIO) {
+        GPAudioPlayerViewController *audioPlayer = [self.storyboard instantiateViewControllerWithIdentifier:@"AudioPlayer"];
+        audioPlayer.dic_contents_data = [NSMutableDictionary dictionaryWithDictionary:GetGPDataCenter.dic_playInfo];
+        [self.navigationController pushViewController:audioPlayer animated:YES];
+    }else{
+        
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        
+        NSString *str_file_path = @"";
+        if ([[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_VIDEO_NORMAL) {
+            str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@_%@_N.mp4",
+                             [documentPath objectAtIndex:0],
+                             [GetGPDataCenter.dic_playInfo objectForKey:@"prCode"],
+                             [GetGPDataCenter.dic_playInfo objectForKey:@"ctName"],
+                             [GetGPDataCenter.dic_playInfo objectForKey:@"ctSpeaker"]];
+            
+            if ([fileManager fileExistsAtPath:str_file_path]) {
+                url_path = [NSURL fileURLWithPath:str_file_path];
+            } else {
+                str_file_path = [GetGPDataCenter.dic_playInfo objectForKey:@"ctVideoNormal"];
+                url_path = [NSURL URLWithString:str_file_path];
+            }
+        } else if ([[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_VIDEO_LOW) {
+            str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@_%@_L.mp4",
+                             [documentPath objectAtIndex:0],
+                             [GetGPDataCenter.dic_playInfo objectForKey:@"prCode"],
+                             [GetGPDataCenter.dic_playInfo objectForKey:@"ctName"],
+                             [GetGPDataCenter.dic_playInfo objectForKey:@"ctSpeaker"]];
+            
+            if ([fileManager fileExistsAtPath:str_file_path]) {
+                url_path = [NSURL fileURLWithPath:str_file_path];
+            } else {
+                str_file_path = [GetGPDataCenter.dic_playInfo objectForKey:@"ctVideoLow"];
+                url_path = [NSURL URLWithString:str_file_path];
+            }
+        } else if ([[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_VIDEO_STREAM ) {
+            str_file_path = [GetGPDataCenter.dic_playInfo objectForKey:@"chIos"];
+            url_path = [NSURL URLWithString:str_file_path];
+        }
+
+        AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
+        [mainDelegate.audioPlayer stop];
+        mainDelegate.audioPlayer = [[MPMoviePlayerController alloc] initWithContentURL:url_path];
+        mainDelegate.audioPlayer.controlStyle = MPMovieControlStyleFullscreen;
+        mainDelegate.audioPlayer.scalingMode = MPMovieScalingModeAspectFit;
+        mainDelegate.audioPlayer.view.frame = self.view.bounds;
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(MPMoviePlayerDidExitFullscreenNotification)
+                                                     name:MPMoviePlayerDidExitFullscreenNotification
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(moviePlayBackDidFinish:)
+                                                     name:MPMoviePlayerPlaybackDidFinishNotification
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(MPMoviePlayerLoadStateDidChangeNotification)
+                                                     name:MPMoviePlayerLoadStateDidChangeNotification
+                                                   object:nil];
+        
+        [self.view addSubview:mainDelegate.audioPlayer.view];
+        
+        mainDelegate.audioPlayer.fullscreen = YES;
+        
+        [mainDelegate.audioPlayer prepareToPlay];
+        
+        [mainDelegate.audioPlayer.view setFrame:self.view.frame];
+        
+        [self.view addSubview:mainDelegate.audioPlayer.view];
+        
+    }
+}
+
+- (void)MPMoviePlayerLoadStateDidChangeNotification
+{
+    AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
+    if (mainDelegate.audioPlayer.playbackState == MPMoviePlaybackStatePlaying) {
+        if ([[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_VIDEO_LOW ||
+            [[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_VIDEO_NORMAL)
+        {
+            NSLog(@"%lf",GetGPDataCenter.playbackTime);
+            [mainDelegate.audioPlayer pause];
+            [mainDelegate.audioPlayer setCurrentPlaybackTime:GetGPDataCenter.playbackTime];
+            [mainDelegate.audioPlayer play];
+        }
+    }
+}
+
+- (void)MPMoviePlayerDidExitFullscreenNotification
+{
+    AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
+    
+    if ([[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_VIDEO_LOW ||
+        [[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_VIDEO_NORMAL)
+    {
+        NSLog(@"%lf",mainDelegate.audioPlayer.currentPlaybackTime);
+        GetGPDataCenter.playbackTime = mainDelegate.audioPlayer.currentPlaybackTime;
+    }
+    [mainDelegate.audioPlayer stop];
+    [mainDelegate.audioPlayer.view removeFromSuperview];
+}
+
+- (void) moviePlayBackDidFinish:(NSNotification*)notification
+{
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MPMoviePlayerDidExitFullscreenNotification
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MPMoviePlayerPlaybackDidFinishNotification
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MPMoviePlayerLoadStateDidChangeNotification
+                                                  object:nil];
+    
+    //[self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)setDatas
@@ -490,8 +606,26 @@
     return nil;
 }
 
+- (void)setActionSheet:(NSMutableArray*)items
+{
+    UIActionSheet *actionSheet = nil;
+    
+    if ([items count] == 3) {
+        actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"닫기" destructiveButtonTitle:nil otherButtonTitles:@"Video 고속",@"Video 저속",@"Audio",nil];
+    } else if ([items count] == 2) {
+        actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"닫기" destructiveButtonTitle:nil otherButtonTitles:[items objectAtIndex:0],[items objectAtIndex:1],nil];
+    } else if ([items count] == 1) {
+        actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"닫기" destructiveButtonTitle:nil otherButtonTitles:[items objectAtIndex:0],nil];
+    }
+    
+    
+    UIView *keyView = [[[[UIApplication sharedApplication] keyWindow] subviews] objectAtIndex:0];
+    [actionSheet showInView:keyView];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSMutableArray *arr_item = [[NSMutableArray alloc] initWithCapacity:1];
     if ([self.arr_contents_list count] > 20) {
         if ([self.arr_contents_list count] == moreViewCnt) {
             if (indexPath.row == [_arr_moreView count]) {
@@ -500,10 +634,17 @@
             } else {
                 self.dic_selected_data = [NSMutableDictionary dictionaryWithDictionary:[self.arr_contents_list objectAtIndex:indexPath.row]];
                 
-                UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"닫기" destructiveButtonTitle:nil otherButtonTitles:@"Video 고속",@"Video 저속",@"Audio",nil];
+                if ([self.dic_selected_data objectForKey:@"ctVideoNormal"] != nil) {
+                    [arr_item addObject:@"Video 고속"];
+                }
+                if ([self.dic_selected_data objectForKey:@"ctVideoLow"] != nil) {
+                    [arr_item addObject:@"Video 저속"];
+                }
+                if ([self.dic_selected_data objectForKey:@"ctAudioStream"] != nil) {
+                    [arr_item addObject:@"Audio"];
+                }
                 
-                UIView *keyView = [[[[UIApplication sharedApplication] keyWindow] subviews] objectAtIndex:0];
-                [actionSheet showInView:keyView];
+                [self setActionSheet:arr_item];
             }
         }
         if (indexPath.row == [_arr_moreView count]) {
@@ -514,18 +655,32 @@
         } else {
             self.dic_selected_data = [NSMutableDictionary dictionaryWithDictionary:[self.arr_contents_list objectAtIndex:indexPath.row]];
             
-            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"닫기" destructiveButtonTitle:nil otherButtonTitles:@"Video 고속",@"Video 저속",@"Audio",nil];
+            if ([self.dic_selected_data objectForKey:@"ctVideoNormal"] != nil) {
+                [arr_item addObject:@"Video 고속"];
+            }
+            if ([self.dic_selected_data objectForKey:@"ctVideoLow"] != nil) {
+                [arr_item addObject:@"Video 저속"];
+            }
+            if ([self.dic_selected_data objectForKey:@"ctAudioStream"] != nil) {
+                [arr_item addObject:@"Audio"];
+            }
             
-            UIView *keyView = [[[[UIApplication sharedApplication] keyWindow] subviews] objectAtIndex:0];
-            [actionSheet showInView:keyView];
+            [self setActionSheet:arr_item];
         }
     } else {
         self.dic_selected_data = [NSMutableDictionary dictionaryWithDictionary:[self.arr_contents_list objectAtIndex:indexPath.row]];
         
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"닫기" destructiveButtonTitle:nil otherButtonTitles:@"Video 고속",@"Video 저속",@"Audio",nil];
+        if ([self.dic_selected_data objectForKey:@"ctVideoNormal"] != nil) {
+            [arr_item addObject:@"Video 고속"];
+        }
+        if ([self.dic_selected_data objectForKey:@"ctVideoLow"] != nil) {
+            [arr_item addObject:@"Video 저속"];
+        }
+        if ([self.dic_selected_data objectForKey:@"ctAudioStream"] != nil) {
+            [arr_item addObject:@"Audio"];
+        }
         
-        UIView *keyView = [[[[UIApplication sharedApplication] keyWindow] subviews] objectAtIndex:0];
-        [actionSheet showInView:keyView];
+        [self setActionSheet:arr_item];
     }
 }
 
@@ -544,126 +699,221 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    
+    
+    NSMutableArray *arr_item = [[NSMutableArray alloc] initWithCapacity:1];
+    if ([self.dic_selected_data objectForKey:@"ctVideoNormal"] != nil) {
+        [arr_item addObject:[NSDictionary dictionaryWithObjectsAndKeys:[self.dic_selected_data objectForKey:@"ctVideoNormal"],@"streamURL",@"0",@"fileType", nil]];
+    }
+    if ([self.dic_selected_data objectForKey:@"ctVideoLow"] != nil) {
+        [arr_item addObject:[NSDictionary dictionaryWithObjectsAndKeys:[self.dic_selected_data objectForKey:@"ctVideoLow"],@"streamURL",@"1",@"fileType", nil]];
+    }
+    if ([self.dic_selected_data objectForKey:@"ctAudioStream"] != nil) {
+        [arr_item addObject:[NSDictionary dictionaryWithObjectsAndKeys:[self.dic_selected_data objectForKey:@"ctAudioStream"],@"streamURL",@"2",@"fileType", nil]];
+    }
+    
+    if ([arr_item count] - 1 < buttonIndex) {
+        return;
+    }
+    NSDictionary *dic = [arr_item objectAtIndex:buttonIndex];
+    
+    if ([[dic objectForKey:@"fileType"] integerValue] == FILE_TYPE_VIDEO_NORMAL) {
+        [self playMovie:FILE_TYPE_VIDEO_NORMAL];
+    } else if ([[dic objectForKey:@"fileType"] integerValue] == FILE_TYPE_VIDEO_LOW) {
+        [self playMovie:FILE_TYPE_VIDEO_LOW];
+    } else if ([[dic objectForKey:@"fileType"] integerValue] == FILE_TYPE_AUDIO) {
+        [self playAudio:FILE_TYPE_AUDIO];
+    }
+}
+
+- (void)playAudio:(int)buttonIndex
+{
     BOOL isUse3G = [GPCommonUtil readBoolFromDefault:@"USE_3G"];
     int_selType = &buttonIndex;
     if (_downCont == nil) {
         AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
         _downCont = mainDelegate.downloadController;
     }
-    switch (buttonIndex) {
-        case 0:
-        case 1:
-        {
-            NSFileManager *fileManager = [NSFileManager defaultManager];
-            NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            
-            NSString *str_file_path = @"";
-            if (buttonIndex == 0) {
-                str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@_%@_N.mp4",
-                                             [documentPath objectAtIndex:0],
-                                             [self.dic_contents_data objectForKey:@"prCode"],
-                                             [self.dic_selected_data objectForKey:@"ctEventDate"],
-                                             [self.dic_selected_data objectForKey:@"ctSpeaker"]];
-                
-                if ([fileManager fileExistsAtPath:str_file_path]) {
-                    url_path = [NSURL fileURLWithPath:str_file_path];
-                } else {
-                    str_file_path = [self.dic_selected_data objectForKey:@"ctVideoNormal"];
-                    url_path = [NSURL URLWithString:[self.dic_selected_data objectForKey:@"ctVideoNormal"]];
-                }
-            } else if (buttonIndex == 1) {
-                str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@_%@_L.mp4",
-                                             [documentPath objectAtIndex:0],
-                                             [self.dic_contents_data objectForKey:@"prCode"],
-                                             [self.dic_selected_data objectForKey:@"ctEventDate"],
-                                             [self.dic_selected_data objectForKey:@"ctSpeaker"]];
-                
-                if ([fileManager fileExistsAtPath:str_file_path]) {
-                    url_path = [NSURL fileURLWithPath:str_file_path];
-                } else {
-                    str_file_path = [self.dic_selected_data objectForKey:@"ctVideoLow"];
-                    url_path = [NSURL URLWithString:[self.dic_selected_data objectForKey:@"ctVideoLow"]];
-                }
-            }
-            
-            NSRange range = [[url_path absoluteString] rangeOfString: @"file://"];
-            if (range.location == NSNotFound) {
-                if (GetGPDataCenter.gpNetowrkStatus == NETWORK_3G_LTE && !isUse3G) {
-                    [GPAlertUtil alertWithMessage:netStatus_3G_view delegate:self tag:1];
-                    return;
-                }else{
-                    [_downCont downloadFileCheck:self.dic_selected_data FileType:buttonIndex isDown:NO];
-                    return;
-                }
-            }
-            
-            _mpv_playVideo = [[GPMoviePlayerViewController alloc] initWithContentURL:url_path];
-            _mpv_playVideo.view.backgroundColor = [UIColor blackColor];
-            _mpv_playVideo.moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
-            [self presentMoviePlayerViewControllerAnimated:_mpv_playVideo];
-            
-        }
-            break;
-        case 2:
-        {
-            NSFileManager *fileManager = [NSFileManager defaultManager];
-            NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            
-            NSString *str_file_path = @"";
-            
-            str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@_%@.mp3",
-                             [documentPath objectAtIndex:0],
-                             [self.dic_contents_data objectForKey:@"prCode"],
-                             [self.dic_selected_data objectForKey:@"ctEventDate"],
-                             [self.dic_selected_data objectForKey:@"ctSpeaker"]];
-            
-            if ([fileManager fileExistsAtPath:str_file_path]) {
-                url_path = [NSURL fileURLWithPath:str_file_path];
-            } else {
-                str_file_path = [self.dic_selected_data objectForKey:@"ctAudioStream"];
-                url_path = [NSURL URLWithString:[self.dic_selected_data objectForKey:@"ctAudioStream"]];
-            }
-            
-            NSRange range = [[url_path absoluteString] rangeOfString: @"file://"];
-            if (range.location == NSNotFound) {
-                if (GetGPDataCenter.gpNetowrkStatus == NETWORK_3G_LTE && !isUse3G) {
-                    [GPAlertUtil alertWithMessage:netStatus_3G_view delegate:self tag:1];
-                    return;
-                }else{
-                    [_downCont downloadFileCheck:self.dic_selected_data FileType:buttonIndex isDown:NO];
-                    return;
-                }
-            }
-            
-            GPAudioPlayerViewController *audioPlayer = [self.storyboard instantiateViewControllerWithIdentifier:@"AudioPlayer"];
-            [self.dic_selected_data setObject:[self.dic_contents_data objectForKey:@"prThumbS"] forKey:@"prThumb"];
-            audioPlayer.dic_contents_data = [NSMutableDictionary dictionaryWithDictionary:self.dic_selected_data];
-            audioPlayer.prCode = [self.dic_contents_data objectForKey:@"prCode"];
-            [self.navigationController pushViewController:audioPlayer animated:YES];
-        }
-            break;
-        default:
-            break;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *str_file_path = @"";
+    
+    str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@_%@.mp3",
+                     [documentPath objectAtIndex:0],
+                     [self.dic_contents_data objectForKey:@"prCode"],
+                     [self.dic_selected_data objectForKey:@"ctEventDate"],
+                     [self.dic_selected_data objectForKey:@"ctSpeaker"]];
+    
+    if ([fileManager fileExistsAtPath:str_file_path]) {
+        url_path = [NSURL fileURLWithPath:str_file_path];
+    } else {
+        str_file_path = [self.dic_selected_data objectForKey:@"ctAudioStream"];
+        url_path = [NSURL URLWithString:[self.dic_selected_data objectForKey:@"ctAudioStream"]];
     }
+    
+    NSRange range = [[url_path absoluteString] rangeOfString: @"file://"];
+    if (range.location == NSNotFound) {
+        if (GetGPDataCenter.gpNetowrkStatus == NETWORK_3G_LTE && !isUse3G) {
+            [GPAlertUtil alertWithMessage:netStatus_3G_view delegate:self tag:1];
+            return;
+        }else{
+            [_downCont downloadFileCheck:self.dic_selected_data FileType:buttonIndex isDown:NO];
+            return;
+        }
+    }
+    
+    GPAudioPlayerViewController *audioPlayer = [self.storyboard instantiateViewControllerWithIdentifier:@"AudioPlayer"];
+    [self.dic_selected_data setObject:[self.dic_contents_data objectForKey:@"prThumbS"] forKey:@"prThumb"];
+    audioPlayer.dic_contents_data = [NSMutableDictionary dictionaryWithDictionary:self.dic_selected_data];
+    audioPlayer.prCode = [self.dic_contents_data objectForKey:@"prCode"];
+    [self.navigationController pushViewController:audioPlayer animated:YES];
+}
+
+- (void)playMovie:(int)buttonIndex
+{
+    BOOL isUse3G = [GPCommonUtil readBoolFromDefault:@"USE_3G"];
+    int_selType = &buttonIndex;
+    if (_downCont == nil) {
+        AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
+        _downCont = mainDelegate.downloadController;
+    }
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *str_file_path = @"";
+    if (buttonIndex == 0) {
+        str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@_%@_N.mp4",
+                         [documentPath objectAtIndex:0],
+                         [self.dic_contents_data objectForKey:@"prCode"],
+                         [self.dic_selected_data objectForKey:@"ctName"],
+                         [self.dic_selected_data objectForKey:@"ctSpeaker"]];
+        
+        [self.dic_selected_data setObject:@"0" forKey:@"ctFileType"];
+        if ([fileManager fileExistsAtPath:str_file_path]) {
+            url_path = [NSURL fileURLWithPath:str_file_path];
+        } else {
+            str_file_path = [self.dic_selected_data objectForKey:@"ctVideoNormal"];
+            url_path = [NSURL URLWithString:[self.dic_selected_data objectForKey:@"ctVideoNormal"]];
+        }
+    } else if (buttonIndex == 1) {
+        str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@_%@_L.mp4",
+                         [documentPath objectAtIndex:0],
+                         [self.dic_contents_data objectForKey:@"prCode"],
+                         [self.dic_selected_data objectForKey:@"ctName"],
+                         [self.dic_selected_data objectForKey:@"ctSpeaker"]];
+        
+        [self.dic_selected_data setObject:@"1" forKey:@"ctFileType"];
+        if ([fileManager fileExistsAtPath:str_file_path]) {
+            url_path = [NSURL fileURLWithPath:str_file_path];
+        } else {
+            str_file_path = [self.dic_selected_data objectForKey:@"ctVideoLow"];
+            url_path = [NSURL URLWithString:[self.dic_selected_data objectForKey:@"ctVideoLow"]];
+        }
+    }
+    
+    NSRange range = [[url_path absoluteString] rangeOfString: @"file://"];
+    if (range.location == NSNotFound) {
+        if (GetGPDataCenter.gpNetowrkStatus == NETWORK_3G_LTE && !isUse3G) {
+            [GPAlertUtil alertWithMessage:netStatus_3G_view delegate:self tag:1];
+            return;
+        }else{
+            [_downCont downloadFileCheck:self.dic_selected_data FileType:buttonIndex isDown:NO];
+            return;
+        }
+    }
+    
+    AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
+    [mainDelegate.audioPlayer stop];
+    mainDelegate.audioPlayer = [[MPMoviePlayerController alloc] initWithContentURL:url_path];
+    mainDelegate.audioPlayer.controlStyle = MPMovieControlStyleFullscreen;
+    mainDelegate.audioPlayer.scalingMode = MPMovieScalingModeAspectFit;
+    mainDelegate.audioPlayer.view.frame = self.view.bounds;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(MPMoviePlayerDidExitFullscreenNotification)
+                                                 name:MPMoviePlayerDidExitFullscreenNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(moviePlayBackDidFinish:)
+                                                 name:MPMoviePlayerPlaybackDidFinishNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(MPMoviePlayerLoadStateDidChangeNotification)
+                                                 name:MPMoviePlayerLoadStateDidChangeNotification
+                                               object:nil];
+    
+    [self.view addSubview:mainDelegate.audioPlayer.view];
+    
+    mainDelegate.audioPlayer.fullscreen = YES;
+    
+    [mainDelegate.audioPlayer prepareToPlay];
+    
+    [mainDelegate.audioPlayer.view setFrame:self.view.frame];
+    
+    [self.view addSubview:mainDelegate.audioPlayer.view];
+    
+    if (![[GetGPDataCenter.dic_playInfo objectForKey:@"ctName"] isEqualToString:[self.dic_selected_data objectForKey:@"ctName"]] ||
+        ![[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] isEqualToString:[self.dic_selected_data objectForKey:@"ctFileType"]]) {
+        GetGPDataCenter.playbackTime = 0.0f;
+    }
+    
+    GetGPDataCenter.dic_playInfo = self.dic_selected_data;
+    GetGPDataCenter.isAudioPlaying = YES;
 }
 
 - (void)fileStreaming:(NSNotification*)noti
 {
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:noti.userInfo];
-    switch ([[userInfo objectForKey:@"FILE_TYPE"] integerValue]) {
+    switch ([[userInfo objectForKey:@"ctFileType"] integerValue]) {
         case 0:
         case 1:
         {
-            if ([[userInfo objectForKey:@"FILE_TYPE"] integerValue] == 0) {
+            if ([[userInfo objectForKey:@"ctFileType"] integerValue] == 0) {
                 url_path = [NSURL URLWithString:[userInfo objectForKey:@"ctVideoNormal"]];
-            } else if ([[userInfo objectForKey:@"FILE_TYPE"] integerValue] == 1) {
+            } else if ([[userInfo objectForKey:@"ctFileType"] integerValue] == 1) {
                 url_path = [NSURL URLWithString:[userInfo objectForKey:@"ctVideoLow"]];
             }
             
-            _mpv_playVideo = [[GPMoviePlayerViewController alloc] initWithContentURL:url_path];
-            _mpv_playVideo.view.backgroundColor = [UIColor blackColor];
-            _mpv_playVideo.moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
-            [self presentMoviePlayerViewControllerAnimated:_mpv_playVideo];
+            AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
+            [mainDelegate.audioPlayer stop];
+            mainDelegate.audioPlayer = [[MPMoviePlayerController alloc] initWithContentURL:url_path];
+            mainDelegate.audioPlayer.controlStyle = MPMovieControlStyleFullscreen;
+            mainDelegate.audioPlayer.scalingMode = MPMovieScalingModeAspectFit;
+            mainDelegate.audioPlayer.view.frame = self.view.bounds;
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(MPMoviePlayerDidExitFullscreenNotification)
+                                                         name:MPMoviePlayerDidExitFullscreenNotification
+                                                       object:nil];
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(moviePlayBackDidFinish:)
+                                                         name:MPMoviePlayerPlaybackDidFinishNotification
+                                                       object:nil];
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(MPMoviePlayerLoadStateDidChangeNotification)
+                                                         name:MPMoviePlayerLoadStateDidChangeNotification
+                                                       object:nil];
+            
+            [self.view addSubview:mainDelegate.audioPlayer.view];
+            
+            mainDelegate.audioPlayer.fullscreen = YES;
+            
+            [mainDelegate.audioPlayer prepareToPlay];
+            
+            [mainDelegate.audioPlayer.view setFrame:self.view.frame];
+            
+            [self.view addSubview:mainDelegate.audioPlayer.view];
+            
+            if (![[GetGPDataCenter.dic_playInfo objectForKey:@"ctName"] isEqualToString:[self.dic_selected_data objectForKey:@"ctName"]] ||
+                ![[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] isEqualToString:[self.dic_selected_data objectForKey:@"ctFileType"]]) {
+                GetGPDataCenter.playbackTime = 0.0f;
+            }
+            
+            GetGPDataCenter.dic_playInfo = self.dic_selected_data;
+            GetGPDataCenter.isAudioPlaying = YES;
             
         }
             break;

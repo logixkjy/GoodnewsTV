@@ -11,10 +11,33 @@
 @interface GPLiveCastViewController : UIViewController
 {
     IBOutlet UIImageView    *_img_btn;
+    int count;
+    NSTimer *timer;
     
+    BOOL    isFirst;
 }
 
 @property (nonatomic, strong) IBOutlet UIButton *btn_nowplay;
+@property (nonatomic, strong) IBOutlet UILabel  *lbl_msg;
+
+@property (nonatomic, strong) IBOutlet UIView       *view_major_TV;
+@property (nonatomic, strong) IBOutlet UIImageView  *img_major_TV_bg;
+@property (nonatomic, strong) IBOutlet UIButton     *btn_major_TV;
+@property (nonatomic, strong) IBOutlet UIImageView  *img_major_TV_check;
+
+@property (nonatomic, strong) IBOutlet UIView       *view_major_Audio;
+@property (nonatomic, strong) IBOutlet UIImageView  *img_major_Audio_bg;
+@property (nonatomic, strong) IBOutlet UIButton     *btn_major_Audio;
+@property (nonatomic, strong) IBOutlet UIImageView  *img_major_Audio_check;
+
+@property (nonatomic, strong) IBOutlet UIView *menu_view;
+
+@property (nonatomic, strong) NSMutableArray        *arr_minor_views;
+@property (nonatomic, strong) NSMutableArray        *arr_minor_bg_img;
+
+@property (nonatomic, strong) NSMutableArray *arr_channelList;
+@property (nonatomic, strong) NSMutableDictionary *dic_MsgIfo;
+
 
 - (IBAction)showMenu;
 

@@ -109,7 +109,7 @@
     NSArray *icons = @[@"sidemenu_icon_home.png", @"sidemenu_icon_live.png", @"sidemenu_icon_mycast.png", @"sidemenu_icon_folder.png"];
     cell.img_icon.image = [UIImage imageNamed:icons[indexPath.row]];
     
-    NSArray *titles = @[@"다시보기", @"생중계", @"마이 캐스트", @"다운로드"];
+    NSArray *titles = @[@"다시보기", @"생방송", @"마이 캐스트", @"다운로드"];
     cell.lbl_title.text = titles[indexPath.row];
     
     return cell;

@@ -72,14 +72,8 @@
                                                  name:_CMD_FILE_STREAMING
                                                object:nil];
     
-    AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
-    if (mainDelegate.audioPlayer.playbackState == MPMoviePlaybackStatePlaying) {
-        self.btn_nowplay.hidden = NO;
-        [self.btn_nowplay addTarget:self action:@selector(moveAudioPlayView) forControlEvents:UIControlEventTouchUpInside];
-    }else{
-        self.btn_nowplay.hidden = YES;
-        GetGPDataCenter.isAudioPlaying = NO;
-    }
+    self.btn_nowplay.hidden = !GetGPDataCenter.isAudioPlaying;
+    [self.btn_nowplay addTarget:self action:@selector(moveAudioPlayView) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -160,9 +154,118 @@
 
 - (void)moveAudioPlayView
 {
-    GPAudioPlayerViewController *audioPlayer = [self.storyboard instantiateViewControllerWithIdentifier:@"AudioPlayer"];
-    audioPlayer.dic_contents_data = [NSMutableDictionary dictionaryWithDictionary:GetGPDataCenter.dic_playInfo];
-    [self.navigationController pushViewController:audioPlayer animated:YES];
+    if ([[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_AUDIO) {
+        GPAudioPlayerViewController *audioPlayer = [self.storyboard instantiateViewControllerWithIdentifier:@"AudioPlayer"];
+        audioPlayer.dic_contents_data = [NSMutableDictionary dictionaryWithDictionary:GetGPDataCenter.dic_playInfo];
+        [self.navigationController pushViewController:audioPlayer animated:YES];
+    }else{
+        
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        
+        NSString *str_file_path = @"";
+        if ([[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_VIDEO_NORMAL) {
+            str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@_%@_N.mp4",
+                             [documentPath objectAtIndex:0],
+                             [GetGPDataCenter.dic_playInfo objectForKey:@"prCode"],
+                             [GetGPDataCenter.dic_playInfo objectForKey:@"ctName"],
+                             [GetGPDataCenter.dic_playInfo objectForKey:@"ctSpeaker"]];
+            
+            if ([fileManager fileExistsAtPath:str_file_path]) {
+                url_path = [NSURL fileURLWithPath:str_file_path];
+            } else {
+                str_file_path = [GetGPDataCenter.dic_playInfo objectForKey:@"ctVideoNormal"];
+                url_path = [NSURL URLWithString:str_file_path];
+            }
+        } else if ([[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_VIDEO_LOW) {
+            str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@_%@_L.mp4",
+                             [documentPath objectAtIndex:0],
+                             [GetGPDataCenter.dic_playInfo objectForKey:@"prCode"],
+                             [GetGPDataCenter.dic_playInfo objectForKey:@"ctName"],
+                             [GetGPDataCenter.dic_playInfo objectForKey:@"ctSpeaker"]];
+            
+            if ([fileManager fileExistsAtPath:str_file_path]) {
+                url_path = [NSURL fileURLWithPath:str_file_path];
+            } else {
+                str_file_path = [GetGPDataCenter.dic_playInfo objectForKey:@"ctVideoLow"];
+                url_path = [NSURL URLWithString:str_file_path];
+            }
+        }
+        
+        AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
+        [mainDelegate.audioPlayer stop];
+        mainDelegate.audioPlayer = [[MPMoviePlayerController alloc] initWithContentURL:url_path];
+        mainDelegate.audioPlayer.controlStyle = MPMovieControlStyleFullscreen;
+        mainDelegate.audioPlayer.scalingMode = MPMovieScalingModeAspectFit;
+        mainDelegate.audioPlayer.view.frame = self.view.bounds;
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(MPMoviePlayerDidExitFullscreenNotification)
+                                                     name:MPMoviePlayerDidExitFullscreenNotification
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(moviePlayBackDidFinish:)
+                                                     name:MPMoviePlayerPlaybackDidFinishNotification
+                                                   object:nil];
+        
+        [self.view addSubview:mainDelegate.audioPlayer.view];
+        
+        mainDelegate.audioPlayer.fullscreen = YES;
+        
+        [mainDelegate.audioPlayer prepareToPlay];
+        
+        [mainDelegate.audioPlayer.view setFrame:self.view.frame];
+        
+        [self.view addSubview:mainDelegate.audioPlayer.view];
+        
+    }
+}
+
+- (void)MPMoviePlayerLoadStateDidChangeNotification
+{
+    AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
+    if (mainDelegate.audioPlayer.playbackState == MPMoviePlaybackStatePlaying) {
+        if ([[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_VIDEO_LOW ||
+            [[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_VIDEO_NORMAL)
+        {
+            NSLog(@"%lf",GetGPDataCenter.playbackTime);
+            [mainDelegate.audioPlayer pause];
+            [mainDelegate.audioPlayer setCurrentPlaybackTime:GetGPDataCenter.playbackTime];
+            [mainDelegate.audioPlayer play];
+        }
+    }
+}
+
+- (void)MPMoviePlayerDidExitFullscreenNotification
+{
+    AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
+    
+    if ([[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_VIDEO_LOW ||
+        [[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_VIDEO_NORMAL)
+    {
+        NSLog(@"%lf",mainDelegate.audioPlayer.currentPlaybackTime);
+        GetGPDataCenter.playbackTime = mainDelegate.audioPlayer.currentPlaybackTime;
+    }
+    [mainDelegate.audioPlayer stop];
+    [mainDelegate.audioPlayer.view removeFromSuperview];
+}
+
+- (void) moviePlayBackDidFinish:(NSNotification*)notification
+{
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MPMoviePlayerDidExitFullscreenNotification
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MPMoviePlayerPlaybackDidFinishNotification
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MPMoviePlayerLoadStateDidChangeNotification
+                                                  object:nil];
+    
+    //[self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)setDatas
@@ -223,6 +326,7 @@
             NSString *title = [item valueWithPath:@"title"];
             SMXMLElement *enclosure = [item childNamed:@"enclosure"];
             NSString *url = [enclosure attributeNamed:@"url"];
+            NSString *duration = [enclosure attributeNamed:@"length"];
             NSString *type = @"";
             if ([[enclosure attributeNamed:@"type"] isEqualToString:@"audio/mpeg"]) {
                 type = [NSString stringWithFormat:@"%d",FILE_TYPE_AUDIO];
@@ -566,10 +670,44 @@
         }
     }
     
-    _mpv_playVideo = [[GPMoviePlayerViewController alloc] initWithContentURL:url_path];
-    _mpv_playVideo.view.backgroundColor = [UIColor blackColor];
-    _mpv_playVideo.moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
-    [self presentMoviePlayerViewControllerAnimated:_mpv_playVideo];
+    AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
+    [mainDelegate.audioPlayer stop];
+    mainDelegate.audioPlayer = [[MPMoviePlayerController alloc] initWithContentURL:url_path];
+    mainDelegate.audioPlayer.controlStyle = MPMovieControlStyleFullscreen;
+    mainDelegate.audioPlayer.scalingMode = MPMovieScalingModeAspectFit;
+    mainDelegate.audioPlayer.view.frame = self.view.bounds;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(MPMoviePlayerDidExitFullscreenNotification)
+                                                 name:MPMoviePlayerDidExitFullscreenNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(moviePlayBackDidFinish:)
+                                                 name:MPMoviePlayerPlaybackDidFinishNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(MPMoviePlayerLoadStateDidChangeNotification)
+                                                 name:MPMoviePlayerLoadStateDidChangeNotification
+                                               object:nil];
+    
+    [self.view addSubview:mainDelegate.audioPlayer.view];
+    
+    mainDelegate.audioPlayer.fullscreen = YES;
+    
+    [mainDelegate.audioPlayer prepareToPlay];
+    
+    [mainDelegate.audioPlayer.view setFrame:self.view.frame];
+    
+    [self.view addSubview:mainDelegate.audioPlayer.view];
+    
+    if (![[GetGPDataCenter.dic_playInfo objectForKey:@"ctName"] isEqualToString:[self.dic_selected_data objectForKey:@"ctName"]] ||
+        ![[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] isEqualToString:[self.dic_selected_data objectForKey:@"ctFileType"]]) {
+        GetGPDataCenter.playbackTime = 0.0f;
+    }
+    
+    GetGPDataCenter.dic_playInfo = self.dic_selected_data;
+    GetGPDataCenter.isAudioPlaying = YES;
 }
 
 - (void)playAudio

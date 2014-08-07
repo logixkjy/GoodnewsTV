@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "REFrostedViewController.h"
+#import "CBAutoScrollLabel.h"
 @import MediaPlayer;
 @import AVFoundation;
 @import AudioToolbox;
@@ -26,6 +27,7 @@
 
 @property (nonatomic, strong) IBOutlet UIView *playerView;
 @property (nonatomic, strong) IBOutlet UIImageView *img_thumb;
+@property (nonatomic, strong) IBOutlet CBAutoScrollLabel *asl_naviTitle;
 
 @property (nonatomic, strong) IBOutlet UIView *toolbarView;
 @property (nonatomic, strong) IBOutlet UIView *volumeView;

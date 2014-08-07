@@ -8,6 +8,9 @@
 
 #import <MediaPlayer/MediaPlayer.h>
 
-@interface GPMoviePlayerViewController : MPMoviePlayerViewController
+@interface GPMoviePlayerViewController : MPMoviePlayerViewController {
+    NSTimer *_timer;
+}
 
+@property (nonatomic) BOOL isPlaying;
 @end

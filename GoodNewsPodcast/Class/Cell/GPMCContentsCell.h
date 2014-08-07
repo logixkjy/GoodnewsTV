@@ -20,7 +20,9 @@
 }
 
 @property (nonatomic, strong) IBOutlet UILabel *lbl_name;
+@property (nonatomic, strong) IBOutlet UILabel *lbl_phrase;
 @property (nonatomic, strong) IBOutlet UILabel *lbl_date;
+@property (nonatomic, strong) IBOutlet UILabel *lbl_speaker;
 @property (nonatomic, strong) IBOutlet UIImageView *img_btn_background;
 @property (nonatomic, strong) IBOutlet UIButton *btn_play;
 @property (nonatomic, strong) IBOutlet UILabel *lbl_play;

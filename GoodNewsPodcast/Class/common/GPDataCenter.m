@@ -36,6 +36,7 @@ static GPDataCenter* g_GPDataCenterInstance = nil;
     self = [super init];
     if (self != nil) {
         self.gpNetowrkStatus        = 0;
+        self.playbackTime           = 0.0f;
         
         self.isShow3GPopup          = NO;
         self.isExistingDownload     = NO;

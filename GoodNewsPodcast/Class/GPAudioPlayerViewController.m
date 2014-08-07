@@ -61,7 +61,6 @@
             str_file_path = [str_file_path stringByAppendingFormat:@"/%@_%@.mp3", [self.dic_contents_data objectForKey:@"ctEventDate"], [self.dic_contents_data objectForKey:@"ctSpeaker"]];
         }
         
-        
         NSURL *url_path = nil;
         
         if ([fileManager fileExistsAtPath:str_file_path]) {
@@ -70,23 +69,41 @@
             url_path = [NSURL URLWithString:[self.dic_contents_data objectForKey:@"ctAudioStream"] != nil ? [self.dic_contents_data objectForKey:@"ctAudioStream"] : [self.dic_contents_data objectForKey:@"ctFileUrl"]];
         }
         
-        mainDelegate.audioPlayer =  [[MPMoviePlayerController alloc] initWithContentURL:url_path];
-        
-        
+        if (![[GetGPDataCenter.dic_playInfo objectForKey:@"ctName"] isEqualToString:[self.dic_contents_data objectForKey:@"ctName"]]||
+            ![[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] isEqualToString:[self.dic_contents_data objectForKey:@"ctFileType"]]) {
+            mainDelegate.audioPlayer =  [[MPMoviePlayerController alloc] initWithContentURL:url_path];
+            mainDelegate.audioPlayer.shouldAutoplay = YES;
+            [mainDelegate.audioPlayer prepareToPlay];
+            
+            
+        } else {
+            self.timeProgress.maximumValue = mainDelegate.audioPlayer.duration;
+        }
         
         mainDelegate.audioPlayer.controlStyle = MPMovieControlStyleNone;
-        mainDelegate.audioPlayer.shouldAutoplay = YES;
         
         mainDelegate.audioPlayer.view.hidden = YES;
         
-        [mainDelegate.audioPlayer prepareToPlay];
-        
+        [self.dic_contents_data setObject:@"2" forKey:@"ctFileType"];
         GetGPDataCenter.dic_playInfo = [NSMutableDictionary dictionaryWithDictionary:self.dic_contents_data];
         
+        if ([self.dic_contents_data objectForKey:@"chIos"] == nil) {
+            [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePlaybackProgressFromTimer:) userInfo:nil repeats:YES];
+        }
         //        mainDelegate.audioPlayer = audioPlayer;
     }else {
-        self.btn_play.selected = YES;
+        self.btn_play.selected = mainDelegate.audioPlayer.playbackState == MPMoviePlaybackStatePaused ? NO : YES;
+        
         self.timeProgress.maximumValue = mainDelegate.audioPlayer.duration;
+        self.timeProgress.value = GetGPDataCenter.playbackTime;
+
+        if ([self.dic_contents_data objectForKey:@"chIos"] == nil) {
+//            [mainDelegate.audioPlayer setCurrentPlaybackTime:GetGPDataCenter.playbackTime];
+            self.lbl_playtime.text = [NSString stringWithFormat:@"%@",[self convertIntToTime:(int)GetGPDataCenter.playbackTime]];
+            
+            self.lbl_lasttime.text = [NSString stringWithFormat:@"-%@",[self convertIntToTime:fabs((int)(GetGPDataCenter.playbackTime-mainDelegate.audioPlayer.duration))]];
+            [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePlaybackProgressFromTimer:) userInfo:nil repeats:YES];
+        }
     }
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerLoadStateDidChangeNotification object:nil];
@@ -108,15 +125,43 @@
         [self.playerView bringSubviewToFront:self.toolbarView];
         [self.toolbarView setFrame:CGRectMake(0, self.playerView.frame.size.height - self.toolbarView.frame.size.height, self.toolbarView.frame.size.width , self.toolbarView.frame.size.height)];
     }
+    
+    CGSize maxSize = CGSizeMake(239, 27);
+    CGSize viewSize;
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraphStyle.alignment = NSTextAlignmentLeft;
+    NSDictionary *attributes = @{NSFontAttributeName:[UIFont boldSystemFontOfSize:20], NSParagraphStyleAttributeName: paragraphStyle};
+    viewSize = [[self.dic_contents_data objectForKey:@"ctName"] boundingRectWithSize:maxSize options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin
+                                                                              attributes:attributes  context:nil].size;
+    
+    [self.asl_naviTitle setFrame:CGRectMake((320 - viewSize.width)/2, 9, viewSize.width, viewSize.height)];
+    self.asl_naviTitle.text = [self.dic_contents_data objectForKey:@"ctName"];
+    self.asl_naviTitle.pauseInterval = 3.f;
+    self.asl_naviTitle.font = [UIFont boldSystemFontOfSize:20];
+    self.asl_naviTitle.textColor = [UIColor whiteColor];
+    self.asl_naviTitle.shadowOffset = CGSizeMake(-1, -1);
+    self.asl_naviTitle.shadowColor = [UIColor blackColor];
+    self.asl_naviTitle.textAlignment = NSTextAlignmentCenter;
+    [self.asl_naviTitle observeApplicationNotifications];
+    
     [self.img_thumb setImageWithURL:[NSURL URLWithString:[self.dic_contents_data objectForKey:@"prThumb"]]  placeholderImage:[UIImage imageNamed:@"thumbnail_none_square.png"]];
-    [self.lbl_title setText:[NSString stringWithFormat:@"%@ %@",[self.dic_contents_data objectForKey:@"ctEventDate"],[self.dic_contents_data objectForKey:@"ctPhrase"]]];
-    [self.lbl_subtitle setText:[self.dic_contents_data objectForKey:@"ctName"]];
+    
+    if ([[self.dic_contents_data objectForKey:@"ctEventDate"] isEqualToString:@""]) {
+        [self.lbl_title setText:@""];
+        [self.lbl_subtitle setText:@""];
+    } else {
+        [self.lbl_title setText:[NSString stringWithFormat:@"%@ %@",[self.dic_contents_data objectForKey:@"ctEventDate"],[self.dic_contents_data objectForKey:@"ctPhrase"]]];
+        [self.lbl_subtitle setText:[self.dic_contents_data objectForKey:@"ctName"]];
+    }
+    
     
     MPVolumeView *volumeView = [[MPVolumeView alloc] initWithFrame:self.volumeView.bounds];
     [self.volumeView addSubview:volumeView];
     [volumeView sizeToFit];
     
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePlaybackProgressFromTimer:) userInfo:nil repeats:YES];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -170,6 +215,8 @@
         (mainDelegate.audioPlayer.playbackState == MPMoviePlaybackStatePlaying)) {
         
         self.timeProgress.value = mainDelegate.audioPlayer.currentPlaybackTime;
+        
+        GetGPDataCenter.playbackTime = mainDelegate.audioPlayer.currentPlaybackTime;
         
         self.lbl_playtime.text = [NSString stringWithFormat:@"%@",[self convertIntToTime:(int)mainDelegate.audioPlayer.currentPlaybackTime]];
         
@@ -253,7 +300,7 @@
                                                     name:MPMoviePlayerLoadStateDidChangeNotification
                                                   object:nil];
     
-    [self.navigationController popViewControllerAnimated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark -
@@ -324,6 +371,7 @@
                 [mainDelegate.audioPlayer pause];
             } else {
                 sender.selected = !sender.selected;
+                
                 [mainDelegate.audioPlayer play];
             }
             break;
@@ -331,7 +379,12 @@
         case 3:
         {
             [mainDelegate.audioPlayer stop];
+            self.btn_play.selected = NO;
             self.timeProgress.value = 0;
+            
+            self.lbl_playtime.text = [NSString stringWithFormat:@"%@",[self convertIntToTime:(int)0]];
+            
+            self.lbl_lasttime.text = [NSString stringWithFormat:@"-%@",[self convertIntToTime:fabs((int)(mainDelegate.audioPlayer.duration))]];
         }
             break;
         default:

@@ -37,19 +37,16 @@
 {
     mainDelegate = MAIN_APP_DELEGATE();
     UIColor *textColor = UIColorFromRGB(0x949494);
-    UIColor *textColor2 = UIColorFromRGB(0x002085);
+    UIColor *textColor2 = UIColorFromRGB(0xf74300);
     dic_fileinfo = [NSMutableDictionary dictionaryWithDictionary:datas];
     
-    NSString *ctName = [dic_fileinfo objectForKey:@"ctName"];
-    if ([[dic_fileinfo objectForKey:@"ctPhrase"] length] != 0) {
-        ctName = [ctName stringByAppendingString:[dic_fileinfo objectForKey:@"ctPhrase"]];
-    }
-    [self.lbl_name setText:ctName];
+    [self.lbl_name setText:[dic_fileinfo objectForKey:@"ctName"]];
+    [self.lbl_phrase setText:[dic_fileinfo objectForKey:@"ctPhrase"]];
     [self.lbl_date setText:[dic_fileinfo objectForKey:@"ctEventDate"]];
-    if ([[dic_fileinfo objectForKey:@"ctDuration"] length] != 0) {
-        self.lbl_date.text = [self.lbl_date.text stringByAppendingFormat:@" 재생시간 : %@",[dic_fileinfo objectForKey:@"ctDuration"]];
-    }
-    
+//    if ([[dic_fileinfo objectForKey:@"ctDuration"] length] != 0) {
+//        self.lbl_date.text = [self.lbl_date.text stringByAppendingFormat:@" 재생시간 : %@",[self convertIntToTime:[[dic_fileinfo objectForKey:@"ctDuration"] integerValue]]];
+//    }
+    [self.lbl_speaker setText:[dic_fileinfo objectForKey:@"ctSpeaker"]];
     [self.img_btn_background setImage:[TUNinePatchCache imageOfSize:[self.img_btn_background bounds].size forNinePatchNamed:@"box_down"]];
     
     _btn_play.enabled = NO;
@@ -114,7 +111,7 @@
 
 - (IBAction)buttonPress:(UIButton*)sender
 {
-    UIColor *textColor = UIColorFromRGB(0x002085);
+    UIColor *textColor = UIColorFromRGB(0xf74300);
     _lbl_play.textColor = textColor;
     [_img_play setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_press" ofType:@"png"]]];
 }
