@@ -1220,6 +1220,78 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		319DEB34199356330094BEF1 /* Distrbution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distrbution;
+		};
+		319DEB35199356330094BEF1 /* Distrbution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = armv7;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Good News Mission (73U6WHU2LG)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Good News Mission (73U6WHU2LG)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GoodNewsPodcast/GoodNewsPodcast-Prefix.pch";
+				INFOPLIST_FILE = "GoodNewsPodcast/GoodNewsPodcast-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GoodNewsPodcast/Class/common/FMDB",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2F3CFA03-E30F-4EF1-818A-161A36F2B7F6";
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = armv7;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Distrbution;
+		};
+		319DEB36199356330094BEF1 /* Distrbution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GoodNewsPodcast.app/GoodNewsPodcast";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GoodNewsPodcast/GoodNewsPodcast-Prefix.pch";
+				INFOPLIST_FILE = "GoodNewsPodcastTests/GoodNewsPodcastTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Distrbution;
+		};
 		31EDCD8119736DD400F8D50E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1327,7 +1399,7 @@
 					"$(PROJECT_DIR)/GoodNewsPodcast/Class/common/FMDB",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2F3CFA03-E30F-4EF1-818A-161A36F2B7F6";
+				PROVISIONING_PROFILE = "B6042098-4089-42B9-8505-EF314AC733EE";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -1382,6 +1454,7 @@
 			buildConfigurations = (
 				31EDCD8119736DD400F8D50E /* Debug */,
 				31EDCD8219736DD400F8D50E /* Release */,
+				319DEB34199356330094BEF1 /* Distrbution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1391,6 +1464,7 @@
 			buildConfigurations = (
 				31EDCD8419736DD400F8D50E /* Debug */,
 				31EDCD8519736DD400F8D50E /* Release */,
+				319DEB35199356330094BEF1 /* Distrbution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1400,6 +1474,7 @@
 			buildConfigurations = (
 				31EDCD8719736DD400F8D50E /* Debug */,
 				31EDCD8819736DD400F8D50E /* Release */,
+				319DEB36199356330094BEF1 /* Distrbution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
