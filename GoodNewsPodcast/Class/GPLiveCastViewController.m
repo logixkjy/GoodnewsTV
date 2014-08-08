@@ -41,13 +41,22 @@
     // Do any additional setup after loading the view.
     [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
     
-    self.arr_minor_views    = [[NSMutableArray alloc] initWithCapacity:4];
-    self.arr_minor_bg_img   = [[NSMutableArray alloc] initWithCapacity:4];
+    self.arr_views    = [[NSMutableArray alloc] initWithCapacity:2];
+    self.arr_bg_img   = [[NSMutableArray alloc] initWithCapacity:2];
+    self.arr_btns   = [[NSMutableArray alloc] initWithCapacity:2];
+    self.arr_labels   = [[NSMutableArray alloc] initWithCapacity:2];
     
-    [self.arr_minor_views addObject:self.view_major_TV];
-    [self.arr_minor_views addObject:self.view_major_Audio];
-    [self.arr_minor_bg_img addObject:self.img_major_TV_bg];
-    [self.arr_minor_bg_img addObject:self.img_major_Audio_bg];
+    [self.arr_views addObject:self.view_major_TV];
+    [self.arr_views addObject:self.view_major_Audio];
+    
+    [self.arr_bg_img addObject:self.img_major_TV_bg];
+    [self.arr_bg_img addObject:self.img_major_Audio_bg];
+    
+    [self.arr_labels addObject:self.lbl_major_TV];
+    [self.arr_labels addObject:self.lbl_major_Audio];
+    
+    [self.arr_btns addObject:self.btn_major_TV];
+    [self.arr_btns addObject:self.btn_major_Audio];
     
     count = 5;
     isFirst = NO;
@@ -138,6 +147,20 @@
     dic_ch = [self.arr_channelList objectAtIndex:1];
     self.btn_major_Audio.enabled = [[dic_ch objectForKey:@"chIsLive"] isEqualToString:@"YES"];
     
+    
+    if (isFirst) {
+        NSMutableIndexSet *itemToRemove = [[NSMutableIndexSet alloc] init];;
+        for (int k = 2; k < [self.arr_channelList count]; k++) {
+            UIView *view = [self.arr_views objectAtIndex:k];
+            [itemToRemove addIndex:k];
+            [view removeFromSuperview];
+        }
+        [self.arr_views removeObjectsAtIndexes:itemToRemove];
+        [self.arr_bg_img removeObjectsAtIndexes:itemToRemove];
+        [self.arr_labels removeObjectsAtIndexes:itemToRemove];
+        [self.arr_btns removeObjectsAtIndexes:itemToRemove];
+    }
+    
     for (int i = 2; i < [self.arr_channelList count]; i++) {
         dic_ch = [self.arr_channelList objectAtIndex:i];
         UIView *btn_view = [[UIView alloc] initWithFrame:CGRectMake((i%2 == 0 ? 10 : 135 ), (i < 4 ? 247 : 314), 115, 57)];
@@ -165,13 +188,15 @@
         
         [self.menu_view addSubview:btn_view];
         
-        [self.arr_minor_views addObject:btn_view];
-        [self.arr_minor_bg_img addObject:btn_bg];
+        [self.arr_views addObject:btn_view];
+        [self.arr_bg_img addObject:btn_bg];
+        [self.arr_labels addObject:btn_title];
+        [self.arr_btns addObject:button];
     }
     if (!isFirst) {
-        for (int i = 0; i < [self.arr_minor_views count]; i++) {
-            UIView *view = [self.arr_minor_views objectAtIndex:i];
-            UIImageView *img = [self.arr_minor_bg_img objectAtIndex:i];
+        for (int i = 0; i < [self.arr_views count]; i++) {
+            UIView *view = [self.arr_views objectAtIndex:i];
+            UIImageView *img = [self.arr_bg_img objectAtIndex:i];
             
             if ([[self.dic_MsgIfo objectForKey:@"chNO"] intValue]-1 == i) {
                 view.layer.borderWidth = 2.0f;
@@ -204,9 +229,9 @@
     [timer invalidate];
     self.lbl_msg.hidden = YES;
     UIButton *btn = (UIButton*)sender;
-    for (int i = 0; i < [self.arr_minor_views count]; i++) {
-        UIView *view = [self.arr_minor_views objectAtIndex:i];
-        UIImageView *img = [self.arr_minor_bg_img objectAtIndex:i];
+    for (int i = 0; i < [self.arr_views count]; i++) {
+        UIView *view = [self.arr_views objectAtIndex:i];
+        UIImageView *img = [self.arr_bg_img objectAtIndex:i];
         
         if (btn.tag == i) {
             view.layer.borderWidth = 2.0f;

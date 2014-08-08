@@ -1988,6 +1988,8 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
                         <outlet property="img_major_Audio_bg" destination="Wfl-2d-Kv7" id="hMq-ui-bd4"/>
                         <outlet property="img_major_TV_bg" destination="czD-e6-IEt" id="96m-Ij-1oj"/>
                         <outlet property="img_major_TV_check" destination="Arl-Ez-xkG" id="z3t-q5-oTb"/>
+                        <outlet property="lbl_major_Audio" destination="wnc-8y-IP8" id="26N-GA-6SH"/>
+                        <outlet property="lbl_major_TV" destination="PeV-HD-qKv" id="Tng-WV-4ct"/>
                         <outlet property="lbl_msg" destination="KLd-EY-pxr" id="bGZ-X5-5ID"/>
                         <outlet property="menu_view" destination="YfI-lw-bfw" id="2eb-pW-pHl"/>
                         <outlet property="view_major_Audio" destination="guX-66-VnU" id="0nb-qW-qxL"/>
@@ -2009,7 +2011,7 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
         <image name="icon_back_press.png" width="50" height="50"/>
         <image name="icon_down_normal.png" width="34" height="34"/>
         <image name="icon_downloading.png" width="34" height="34"/>
-        <image name="icon_live.png" width="152" height="78"/>
+        <image name="icon_live.png" width="152" height="82"/>
         <image name="icon_menu_normal.png" width="50" height="50"/>
         <image name="icon_menu_press.png" width="50" height="50"/>
         <image name="icon_new.png" width="96" height="96"/>
