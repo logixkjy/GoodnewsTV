@@ -417,9 +417,9 @@
             [dic setValue:@"downloaded" forKeyPath:@"ctAudioDownStat"];
         }
         
-        [dic setObject:[self.dic_contents_data objectForKey:@"prThumb"] forKey:@"prThumb"];
-        [dic setObject:[self.dic_contents_data objectForKey:@"prCode"] forKey:@"prCode"];
-        [dic setObject:[self.dic_contents_data objectForKey:@"prTitle"] forKey:@"prTitle"];
+        [dic setObject:[self.dic_contents_data objectForKey:@"pcThumb"] == nil ? @"" : [self.dic_contents_data objectForKey:@"pcThumb"] forKey:@"prThumb"];
+        [dic setObject:[self.dic_contents_data objectForKey:@"prCode"] == nil ? @"" : [self.dic_contents_data objectForKey:@"prCode"] forKey:@"prCode"];
+        [dic setObject:[self.dic_contents_data objectForKey:@"prTitle"] == nil ? @"" :[self.dic_contents_data objectForKey:@"prTitle"] forKey:@"prTitle"];
         
         [self.arr_contents_list removeObjectAtIndex:i];
         [self.arr_contents_list insertObject:dic atIndex:i];
