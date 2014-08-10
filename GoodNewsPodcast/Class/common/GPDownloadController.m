@@ -57,7 +57,7 @@ static GPDownloadController* g_GPDownloadControllerInstance = nil;
     if (self != nil) {
 //		_sendQueue	 = [[NSMutableArray alloc] init];
 //		_sendQueueForFileType	 = [[NSMutableArray alloc] init];
-        _is_downloading = NO;
+        GetGPDataCenter.isDownloading = NO;
         download = [[GPDownload alloc] init];
     }
     return self;
@@ -74,7 +74,7 @@ static GPDownloadController* g_GPDownloadControllerInstance = nil;
 - (void)communiCator{
     while (([[NSThread currentThread] isCancelled] == NO)) {
         // 보낼 전문을 큐에서 읽어온다.
-        if (GetGPDataCenter.sendQueue.count > 0 && !_is_downloading) {
+        if (GetGPDataCenter.sendQueue.count > 0 && !GetGPDataCenter.isDownloading) {
             [self requestAndrespones];
         }
         [NSThread sleepForTimeInterval:0.3];
@@ -97,7 +97,7 @@ static GPDownloadController* g_GPDownloadControllerInstance = nil;
     [GPCommonUtil writeObjectToDefault:GetGPDataCenter.dic_fileInfo KEY:@"DOWN_FILE_INFO"];
     [GPCommonUtil writeObjectToDefault:GetGPDataCenter.str_fileType KEY:@"DOWN_FILE_TYPE"];
     
-    _is_downloading = YES;
+    GetGPDataCenter.isDownloading = YES;
     
     [download downloadFileInfo:dic_fileInfo fileType:str_fileType delegate:self];
 }
@@ -128,7 +128,8 @@ static GPDownloadController* g_GPDownloadControllerInstance = nil;
 
 - (void)didFileDownloadFinishWith:(NSDictionary *)fileinfo :(NSString *)fileType
 {
-    _is_downloading = NO;
+    
+    GetGPDataCenter.isDownloading = NO;
     NSString *file_name = @"";
     switch ([fileType integerValue]) {
         case FILE_TYPE_VIDEO_NORMAL:
@@ -164,7 +165,7 @@ static GPDownloadController* g_GPDownloadControllerInstance = nil;
 
 - (void)didFileDownloadFailWithError:(NSError *)error suggestedFileInfo:(NSDictionary *)fileinfo :(NSString *)fileType
 {
-    _is_downloading = NO;
+    GetGPDataCenter.isDownloading = NO;
     
     if (GetGPDataCenter.sendQueue.count == 0) {
         GetGPDataCenter.dic_fileInfo = nil;
@@ -204,6 +205,7 @@ static GPDownloadController* g_GPDownloadControllerInstance = nil;
 
 - (void)downloadPause
 {
+    GetGPDataCenter.isDownloadPaused = YES;
     NSLog(@"download Pause!!!");
     [download downloadPause];
 }
@@ -211,7 +213,7 @@ static GPDownloadController* g_GPDownloadControllerInstance = nil;
 - (void)downloadCanlcel
 {
     [download downloadCanlcel];
-    _is_downloading = NO;
+    GetGPDataCenter.isDownloading = NO;
     
     if (GetGPDataCenter.sendQueue.count == 0) {
         GetGPDataCenter.dic_fileInfo = nil;
@@ -223,6 +225,7 @@ static GPDownloadController* g_GPDownloadControllerInstance = nil;
 
 - (void)downloadRestart
 {
+    GetGPDataCenter.isDownloadPaused = NO;
     [download downloadRestart];
 }
 

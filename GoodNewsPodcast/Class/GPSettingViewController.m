@@ -99,7 +99,7 @@
 
 - (IBAction)viewDeveloperInfo
 {
-    [GPAlertUtil alertWithMessage:self MESSAGE:@"Team GIV\n(팀 굿뉴스 인터넷 자원봉사자)\nhttp://volunteers.gnn.or.kr" TITLE:@"개발자 정보"];
+    [GPAlertUtil alertWithMessage:self MESSAGE:@"Team GIV\nhttp://volunteers.gnn.or.kr" TITLE:@"개발자 정보"];
 }
 
 - (IBAction)UPdateCheck

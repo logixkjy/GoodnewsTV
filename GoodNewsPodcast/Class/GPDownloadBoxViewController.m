@@ -126,6 +126,7 @@
                                              selector:@selector(downBoxEvent:)
                                                  name:_CMD_DOWN_BOX_EVENT
                                                object:nil];
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
     self.btn_nowplay.hidden = !GetGPDataCenter.isAudioPlaying;
     [self.btn_nowplay addTarget:self action:@selector(moveAudioPlayView) forControlEvents:UIControlEventTouchUpInside];
@@ -134,6 +135,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:_CMD_MOVE_SETTING_VIEW object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:_CMD_FILE_DOWN_CANCEL object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:_CMD_FILE_DOWN_FINISHED object:nil];
@@ -366,6 +368,40 @@
     //[self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)remoteControlReceivedWithEvent:(UIEvent *)event{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RemoteControlEventReceived" object:event];
+}
+
+-(void)remoteControlEventNotification:(NSNotification *)note
+{
+    AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
+    UIEvent *event = note.object;
+    if ( event.type == UIEventTypeRemoteControl ) {
+        switch (event.subtype) {
+            case UIEventSubtypeRemoteControlPlay:
+                [mainDelegate.audioPlayer play];
+                break;
+            case UIEventSubtypeRemoteControlPause:
+                [mainDelegate.audioPlayer pause];
+                break;
+            case UIEventSubtypeRemoteControlStop:
+                [mainDelegate.audioPlayer stop];
+                break;
+            case UIEventSubtypeRemoteControlBeginSeekingBackward:
+            case UIEventSubtypeRemoteControlBeginSeekingForward:
+            case UIEventSubtypeRemoteControlEndSeekingBackward:
+            case UIEventSubtypeRemoteControlEndSeekingForward:
+            case UIEventSubtypeRemoteControlPreviousTrack:
+            case UIEventSubtypeRemoteControlNextTrack:
+                
+                break;
+                
+            default:
+                break;
+        }
+    }
+}
+
 - (IBAction)pressBtn:(UIButton*)sender
 {
     switch (sender.tag) {
@@ -424,6 +460,7 @@
         case 102:
             _img_downPause.backgroundColor = UIColorFromRGB(0x676767);
             [_downCont downloadPause];
+            [self.tb_downList performSelector:@selector(reloadData) withObject:nil afterDelay:1.0];
             break;
             
         default:

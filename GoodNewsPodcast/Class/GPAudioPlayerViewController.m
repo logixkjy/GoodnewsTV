@@ -122,8 +122,13 @@
     [[UISlider appearance] setThumbImage:[UIImage imageNamed:@"player_time_handle.png"] forState:UIControlStateNormal];
     
     if (!IS_4_INCH) {
+        CGSize size = MAIN_SIZE();
         [self.playerView bringSubviewToFront:self.toolbarView];
-        [self.toolbarView setFrame:CGRectMake(0, self.playerView.frame.size.height - self.toolbarView.frame.size.height, self.toolbarView.frame.size.width , self.toolbarView.frame.size.height)];
+        [self.img_thumb setFrame:CGRectMake(0, 0, 320, size.height - 64 - self.toolbarView.frame.size.height)];
+        [self.img_thumb setImageWithURL:[NSURL URLWithString:[self.dic_contents_data objectForKey:@"prThumb"]]  placeholderImage:[UIImage imageNamed:@"thumbnail_none.png"]];
+        [self.toolbarView setFrame:CGRectMake(0, size.height - 64 - self.toolbarView.frame.size.height, self.toolbarView.frame.size.width , self.toolbarView.frame.size.height)];
+    } else {
+        [self.img_thumb setImageWithURL:[NSURL URLWithString:[self.dic_contents_data objectForKey:@"prThumb"]]  placeholderImage:[UIImage imageNamed:@"thumbnail_none_square.png"]];
     }
     
     CGSize maxSize = CGSizeMake(239, 27);
@@ -145,8 +150,6 @@
     self.asl_naviTitle.shadowColor = [UIColor blackColor];
     self.asl_naviTitle.textAlignment = NSTextAlignmentCenter;
     [self.asl_naviTitle observeApplicationNotifications];
-    
-    [self.img_thumb setImageWithURL:[NSURL URLWithString:[self.dic_contents_data objectForKey:@"prThumb"]]  placeholderImage:[UIImage imageNamed:@"thumbnail_none_square.png"]];
     
     if ([[self.dic_contents_data objectForKey:@"ctEventDate"] isEqualToString:@""]) {
         [self.lbl_title setText:@""];

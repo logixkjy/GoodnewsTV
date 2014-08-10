@@ -104,7 +104,7 @@
         self.img_line_2.hidden = YES;
         
         [self.img_btn_background setFrame:CGRectMake(193, 0, 97, 28)];
-        
+        /* btn count == 1 비디오 고속 ========================================*/
         if ([dic_fileinfo objectForKey:@"ctVideoNormal"] != nil) {
             _lbl_audio.text = @"Video 고속";
             _btn_audio.tag = BTN_DOWN_VIDEO_N;
@@ -120,11 +120,19 @@
             } else if ([[dic_fileinfo objectForKey:@"ctVideoNormalStat"]
                         isEqualToString:@"downloading"])
             {
-                _lbl_audio.textColor = textColor2;
-                _img_audio.hidden = YES;
-                _img_audio2.hidden = NO;
-                [self rotateImageView:_img_audio2];
-                _btn_audio.enabled = NO;
+                if (GetGPDataCenter.isDownloadPaused) {
+                    _lbl_audio.textColor = textColor2;
+                    _img_audio.hidden = NO;
+                    _img_audio2.hidden = YES;
+                    [_img_audio setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_wait" ofType:@"png"]]];
+                    _btn_audio.enabled = NO;
+                }else{
+                    _lbl_audio.textColor = textColor2;
+                    _img_audio.hidden = YES;
+                    _img_audio2.hidden = NO;
+                    [self rotateImageView:_img_audio2];
+                    _btn_audio.enabled = NO;
+                }
                 
             } else if ([[dic_fileinfo objectForKey:@"ctVideoNormalStat"]
                         isEqualToString:@"wait"])
@@ -146,6 +154,7 @@
                 _btn_audio.enabled = NO;
             }
         }
+        /* btn count == 1 비디오 저속 ========================================*/
         if ([dic_fileinfo objectForKey:@"ctVideoLow"] != nil) {
             _lbl_audio.text = @"Video 저속";
             _btn_audio.tag = BTN_DOWN_VIDEO_N;
@@ -161,11 +170,19 @@
             } else if ([[dic_fileinfo objectForKey:@"ctVideoLowStat"]
                         isEqualToString:@"downloading"])
             {
-                _lbl_audio.textColor = textColor2;
-                _img_audio.hidden = YES;
-                _img_audio2.hidden = NO;
-                [self rotateImageView:_img_audio2];
-                _btn_audio.enabled = NO;
+                if (GetGPDataCenter.isDownloadPaused) {
+                    _lbl_audio.textColor = textColor2;
+                    _img_audio.hidden = NO;
+                    _img_audio2.hidden = YES;
+                    [_img_audio setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_wait" ofType:@"png"]]];
+                    _btn_audio.enabled = NO;
+                }else{
+                    _lbl_audio.textColor = textColor2;
+                    _img_audio.hidden = YES;
+                    _img_audio2.hidden = NO;
+                    [self rotateImageView:_img_audio2];
+                    _btn_audio.enabled = NO;
+                }
                 
             } else if ([[dic_fileinfo objectForKey:@"ctVideoLowStat"]
                         isEqualToString:@"wait"])
@@ -187,6 +204,7 @@
                 _btn_audio.enabled = NO;
             }
         }
+        /* btn count == 1 오디오 ========================================*/
         if ([dic_fileinfo objectForKey:@"ctAudioDown"] != nil) {
             _lbl_audio.text = @"Audio";
             _btn_audio.tag = BTN_DOWN_AUDIO_A;
@@ -202,12 +220,19 @@
             } else if ([[dic_fileinfo objectForKey:@"ctAudioDownStat"]
                         isEqualToString:@"downloading"])
             {
-                _lbl_audio.textColor = textColor2;
-                _img_audio.hidden = YES;
-                _img_audio2.hidden = NO;
-                [self rotateImageView:_img_audio2];
-                _btn_audio.enabled = NO;
-                
+                if (GetGPDataCenter.isDownloadPaused) {
+                    _lbl_audio.textColor = textColor2;
+                    _img_audio.hidden = NO;
+                    _img_audio2.hidden = YES;
+                    [_img_audio setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_wait" ofType:@"png"]]];
+                    _btn_audio.enabled = NO;
+                }else{
+                    _lbl_audio.textColor = textColor2;
+                    _img_audio.hidden = YES;
+                    _img_audio2.hidden = NO;
+                    [self rotateImageView:_img_audio2];
+                    _btn_audio.enabled = NO;
+                }
             } else if ([[dic_fileinfo objectForKey:@"ctAudioDownStat"]
                         isEqualToString:@"wait"])
             {
@@ -238,7 +263,7 @@
         self.img_line_1.hidden = YES;
         
         [self.img_btn_background setFrame:CGRectMake(97, 0, 193, 28)];
-        
+        /* btn count == 2 오디오 ========================================*/
         if ([dic_fileinfo objectForKey:@"ctAudioDown"] != nil) {
             _lbl_audio.text = @"Audio";
             _btn_audio.tag = BTN_DOWN_AUDIO_A;
@@ -254,12 +279,19 @@
             } else if ([[dic_fileinfo objectForKey:@"ctAudioDownStat"]
                         isEqualToString:@"downloading"])
             {
-                _lbl_audio.textColor = textColor2;
-                _img_audio.hidden = YES;
-                _img_audio2.hidden = NO;
-                [self rotateImageView:_img_audio2];
-                _btn_audio.enabled = NO;
-                
+                if (GetGPDataCenter.isDownloadPaused) {
+                    _lbl_audio.textColor = textColor2;
+                    _img_audio.hidden = NO;
+                    _img_audio2.hidden = YES;
+                    [_img_audio setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_wait" ofType:@"png"]]];
+                    _btn_audio.enabled = NO;
+                }else{
+                    _lbl_audio.textColor = textColor2;
+                    _img_audio.hidden = YES;
+                    _img_audio2.hidden = NO;
+                    [self rotateImageView:_img_audio2];
+                    _btn_audio.enabled = NO;
+                }
             } else if ([[dic_fileinfo objectForKey:@"ctAudioDownStat"]
                         isEqualToString:@"wait"])
             {
@@ -280,8 +312,9 @@
                 _btn_audio.enabled = NO;
             }
         }
-        
+        /* btn count == 2 비디오 저속 ========================================*/
         if ([dic_fileinfo objectForKey:@"ctVideoLow"] != nil) {
+            /* btn count == 2 비디오 저속(오디오 파일이 없을 경우) ========================================*/
             if ([dic_fileinfo objectForKey:@"ctAudioDown"] == nil) {
                 _lbl_audio.text = @"Video 저속";
                 _btn_audio.tag = BTN_DOWN_VIDEO_L;
@@ -297,12 +330,19 @@
                 } else if ([[dic_fileinfo objectForKey:@"ctVideoLowStat"]
                             isEqualToString:@"downloading"])
                 {
-                    _lbl_audio.textColor = textColor2;
-                    _img_audio.hidden = YES;
-                    _img_audio2.hidden = NO;
-                    [self rotateImageView:_img_audio2];
-                    _btn_audio.enabled = NO;
-                    
+                    if (GetGPDataCenter.isDownloadPaused) {
+                        _lbl_audio.textColor = textColor2;
+                        _img_audio.hidden = NO;
+                        _img_audio2.hidden = YES;
+                        [_img_audio setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_wait" ofType:@"png"]]];
+                        _btn_audio.enabled = NO;
+                    } else {
+                        _lbl_audio.textColor = textColor2;
+                        _img_audio.hidden = YES;
+                        _img_audio2.hidden = NO;
+                        [self rotateImageView:_img_audio2];
+                        _btn_audio.enabled = NO;
+                    }
                 } else if ([[dic_fileinfo objectForKey:@"ctVideoLowStat"]
                             isEqualToString:@"wait"])
                 {
@@ -322,7 +362,10 @@
                     
                     _btn_audio.enabled = NO;
                 }
-            } else {
+            }
+            
+            /* btn count == 2 비디오 저속(오디오 파일이 있을 경우) ========================================*/
+            else {
                 _lbl_video_l.text = @"Video 저속";
                 _btn_video_l.tag = BTN_DOWN_VIDEO_L;
                 if ([[dic_fileinfo objectForKey:@"ctVideoLowStat"]
@@ -337,11 +380,19 @@
                 } else if ([[dic_fileinfo objectForKey:@"ctVideoLowStat"]
                             isEqualToString:@"downloading"])
                 {
-                    _lbl_video_l.textColor = textColor2;
-                    _img_video_l.hidden = YES;
-                    _img_video_l2.hidden = NO;
-                    [self rotateImageView:_img_video_l2];
-                    _btn_video_l.enabled = NO;
+                    if (GetGPDataCenter.isDownloadPaused) {
+                        _lbl_video_l.textColor = textColor2;
+                        _img_video_l.hidden = NO;
+                        _img_video_l2.hidden = YES;
+                        [_img_video_l setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_wait" ofType:@"png"]]];
+                        _btn_video_l.enabled = NO;
+                    } else {
+                        _lbl_video_l.textColor = textColor2;
+                        _img_video_l.hidden = YES;
+                        _img_video_l2.hidden = NO;
+                        [self rotateImageView:_img_video_l2];
+                        _btn_video_l.enabled = NO;
+                    }
                     
                 } else if ([[dic_fileinfo objectForKey:@"ctVideoLowStat"]
                             isEqualToString:@"wait"])
@@ -365,7 +416,7 @@
             }
             
         }
-        
+        /* btn count == 2 비디오 고속 ========================================*/
         if ([dic_fileinfo objectForKey:@"ctVideoNormal"] != nil) {
             _lbl_video_l.text = @"Video 고속";
             _btn_video_l.tag = BTN_DOWN_VIDEO_N;
@@ -381,11 +432,19 @@
             } else if ([[dic_fileinfo objectForKey:@"ctVideoLowStat"]
                         isEqualToString:@"downloading"])
             {
-                _lbl_video_l.textColor = textColor2;
-                _img_video_l.hidden = YES;
-                _img_video_l2.hidden = NO;
-                [self rotateImageView:_img_video_l2];
-                _btn_video_l.enabled = NO;
+                if (GetGPDataCenter.isDownloadPaused) {
+                    _lbl_video_l.textColor = textColor2;
+                    _img_video_l.hidden = NO;
+                    _img_video_l2.hidden = YES;
+                    [_img_video_l setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_wait" ofType:@"png"]]];
+                    _btn_video_l.enabled = NO;
+                } else {
+                    _lbl_video_l.textColor = textColor2;
+                    _img_video_l.hidden = YES;
+                    _img_video_l2.hidden = NO;
+                    [self rotateImageView:_img_video_l2];
+                    _btn_video_l.enabled = NO;
+                }
                 
             } else if ([[dic_fileinfo objectForKey:@"ctVideoLowStat"]
                         isEqualToString:@"wait"])
@@ -408,6 +467,7 @@
             }
         }
     } else {
+        /* btn count == 3 비디오 고속 ========================================*/
         if ([[dic_fileinfo objectForKey:@"ctVideoNormalStat"]
              isEqualToString:@"normal"])
         {
@@ -420,11 +480,20 @@
         } else if ([[dic_fileinfo objectForKey:@"ctVideoNormalStat"]
                     isEqualToString:@"downloading"])
         {
-            _lbl_video_n.textColor = textColor2;
-            _img_video_n.hidden = YES;
-            _img_video_n2.hidden = NO;
-            [self rotateImageView:_img_video_n2];
-            _btn_video_n.enabled = NO;
+            if (GetGPDataCenter.isDownloadPaused) {
+                _lbl_video_n.textColor = textColor2;
+                _img_video_n.hidden = NO;
+                _img_video_n2.hidden = YES;
+                [_img_video_n setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_wait" ofType:@"png"]]];
+                _btn_video_n.enabled = NO;
+            } else {
+                _lbl_video_n.textColor = textColor2;
+                _img_video_n.hidden = YES;
+                _img_video_n2.hidden = NO;
+                [self rotateImageView:_img_video_n2];
+                _btn_video_n.enabled = NO;
+            }
+            
             
         } else if ([[dic_fileinfo objectForKey:@"ctVideoNormalStat"]
                     isEqualToString:@"wait"])
@@ -445,7 +514,7 @@
             
             _btn_video_n.enabled = NO;
         }
-        
+        /* btn count == 3 비디오 저속 ========================================*/
         if ([[dic_fileinfo objectForKey:@"ctVideoLowStat"]
              isEqualToString:@"normal"])
         {
@@ -458,11 +527,19 @@
         } else if ([[dic_fileinfo objectForKey:@"ctVideoLowStat"]
                     isEqualToString:@"downloading"])
         {
-            _lbl_video_l.textColor = textColor2;
-            _img_video_l.hidden = YES;
-            _img_video_l2.hidden = NO;
-            [self rotateImageView:_img_video_l2];
-            _btn_video_l.enabled = NO;
+            if (GetGPDataCenter.isDownloadPaused) {
+                _lbl_video_l.textColor = textColor2;
+                _img_video_l.hidden = NO;
+                _img_video_l2.hidden = YES;
+                [_img_video_l setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_wait" ofType:@"png"]]];
+                _btn_video_l.enabled = NO;
+            } else {
+                _lbl_video_l.textColor = textColor2;
+                _img_video_l.hidden = YES;
+                _img_video_l2.hidden = NO;
+                [self rotateImageView:_img_video_l2];
+                _btn_video_l.enabled = NO;
+            }
             
         } else if ([[dic_fileinfo objectForKey:@"ctVideoLowStat"]
                     isEqualToString:@"wait"])
@@ -483,7 +560,7 @@
             
             _btn_video_l.enabled = NO;
         }
-        
+        /* btn count == 3 오디오 ========================================*/
         if ([[dic_fileinfo objectForKey:@"ctAudioDownStat"]
              isEqualToString:@"normal"])
         {
@@ -496,12 +573,19 @@
         } else if ([[dic_fileinfo objectForKey:@"ctAudioDownStat"]
                     isEqualToString:@"downloading"])
         {
-            _lbl_audio.textColor = textColor2;
-            _img_audio.hidden = YES;
-            _img_audio2.hidden = NO;
-            [self rotateImageView:_img_audio2];
-            _btn_audio.enabled = NO;
-            
+            if (GetGPDataCenter.isDownloadPaused) {
+                _lbl_audio.textColor = textColor2;
+                _img_audio.hidden = NO;
+                _img_audio2.hidden = YES;
+                [_img_audio setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_wait" ofType:@"png"]]];
+                _btn_audio.enabled = NO;
+            } else {
+                _lbl_audio.textColor = textColor2;
+                _img_audio.hidden = YES;
+                _img_audio2.hidden = NO;
+                [self rotateImageView:_img_audio2];
+                _btn_audio.enabled = NO;
+            }
         } else if ([[dic_fileinfo objectForKey:@"ctAudioDownStat"]
                     isEqualToString:@"wait"])
         {

@@ -47,6 +47,12 @@
                                        userInfo: nil
                                         repeats: NO];
     }
+    
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
+                                          initWithTarget:self action:@selector(longPressGestureRecognized:)];
+    lpgr.minimumPressDuration = 2.0; //seconds
+    lpgr.delegate = self;
+    [self.tableView addGestureRecognizer:lpgr];
 }
 
 - (void)changeNaviTitle{
@@ -66,6 +72,7 @@
                                              selector:@selector(moveSettingView)
                                                  name:_CMD_MOVE_SETTING_VIEW
                                                object:nil];
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
     self.arr_myCast = [[NSMutableArray alloc] initWithCapacity:5];
     self.arr_myCast = [GetGPSQLiteController GetRecordsMyCast];
@@ -79,6 +86,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:_CMD_MOVE_SETTING_VIEW object:nil];
 }
 
@@ -99,6 +107,40 @@
     [self.navigationController pushViewController:settingViewController animated:YES];
 }
 
+-(void)remoteControlReceivedWithEvent:(UIEvent *)event{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RemoteControlEventReceived" object:event];
+}
+
+-(void)remoteControlEventNotification:(NSNotification *)note
+{
+    AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
+    UIEvent *event = note.object;
+    if ( event.type == UIEventTypeRemoteControl ) {
+        switch (event.subtype) {
+            case UIEventSubtypeRemoteControlPlay:
+                [mainDelegate.audioPlayer play];
+                break;
+            case UIEventSubtypeRemoteControlPause:
+                [mainDelegate.audioPlayer pause];
+                break;
+            case UIEventSubtypeRemoteControlStop:
+                [mainDelegate.audioPlayer stop];
+                break;
+            case UIEventSubtypeRemoteControlBeginSeekingBackward:
+            case UIEventSubtypeRemoteControlBeginSeekingForward:
+            case UIEventSubtypeRemoteControlEndSeekingBackward:
+            case UIEventSubtypeRemoteControlEndSeekingForward:
+            case UIEventSubtypeRemoteControlPreviousTrack:
+            case UIEventSubtypeRemoteControlNextTrack:
+                
+                break;
+                
+            default:
+                break;
+        }
+    }
+}
+
 #pragma mark -
 #pragma mark Gesture recognizer
 
@@ -116,6 +158,27 @@
     }
 }
 
+- (IBAction)longPressGestureRecognized:(UILongPressGestureRecognizer *)gestureRecognizer
+{
+    CGPoint p = [gestureRecognizer locationInView:self.tableView];
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+    if (indexPath == nil) {
+        NSLog(@"long press on table view but not on a row");
+    }
+    else
+        if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+            NSLog(@"long press on table view at row %d", indexPath.row);
+            NSDictionary *dic = [self.arr_myCast objectAtIndex:indexPath.row];
+            
+            [[UIPasteboard generalPasteboard] setString:[dic objectForKey:@"prXmlAddress"]];
+            [GPAlertUtil alertWithMessage:@"클립보드에 내용이 복사되었습니다."];
+            
+        }
+        else {
+            NSLog(@"gestureRecognizer.state = %d", gestureRecognizer.state);
+        }
+}
 - (void)moveAudioPlayView
 {
     if ([[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_AUDIO) {
@@ -295,6 +358,7 @@
     NSDictionary *dic = [self.arr_myCast objectAtIndex:indexPath.row];
     
     cell.textLabel.text = [dic objectForKey:@"prTitle"];
+    longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:cell action:@selector(longPressGestureRecognized:)];
     
     return cell;
 }

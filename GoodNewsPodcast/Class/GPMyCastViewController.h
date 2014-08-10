@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "REFrostedViewController.h"
 
-@interface GPMyCastViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface GPMyCastViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
 {
     IBOutlet UIImageView    *_img_btn;
     
     UIPanGestureRecognizer *panGesture;
+    
+    UILongPressGestureRecognizer *longPressGesture;
 }
 
 @property (nonatomic, strong) NSMutableArray *arr_myCast;

@@ -17,6 +17,8 @@
 @property (nonatomic) BOOL      isFirstMove;
 @property (nonatomic) BOOL      isFirstView;
 @property (nonatomic) BOOL      isAudioPlaying;
+@property (nonatomic) BOOL      isDownloading;
+@property (nonatomic) BOOL      isDownloadPaused;
 @property (nonatomic) float     playbackTime;
 
 @property (nonatomic, strong) NSMutableArray *sendQueue;

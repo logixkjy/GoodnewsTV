@@ -34,6 +34,8 @@
     // Do any additional setup after loading the view.
     
     
+    [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -43,6 +45,7 @@
                                              selector:@selector(moveSettingView)
                                                  name:_CMD_MOVE_SETTING_VIEW
                                                object:nil];
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
     [self.tableView reloadData];
     
@@ -59,6 +62,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:_CMD_MOVE_SETTING_VIEW object:nil];
 }
 
@@ -124,6 +128,39 @@
     _img_menu_btn.highlighted = !_img_menu_btn.highlighted;
 }
 
+-(void)remoteControlReceivedWithEvent:(UIEvent *)event{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RemoteControlEventReceived" object:event];
+}
+
+-(void)remoteControlEventNotification:(NSNotification *)note
+{
+    AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
+    UIEvent *event = note.object;
+    if ( event.type == UIEventTypeRemoteControl ) {
+        switch (event.subtype) {
+            case UIEventSubtypeRemoteControlPlay:
+                [mainDelegate.audioPlayer play];
+                break;
+            case UIEventSubtypeRemoteControlPause:
+                [mainDelegate.audioPlayer pause];
+                break;
+            case UIEventSubtypeRemoteControlStop:
+                [mainDelegate.audioPlayer stop];
+                break;
+            case UIEventSubtypeRemoteControlBeginSeekingBackward:
+            case UIEventSubtypeRemoteControlBeginSeekingForward:
+            case UIEventSubtypeRemoteControlEndSeekingBackward:
+            case UIEventSubtypeRemoteControlEndSeekingForward:
+            case UIEventSubtypeRemoteControlPreviousTrack:
+            case UIEventSubtypeRemoteControlNextTrack:
+                
+                break;
+                
+            default:
+                break;
+        }
+    }
+}
 
 - (void)moveAudioPlayView
 {

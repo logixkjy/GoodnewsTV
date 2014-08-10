@@ -109,6 +109,7 @@
                                              selector:@selector(moveSettingView)
                                                  name:_CMD_MOVE_SETTING_VIEW
                                                object:nil];
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
     self.btn_nowplay.hidden = !GetGPDataCenter.isAudioPlaying;
     [self.btn_nowplay addTarget:self action:@selector(moveAudioPlayView) forControlEvents:UIControlEventTouchUpInside];
@@ -123,6 +124,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:_CMD_MOVE_SETTING_VIEW object:nil];
 }
 
@@ -340,6 +342,41 @@
     GPLiveCastViewController *liveCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LiveCast"];
     [self.navigationController pushViewController:liveCastViewController animated:YES];
 }
+
+-(void)remoteControlReceivedWithEvent:(UIEvent *)event{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RemoteControlEventReceived" object:event];
+}
+
+-(void)remoteControlEventNotification:(NSNotification *)note
+{
+    AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
+    UIEvent *event = note.object;
+    if ( event.type == UIEventTypeRemoteControl ) {
+        switch (event.subtype) {
+            case UIEventSubtypeRemoteControlPlay:
+                [mainDelegate.audioPlayer play];
+                break;
+            case UIEventSubtypeRemoteControlPause:
+                [mainDelegate.audioPlayer pause];
+                break;
+            case UIEventSubtypeRemoteControlStop:
+                [mainDelegate.audioPlayer stop];
+                break;
+            case UIEventSubtypeRemoteControlBeginSeekingBackward:
+            case UIEventSubtypeRemoteControlBeginSeekingForward:
+            case UIEventSubtypeRemoteControlEndSeekingBackward:
+            case UIEventSubtypeRemoteControlEndSeekingForward:
+            case UIEventSubtypeRemoteControlPreviousTrack:
+            case UIEventSubtypeRemoteControlNextTrack:
+                
+                break;
+                
+            default:
+                break;
+        }
+    }
+}
+
 #pragma mark -
 #pragma mark UITableView Datasource
 

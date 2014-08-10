@@ -73,7 +73,6 @@
 		31E1C3C7197FD18300E66DE0 /* GPSQLiteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31E1C3C6197FD18300E66DE0 /* GPSQLiteController.m */; };
 		31E1C3C9197FD1AE00E66DE0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E1C3C8197FD1AE00E66DE0 /* libsqlite3.0.dylib */; };
 		31E3363C1979F7500027A68B /* LaunchImages_640-960.png in Resources */ = {isa = PBXBuildFile; fileRef = 31E336361979F7500027A68B /* LaunchImages_640-960.png */; };
-		31E3363D1979F7500027A68B /* LaunchImages_640-1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 31E336371979F7500027A68B /* LaunchImages_640-1136.png */; };
 		31E3363E1979F7500027A68B /* ios_icon_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 31E336381979F7500027A68B /* ios_icon_120.png */; };
 		31E3363F1979F7500027A68B /* ios_icon_152.png in Resources */ = {isa = PBXBuildFile; fileRef = 31E336391979F7500027A68B /* ios_icon_152.png */; };
 		31E336401979F7500027A68B /* ios_icon_512.png in Resources */ = {isa = PBXBuildFile; fileRef = 31E3363A1979F7500027A68B /* ios_icon_512.png */; };
@@ -101,7 +100,6 @@
 		31EDCD6119736DD300F8D50E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EDCD6019736DD300F8D50E /* main.m */; };
 		31EDCD6519736DD300F8D50E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EDCD6419736DD300F8D50E /* AppDelegate.m */; };
 		31EDCD6819736DD300F8D50E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31EDCD6619736DD300F8D50E /* Main.storyboard */; };
-		31EDCD6D19736DD300F8D50E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31EDCD6C19736DD300F8D50E /* Images.xcassets */; };
 		31EDCD7419736DD400F8D50E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EDCD7319736DD400F8D50E /* XCTest.framework */; };
 		31EDCD7519736DD400F8D50E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EDCD5419736DD300F8D50E /* Foundation.framework */; };
 		31EDCD7619736DD400F8D50E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EDCD5819736DD300F8D50E /* UIKit.framework */; };
@@ -177,6 +175,7 @@
 		9808BBB71987F2A90031232F /* GPAddMyCastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9808BBB61987F2A90031232F /* GPAddMyCastViewController.m */; };
 		9814FAAF1986AC160025C40B /* AFDownloadRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9814FAAE1986AC160025C40B /* AFDownloadRequestOperation.m */; };
 		98EB2011198C6AFA00605D22 /* CBAutoScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EB2010198C6AFA00605D22 /* CBAutoScrollLabel.m */; };
+		98EF73361997B6A500677725 /* LaunchImages_640-1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 98EF73351997B6A500677725 /* LaunchImages_640-1136.png */; };
 		98FF3679198AAA02003F89A5 /* iVersion.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 98FF3676198AAA02003F89A5 /* iVersion.bundle */; };
 		98FF367A198AAA02003F89A5 /* iVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF3678198AAA02003F89A5 /* iVersion.m */; };
 /* End PBXBuildFile section */
@@ -303,7 +302,6 @@
 		31E1C3C6197FD18300E66DE0 /* GPSQLiteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSQLiteController.m; sourceTree = "<group>"; };
 		31E1C3C8197FD1AE00E66DE0 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		31E336361979F7500027A68B /* LaunchImages_640-960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImages_640-960.png"; sourceTree = "<group>"; };
-		31E336371979F7500027A68B /* LaunchImages_640-1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImages_640-1136.png"; sourceTree = "<group>"; };
 		31E336381979F7500027A68B /* ios_icon_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ios_icon_120.png; sourceTree = "<group>"; };
 		31E336391979F7500027A68B /* ios_icon_152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ios_icon_152.png; sourceTree = "<group>"; };
 		31E3363A1979F7500027A68B /* ios_icon_512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ios_icon_512.png; sourceTree = "<group>"; };
@@ -345,7 +343,6 @@
 		31EDCD6319736DD300F8D50E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		31EDCD6419736DD300F8D50E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		31EDCD6719736DD300F8D50E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		31EDCD6C19736DD300F8D50E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		31EDCD7219736DD400F8D50E /* GoodNewsPodcastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoodNewsPodcastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		31EDCD7319736DD400F8D50E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		31EDCD7B19736DD400F8D50E /* GoodNewsPodcastTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoodNewsPodcastTests-Info.plist"; sourceTree = "<group>"; };
@@ -449,6 +446,7 @@
 		9814FAAE1986AC160025C40B /* AFDownloadRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadRequestOperation.m; sourceTree = "<group>"; };
 		98EB200F198C6AFA00605D22 /* CBAutoScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAutoScrollLabel.h; sourceTree = "<group>"; };
 		98EB2010198C6AFA00605D22 /* CBAutoScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAutoScrollLabel.m; sourceTree = "<group>"; };
+		98EF73351997B6A500677725 /* LaunchImages_640-1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImages_640-1136.png"; sourceTree = "<group>"; };
 		98FF3676198AAA02003F89A5 /* iVersion.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iVersion.bundle; sourceTree = "<group>"; };
 		98FF3677198AAA02003F89A5 /* iVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iVersion.h; sourceTree = "<group>"; };
 		98FF3678198AAA02003F89A5 /* iVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iVersion.m; sourceTree = "<group>"; };
@@ -619,7 +617,6 @@
 				31EDCD6319736DD300F8D50E /* AppDelegate.h */,
 				31EDCD6419736DD300F8D50E /* AppDelegate.m */,
 				31EDCD6619736DD300F8D50E /* Main.storyboard */,
-				31EDCD6C19736DD300F8D50E /* Images.xcassets */,
 				31EDCD5B19736DD300F8D50E /* Supporting Files */,
 			);
 			path = GoodNewsPodcast;
@@ -711,6 +708,7 @@
 		31EDCDA61973759C00F8D50E /* Img */ = {
 			isa = PBXGroup;
 			children = (
+				98EF73351997B6A500677725 /* LaunchImages_640-1136.png */,
 				98021B06198BDA9600347EF3 /* player_time_handle.png */,
 				3192338F198B9AE5000B1E25 /* loading_01@2x.png */,
 				31923390198B9AE5000B1E25 /* loading_02@2x.png */,
@@ -751,7 +749,6 @@
 				31E336381979F7500027A68B /* ios_icon_120.png */,
 				31E336391979F7500027A68B /* ios_icon_152.png */,
 				31E3363A1979F7500027A68B /* ios_icon_512.png */,
-				31E336371979F7500027A68B /* LaunchImages_640-1136.png */,
 				31E336361979F7500027A68B /* LaunchImages_640-960.png */,
 				31E8FE2419890C800029D294 /* live_bg.png */,
 				31E8FE1F19890C800029D294 /* live_btn_bg.9.png */,
@@ -990,6 +987,7 @@
 				31EDCDFC1973759C00F8D50E /* tit_setting.png in Resources */,
 				31EDCDD51973759C00F8D50E /* box_popupmenu1.9.png in Resources */,
 				31EDCDF21973759C00F8D50E /* player_volum_max.png in Resources */,
+				98EF73361997B6A500677725 /* LaunchImages_640-1136.png in Resources */,
 				314D3E281982C6A20079A974 /* download_cancel_btn.png in Resources */,
 				31E336411979F7500027A68B /* ios_icon_1024.png in Resources */,
 				314D3E2A1982C6A20079A974 /* thumbnail_none.png in Resources */,
@@ -1023,10 +1021,8 @@
 				31EDCDF01973759C00F8D50E /* player_btn_pre_press.png in Resources */,
 				31EDCDEC1973759C00F8D50E /* player_btn_next_press.png in Resources */,
 				31EDCDD71973759C00F8D50E /* btn_witch_off.png in Resources */,
-				31EDCD6D19736DD300F8D50E /* Images.xcassets in Resources */,
 				31EDCDEF1973759C00F8D50E /* player_btn_pre.png in Resources */,
 				31E8FE3019890C800029D294 /* live_icon_tv_press.png in Resources */,
-				31E3363D1979F7500027A68B /* LaunchImages_640-1136.png in Resources */,
 				31EDCDD41973759C00F8D50E /* box_down.9.png in Resources */,
 				31EDCDE81973759C00F8D50E /* icon_setting_press.png in Resources */,
 				31E3363E1979F7500027A68B /* ios_icon_120.png in Resources */,
@@ -1267,7 +1263,7 @@
 					"$(PROJECT_DIR)/GoodNewsPodcast/Class/common/FMDB",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "82862052-7B76-4FD7-B827-EB9D8904B498";
+				PROVISIONING_PROFILE = "ED4AD76F-6235-4C64-809D-497BEF6B8DC8";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -1377,7 +1373,7 @@
 					"$(PROJECT_DIR)/GoodNewsPodcast/Class/common/FMDB",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "DDED1254-41E6-45EB-A896-B8708847D409";
+				PROVISIONING_PROFILE = "C8A20B92-D9B8-4FA0-A5C8-F1A957D636DD";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -1399,7 +1395,7 @@
 					"$(PROJECT_DIR)/GoodNewsPodcast/Class/common/FMDB",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F339C571-D9A7-408E-A883-5FB7C3C06D63";
+				PROVISIONING_PROFILE = "5ECEF98E-DC76-4A4F-91AE-F3E7AA79CE82";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;

@@ -60,6 +60,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moveSettingView)
                                                  name:_CMD_MOVE_SETTING_VIEW
@@ -92,6 +93,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:_CMD_MOVE_SETTING_VIEW object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:_CMD_FILE_DOWN_FINISHED object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:_CMD_FILE_DOWN_START object:nil];
@@ -109,6 +111,40 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(void)remoteControlReceivedWithEvent:(UIEvent *)event{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RemoteControlEventReceived" object:event];
+}
+
+-(void)remoteControlEventNotification:(NSNotification *)note
+{
+    AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
+    UIEvent *event = note.object;
+    if ( event.type == UIEventTypeRemoteControl ) {
+        switch (event.subtype) {
+            case UIEventSubtypeRemoteControlPlay:
+                [mainDelegate.audioPlayer play];
+                break;
+            case UIEventSubtypeRemoteControlPause:
+                [mainDelegate.audioPlayer pause];
+                break;
+            case UIEventSubtypeRemoteControlStop:
+                [mainDelegate.audioPlayer stop];
+                break;
+            case UIEventSubtypeRemoteControlBeginSeekingBackward:
+            case UIEventSubtypeRemoteControlBeginSeekingForward:
+            case UIEventSubtypeRemoteControlEndSeekingBackward:
+            case UIEventSubtypeRemoteControlEndSeekingForward:
+            case UIEventSubtypeRemoteControlPreviousTrack:
+            case UIEventSubtypeRemoteControlNextTrack:
+                
+                break;
+                
+            default:
+                break;
+        }
+    }
+}
 
 - (void)moveSettingView
 {
