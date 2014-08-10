@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoodNewsPodcast/Class/Cell/GPGNContentCell.m"
-            timestampString = "429376252.383502"
+            timestampString = "429378494.736366"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
             landmarkName = "-setButton:"
             landmarkType = "5">
          </BreakpointContent>

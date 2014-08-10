@@ -161,8 +161,9 @@
 
 - (void)fileDownCancel:(NSNotification*)noti
 {
+    AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
     if (_downCont == nil) {
-        AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
+        
         _downCont = mainDelegate.downloadController;
     }
     NSDictionary *userInfo = noti.userInfo;
@@ -195,6 +196,10 @@
         
         if ([self.arr_downList count] == 0) {
             GetGPDataCenter.isExistingDownload = NO;
+            if (GetGPDataCenter.isDownloadPaused) {
+                GetGPDataCenter.isDownloadPaused = NO;
+                [_downCont downloadCanlcel];
+            }
         }
         
     }

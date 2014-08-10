@@ -77,31 +77,45 @@
         self.lbl_video_n.hidden = YES;
         self.lbl_video_l.hidden = YES;
         self.lbl_audio.hidden = YES;
+        
         self.img_video_n.hidden = YES;
         self.img_video_n2.hidden = YES;
         self.img_video_l.hidden = YES;
         self.img_video_l2.hidden = YES;
         self.img_audio.hidden = YES;
         self.img_audio2.hidden = YES;
+        
         self.btn_video_l.hidden = YES;
         self.btn_video_n.hidden = YES;
         self.btn_audio.hidden = YES;
+        
         self.img_line_1.hidden = YES;
         self.img_line_2.hidden = YES;
+        
         self.img_btn_background.hidden = YES;
     }
-    else if (btnCnt == 1)
+    
+    if (btnCnt == 1)
     {
         self.lbl_video_n.hidden = YES;
         self.lbl_video_l.hidden = YES;
+        self.lbl_audio.hidden = NO;
+        
         self.img_video_n.hidden = YES;
         self.img_video_n2.hidden = YES;
         self.img_video_l.hidden = YES;
         self.img_video_l2.hidden = YES;
+        self.img_audio.hidden = NO;
+        self.img_audio2.hidden = NO;
+        
         self.btn_video_l.hidden = YES;
         self.btn_video_n.hidden = YES;
+        self.btn_audio.hidden = NO;
+        
         self.img_line_1.hidden = YES;
         self.img_line_2.hidden = YES;
+        
+        self.img_btn_background.hidden = NO;
         
         [self.img_btn_background setFrame:CGRectMake(193, 0, 97, 28)];
         /* btn count == 1 비디오 고속 ========================================*/
@@ -257,12 +271,27 @@
     else if (btnCnt == 2)
     {
         self.lbl_video_n.hidden = YES;
+        self.lbl_video_l.hidden = NO;
+        self.lbl_audio.hidden = NO;
+        
         self.img_video_n.hidden = YES;
         self.img_video_n2.hidden = YES;
-        self.btn_video_n.hidden = YES;
+        self.img_video_l.hidden = NO;
+        self.img_video_l2.hidden = NO;
+        self.img_audio.hidden = NO;
+        self.img_audio2.hidden = NO;
+        
+        self.btn_video_l.hidden = YES;
+        self.btn_video_n.hidden = NO;
+        self.btn_audio.hidden = NO;
+        
         self.img_line_1.hidden = YES;
+        self.img_line_2.hidden = NO;
+        
+        self.img_btn_background.hidden = NO;
         
         [self.img_btn_background setFrame:CGRectMake(97, 0, 193, 28)];
+        
         /* btn count == 2 오디오 ========================================*/
         if ([dic_fileinfo objectForKey:@"ctAudioDown"] != nil) {
             _lbl_audio.text = @"Audio";
@@ -467,6 +496,27 @@
             }
         }
     } else {
+        self.lbl_video_n.hidden = NO;
+        self.lbl_video_l.hidden = NO;
+        self.lbl_audio.hidden = NO;
+        
+        self.img_video_n.hidden = NO;
+        self.img_video_n2.hidden = NO;
+        self.img_video_l.hidden = NO;
+        self.img_video_l2.hidden = NO;
+        self.img_audio.hidden = NO;
+        self.img_audio2.hidden = NO;
+        
+        self.btn_video_l.hidden = NO;
+        self.btn_video_n.hidden = NO;
+        self.btn_audio.hidden = NO;
+        
+        self.img_line_1.hidden = NO;
+        self.img_line_2.hidden = NO;
+        
+        self.img_btn_background.hidden = NO;
+        
+        [self.img_btn_background setFrame:CGRectMake(0, 0, 290, 28)];
         /* btn count == 3 비디오 고속 ========================================*/
         if ([[dic_fileinfo objectForKey:@"ctVideoNormalStat"]
              isEqualToString:@"normal"])
@@ -493,8 +543,6 @@
                 [self rotateImageView:_img_video_n2];
                 _btn_video_n.enabled = NO;
             }
-            
-            
         } else if ([[dic_fileinfo objectForKey:@"ctVideoNormalStat"]
                     isEqualToString:@"wait"])
         {
