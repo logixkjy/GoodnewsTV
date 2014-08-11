@@ -142,7 +142,6 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    [GPAlertUtil alertWithMessage:@"applicationWillTerminate"];
     [_downloadController downloadPause];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }

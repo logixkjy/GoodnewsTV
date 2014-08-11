@@ -23,3 +23,6 @@
 #import "GPAlertUtil.h"
 #import "GPSQLiteController.h"
 #endif
+
+#define NSLog( s, ... )
+#define printf( s, ...)
