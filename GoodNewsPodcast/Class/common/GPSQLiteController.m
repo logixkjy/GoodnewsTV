@@ -260,7 +260,7 @@ static GPSQLiteController* g_GPSQLiteControllerInstance = nil;
 {
     NSString *sql  = @"SELECT _id, PR_CODE, PR_TITLE, PR_THUMB, CT_NAME, CT_SPEAKER,\
     CT_PHRASE, CT_FILE_NAME, CT_FILE_TYPE, CT_EVENT_DATE\
-    FROM TBL_DOWN_BOX ORDER BY PR_CODE ASC, _id ASC";
+    FROM TBL_DOWN_BOX ORDER BY PR_CODE ASC, CT_EVENT_DATE DESC";
     
     NSLog(@"sql ==> [%@}",sql);
     _database = [FMDatabase databaseWithPath:self.databasePath];

@@ -88,7 +88,7 @@
     
     if (!GetGPDataCenter.isFirstView) {
         GetGPDataCenter.isFirstView = !GetGPDataCenter.isFirstView;
-        self.lbl_naviTitle.text = @"GOODNEWS TV";
+        self.lbl_naviTitle.text = @"굿뉴스TV";
         
         [NSTimer scheduledTimerWithTimeInterval: 5.0f
                                          target: self

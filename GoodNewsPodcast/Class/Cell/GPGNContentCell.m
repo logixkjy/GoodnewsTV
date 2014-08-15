@@ -94,8 +94,7 @@
         
         self.img_btn_background.hidden = YES;
     }
-    
-    if (btnCnt == 1)
+    else if (btnCnt == 1)
     {
         self.lbl_video_n.hidden = YES;
         self.lbl_video_l.hidden = YES;

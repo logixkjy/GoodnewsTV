@@ -15,6 +15,8 @@
     NSTimer *timer;
     
     BOOL    isFirst;
+    
+    NSString *str_selCh;
 }
 
 @property (nonatomic, strong) IBOutlet UIButton *btn_nowplay;

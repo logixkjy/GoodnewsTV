@@ -60,6 +60,8 @@
     
     count = 5;
     isFirst = NO;
+    
+    str_selCh = @"";
 }
 
 - (void)didReceiveMemoryWarning
@@ -249,6 +251,25 @@
             }
         }
         isFirst = YES;
+    } else {
+        for (int i = 0; i < [self.arr_views count]; i++) {
+            NSMutableDictionary *dic_ch = [self.arr_channelList objectAtIndex:i];
+            UIView *view = [self.arr_views objectAtIndex:i];
+            UIImageView *img = [self.arr_bg_img objectAtIndex:i];
+            if ([str_selCh isEqualToString:[dic_ch objectForKey:@"chIos"]]) {
+                view.layer.borderWidth = 2.0f;
+                view.layer.borderColor=[UIColorFromRGB(0xf74300) CGColor];
+                img.alpha = 0.5f;
+                
+                [self.img_major_TV_check setFrame:CGRectMake(view.frame.origin.x + view.frame.size.width - 20, view.frame.origin.y - 5, 25, 25)];
+                self.img_major_TV_check.hidden = NO;
+                [self.menu_view bringSubviewToFront:self.img_major_TV_check];
+            } else {
+                view.layer.borderWidth = 0.0f;
+                view.layer.borderColor=[UIColorFromRGB(0xf74300) CGColor];
+                img.alpha = 0.4f;
+            }
+        }
     }
     
     if ([[self.dic_MsgIfo objectForKey:@"chIsLive"] isEqualToString:@"YES"]) {
@@ -289,7 +310,7 @@
 - (void)moveLiveStreamingView:(int)idx
 {
     NSMutableDictionary *dic_ch = [self.arr_channelList objectAtIndex:idx];
-    
+    str_selCh = [dic_ch objectForKey:@"chIos"];
     if ([[dic_ch objectForKey:@"chType"] isEqualToString:@"VIDEO"]) {
         [dic_ch setObject:[NSString stringWithFormat:@"%d",FILE_TYPE_VIDEO_STREAM] forKey:@"ctFileType"];
         GetGPDataCenter.dic_playInfo = [NSMutableDictionary dictionaryWithDictionary:dic_ch];

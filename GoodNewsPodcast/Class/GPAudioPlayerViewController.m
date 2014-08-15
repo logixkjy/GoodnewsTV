@@ -31,7 +31,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     isFileOpenFail = NO;
-    [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
     //이걸 지우면 전화걸때... 꺼짐
     [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: nil];
     
@@ -88,7 +87,12 @@
         GetGPDataCenter.dic_playInfo = [NSMutableDictionary dictionaryWithDictionary:self.dic_contents_data];
         
         if ([self.dic_contents_data objectForKey:@"chIos"] == nil) {
+            self.timeProgress.enabled = YES;
             [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePlaybackProgressFromTimer:) userInfo:nil repeats:YES];
+        } else {
+            self.timeProgress.enabled = NO;
+            self.lbl_playtime.text = @"--:--:--";
+            self.lbl_lasttime.text = @"--:--:--";
         }
         //        mainDelegate.audioPlayer = audioPlayer;
     }else {
@@ -306,20 +310,6 @@
     //[self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark -
-#pragma mark Gesture recognizer
-
-- (void)panGestureRecognized:(UIPanGestureRecognizer *)sender
-{
-    // Dismiss keyboard (optional)
-    //
-    [self.view endEditing:YES];
-    [self.frostedViewController.view endEditing:YES];
-    
-    // Present the view controller
-    //
-    [self.frostedViewController panGestureRecognized:sender];
-}
 
 - (IBAction)pressBtn:(UIButton*)sender
 {
