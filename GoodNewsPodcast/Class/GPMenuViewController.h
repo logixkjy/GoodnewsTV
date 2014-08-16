@@ -11,4 +11,5 @@
 
 @interface GPMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, strong) IBOutlet UIView *menuView;
 @end

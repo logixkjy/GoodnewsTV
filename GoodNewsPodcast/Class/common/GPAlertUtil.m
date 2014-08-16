@@ -91,6 +91,13 @@
                                  cancelButtonTitle:nil
                                  otherButtonTitles:NSLocalizedString(@"삭제", @"삭제"),NSLocalizedString(@"취소", @"취소"),nil ];
         [alert setTag:1005];
+    } else if (tag == 5) {
+        alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"알림", @"알림")
+                                           message:message
+                                          delegate:aDelegate
+                                 cancelButtonTitle:nil
+                                 otherButtonTitles:NSLocalizedString(@"확인", @"확인"),NSLocalizedString(@"취소", @"취소"),nil ];
+        [alert setTag:1006];
     }
 	[alert show];
 }

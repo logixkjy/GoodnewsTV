@@ -130,6 +130,9 @@
                 _btn_audio.enabled = YES;
                 [_img_audio setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_normal" ofType:@"png"]]];
                 
+                [_btn_audio removeTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+                [_btn_audio addTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
+                
             } else if ([[dic_fileinfo objectForKey:@"ctVideoNormalStat"]
                         isEqualToString:@"downloading"])
             {
@@ -164,7 +167,10 @@
                 _img_audio2.hidden = YES;
                 [_img_audio setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_downed" ofType:@"png"]]];
                 
-                _btn_audio.enabled = NO;
+                _btn_audio.enabled = YES;
+                
+                [_btn_audio removeTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
+                [_btn_audio addTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
             }
         }
         /* btn count == 1 비디오 저속 ========================================*/
@@ -180,6 +186,9 @@
                 _btn_audio.enabled = YES;
                 [_img_audio setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_normal" ofType:@"png"]]];
                 
+                [_btn_audio removeTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+                [_btn_audio addTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
+                
             } else if ([[dic_fileinfo objectForKey:@"ctVideoLowStat"]
                         isEqualToString:@"downloading"])
             {
@@ -214,7 +223,10 @@
                 _img_audio2.hidden = YES;
                 [_img_audio setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_downed" ofType:@"png"]]];
                 
-                _btn_audio.enabled = NO;
+                [_btn_audio removeTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
+                [_btn_audio addTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+                
+                _btn_audio.enabled = YES;
             }
         }
         /* btn count == 1 오디오 ========================================*/
@@ -230,6 +242,9 @@
                 _btn_audio.enabled = YES;
                 [_img_audio setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_normal" ofType:@"png"]]];
                 
+                [_btn_audio removeTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+                [_btn_audio addTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
+                
             } else if ([[dic_fileinfo objectForKey:@"ctAudioDownStat"]
                         isEqualToString:@"downloading"])
             {
@@ -263,7 +278,10 @@
                 _img_audio2.hidden = YES;
                 [_img_audio setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_downed" ofType:@"png"]]];
                 
-                _btn_audio.enabled = NO;
+                [_btn_audio removeTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
+                [_btn_audio addTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+                
+                _btn_audio.enabled = YES;
             }
         }
     }
@@ -304,6 +322,9 @@
                 _btn_audio.enabled = YES;
                 [_img_audio setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_normal" ofType:@"png"]]];
                 
+                [_btn_audio removeTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+                [_btn_audio addTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
+                
             } else if ([[dic_fileinfo objectForKey:@"ctAudioDownStat"]
                         isEqualToString:@"downloading"])
             {
@@ -337,7 +358,10 @@
                 _img_audio2.hidden = YES;
                 [_img_audio setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_downed" ofType:@"png"]]];
                 
-                _btn_audio.enabled = NO;
+                [_btn_audio removeTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
+                [_btn_audio addTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+                
+                _btn_audio.enabled = YES;
             }
         }
         /* btn count == 2 비디오 저속 ========================================*/
@@ -354,6 +378,9 @@
                     _img_audio2.hidden = YES;
                     _btn_audio.enabled = YES;
                     [_img_audio setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_normal" ofType:@"png"]]];
+                    
+                    [_btn_audio removeTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+                    [_btn_audio addTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
                     
                 } else if ([[dic_fileinfo objectForKey:@"ctVideoLowStat"]
                             isEqualToString:@"downloading"])
@@ -388,7 +415,10 @@
                     _img_audio2.hidden = YES;
                     [_img_audio setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_downed" ofType:@"png"]]];
                     
-                    _btn_audio.enabled = NO;
+                    [_btn_audio removeTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
+                    [_btn_audio addTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+                    
+                    _btn_audio.enabled = YES;
                 }
             }
             
@@ -404,6 +434,9 @@
                     _img_video_l2.hidden = YES;
                     _btn_video_l.enabled = YES;
                     [_img_video_l setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_normal" ofType:@"png"]]];
+                    
+                    [_btn_video_l removeTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+                    [_btn_video_l addTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
                     
                 } else if ([[dic_fileinfo objectForKey:@"ctVideoLowStat"]
                             isEqualToString:@"downloading"])
@@ -439,7 +472,10 @@
                     _img_video_l2.hidden = YES;
                     [_img_video_l setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_downed" ofType:@"png"]]];
                     
-                    _btn_video_l.enabled = NO;
+                    [_btn_video_l removeTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
+                    [_btn_video_l addTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+                    
+                    _btn_video_l.enabled = YES;
                 }
             }
             
@@ -456,6 +492,9 @@
                 _img_video_l2.hidden = YES;
                 _btn_video_l.enabled = YES;
                 [_img_video_l setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_normal" ofType:@"png"]]];
+                
+                [_btn_video_l removeTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+                [_btn_video_l addTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
                 
             } else if ([[dic_fileinfo objectForKey:@"ctVideoLowStat"]
                         isEqualToString:@"downloading"])
@@ -491,7 +530,10 @@
                 _img_video_l2.hidden = YES;
                 [_img_video_l setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_downed" ofType:@"png"]]];
                 
-                _btn_video_l.enabled = NO;
+                [_btn_video_l removeTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
+                [_btn_video_l addTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+                
+                _btn_video_l.enabled = YES;
             }
         }
     } else {
@@ -526,6 +568,9 @@
             _btn_video_n.enabled = YES;
             [_img_video_n setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_normal" ofType:@"png"]]];
             
+            [_btn_video_n removeTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+            [_btn_video_n addTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
+            
         } else if ([[dic_fileinfo objectForKey:@"ctVideoNormalStat"]
                     isEqualToString:@"downloading"])
         {
@@ -559,7 +604,10 @@
             _img_video_n2.hidden = YES;
             [_img_video_n setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_downed" ofType:@"png"]]];
             
-            _btn_video_n.enabled = NO;
+            [_btn_video_n removeTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
+            [_btn_video_n addTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+            
+            _btn_video_n.enabled = YES;
         }
         /* btn count == 3 비디오 저속 ========================================*/
         if ([[dic_fileinfo objectForKey:@"ctVideoLowStat"]
@@ -570,6 +618,9 @@
             _img_video_l2.hidden = YES;
             _btn_video_l.enabled = YES;
             [_img_video_l setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_normal" ofType:@"png"]]];
+            
+            [_btn_video_l removeTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+            [_btn_video_l addTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
             
         } else if ([[dic_fileinfo objectForKey:@"ctVideoLowStat"]
                     isEqualToString:@"downloading"])
@@ -605,7 +656,10 @@
             _img_video_l2.hidden = YES;
             [_img_video_l setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_downed" ofType:@"png"]]];
             
-            _btn_video_l.enabled = NO;
+            [_btn_video_l removeTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
+            [_btn_video_l addTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+            
+            _btn_video_l.enabled = YES;
         }
         /* btn count == 3 오디오 ========================================*/
         if ([[dic_fileinfo objectForKey:@"ctAudioDownStat"]
@@ -616,6 +670,9 @@
             _img_audio2.hidden = YES;
             _btn_audio.enabled = YES;
             [_img_audio setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_normal" ofType:@"png"]]];
+            
+            [_btn_audio removeTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+            [_btn_audio addTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
             
         } else if ([[dic_fileinfo objectForKey:@"ctAudioDownStat"]
                     isEqualToString:@"downloading"])
@@ -650,7 +707,10 @@
             _img_audio2.hidden = YES;
             [_img_audio setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_downed" ofType:@"png"]]];
             
-            _btn_audio.enabled = NO;
+            [_btn_audio removeTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
+            [_btn_audio addTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+            
+            _btn_audio.enabled = YES;
         }
     }
 }
@@ -664,6 +724,13 @@
             [self rotateImageView:imageView];
         }
     }];
+}
+
+- (void)playFiles:(UIButton*)sender
+{
+    [GPAlertUtil alertWithMessage:@"다운로드된 콘텐츠를 재생합니다."];
+    [dic_fileinfo setObject:[NSString stringWithFormat:@"%ld",(long)sender.tag] forKey:@"ctFileType"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:_CMD_FILE_PLAYING object:self userInfo:dic_fileinfo];
 }
 
 - (IBAction)buttonPress:(UIButton*)sender

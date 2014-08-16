@@ -69,6 +69,9 @@
         _btn_play.enabled = YES;
         [_img_play setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_normal" ofType:@"png"]]];
         
+        [_btn_play removeTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+        [_btn_play addTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
+        
     } else if ([[dic_fileinfo objectForKey:@"ctFileStat"]
                 isEqualToString:@"downloading"])
     {
@@ -94,7 +97,10 @@
         _img_play.hidden = NO;
         _img_play_2.hidden = YES;
         [_img_play setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_downed" ofType:@"png"]]];
-        _btn_play.enabled = NO;
+        _btn_play.enabled = YES;
+        
+        [_btn_play removeTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+        [_btn_play addTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
     }
 }
 
@@ -116,10 +122,15 @@
     [_img_play setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_down_press" ofType:@"png"]]];
 }
 
+- (void)playFiles:(UIButton*)sender
+{
+    [GPAlertUtil alertWithMessage:@"다운로드된 콘텐츠를 재생합니다."];
+    [[NSNotificationCenter defaultCenter] postNotificationName:_CMD_FILE_PLAYING object:self userInfo:dic_fileinfo];
+}
+
 - (IBAction)fileDownload:(UIButton*)sender
 {
     BOOL isUse3G = [GPCommonUtil readBoolFromDefault:@"USE_3G"];
-    
     
     [mainDelegate startAnimatedLodingView];
     

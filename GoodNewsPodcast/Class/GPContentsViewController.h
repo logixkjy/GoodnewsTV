@@ -22,6 +22,7 @@
     NSURL *url_path;
     
     NSInteger *int_selType;
+    int selBtnType;
     GPDownloadController    *_downCont;
     
     int moreViewCnt;

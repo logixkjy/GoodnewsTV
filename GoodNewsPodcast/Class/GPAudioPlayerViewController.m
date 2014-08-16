@@ -138,12 +138,16 @@
     CGSize maxSize = CGSizeMake(239, 27);
     CGSize viewSize;
     
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
-    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-    paragraphStyle.alignment = NSTextAlignmentLeft;
-    NSDictionary *attributes = @{NSFontAttributeName:[UIFont boldSystemFontOfSize:20], NSParagraphStyleAttributeName: paragraphStyle};
-    viewSize = [[self.dic_contents_data objectForKey:@"ctName"] boundingRectWithSize:maxSize options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin
-                                                                              attributes:attributes  context:nil].size;
+    if (IS_iOS_7) {
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
+        paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+        paragraphStyle.alignment = NSTextAlignmentLeft;
+        NSDictionary *attributes = @{NSFontAttributeName:[UIFont boldSystemFontOfSize:20], NSParagraphStyleAttributeName: paragraphStyle};
+        viewSize = [[self.dic_contents_data objectForKey:@"ctName"] boundingRectWithSize:maxSize options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin
+                                                                                 attributes:attributes  context:nil].size;
+    }else{
+        viewSize = [[self.dic_contents_data objectForKey:@"ctName"] sizeWithFont:[UIFont boldSystemFontOfSize:20] constrainedToSize:maxSize lineBreakMode:NSLineBreakByCharWrapping];
+    }
     
     [self.asl_naviTitle setFrame:CGRectMake((320 - viewSize.width)/2, 9, viewSize.width, viewSize.height)];
     self.asl_naviTitle.text = [self.dic_contents_data objectForKey:@"ctName"];
@@ -299,6 +303,13 @@
 
 - (void) moviePlayBackDidFinish:(NSNotification*)notification {
     [mainDelegate.audioPlayer stop];
+    
+    self.timeProgress.value = 0;
+    
+    self.lbl_playtime.text =@"00:00:00";
+    
+    self.lbl_lasttime.text = [NSString stringWithFormat:@"-%@",[self convertIntToTime:(int)mainDelegate.audioPlayer.duration]];
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:MPMoviePlayerPlaybackDidFinishNotification
                                                   object:nil];

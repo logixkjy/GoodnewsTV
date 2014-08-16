@@ -33,6 +33,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: nil];
+    
+    //백그라운드에서 재생
+    AVAudioSession*session =[AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [session setActive:YES error:nil];
+    
     if (GetGPDataCenter.gpNetowrkStatus != NETWORK_NONE) {
         [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
     } else {
@@ -126,6 +133,7 @@
                                              selector:@selector(downBoxEvent:)
                                                  name:_CMD_DOWN_BOX_EVENT
                                                object:nil];
+    
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
     self.btn_nowplay.hidden = !GetGPDataCenter.isAudioPlaying;
@@ -249,17 +257,29 @@
 
 - (void)moveAudioPlayView
 {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *str_file_path = @"";
+    NSURL *url_path = nil;
+    
     if ([[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_AUDIO) {
+        str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@_%@.mp3",
+                         [documentPath objectAtIndex:0],
+                         [GetGPDataCenter.dic_playInfo objectForKey:@"prCode"],
+                         [GetGPDataCenter.dic_playInfo objectForKey:@"ctName"],
+                         [GetGPDataCenter.dic_playInfo objectForKey:@"ctSpeaker"]];
+        
+        if ([fileManager fileExistsAtPath:str_file_path]) {
+            [GPAlertUtil alertWithMessage:@"다운로드된 콘텐츠를 재생합니다."];
+        } else {
+            [GPAlertUtil alertWithMessage:@"인터넷을 통해 스트리밍되어 재생됩니다."];
+        }
+        
         GPAudioPlayerViewController *audioPlayer = [self.storyboard instantiateViewControllerWithIdentifier:@"AudioPlayer"];
         audioPlayer.dic_contents_data = [NSMutableDictionary dictionaryWithDictionary:GetGPDataCenter.dic_playInfo];
         [self.navigationController pushViewController:audioPlayer animated:YES];
     }else{
-        
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        
-        NSString *str_file_path = @"";
-        NSURL *url_path = nil;
         if ([[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_VIDEO_NORMAL) {
             str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@_%@_N.mp4",
                              [documentPath objectAtIndex:0],
@@ -268,8 +288,10 @@
                              [GetGPDataCenter.dic_playInfo objectForKey:@"ctSpeaker"]];
             
             if ([fileManager fileExistsAtPath:str_file_path]) {
+                [GPAlertUtil alertWithMessage:@"다운로드된 콘텐츠를 재생합니다."];
                 url_path = [NSURL fileURLWithPath:str_file_path];
             } else {
+                [GPAlertUtil alertWithMessage:@"인터넷을 통해 스트리밍되어 재생됩니다."];
                 str_file_path = [GetGPDataCenter.dic_playInfo objectForKey:@"ctVideoNormal"];
                 url_path = [NSURL URLWithString:str_file_path];
             }
@@ -281,8 +303,10 @@
                              [GetGPDataCenter.dic_playInfo objectForKey:@"ctSpeaker"]];
             
             if ([fileManager fileExistsAtPath:str_file_path]) {
+                [GPAlertUtil alertWithMessage:@"다운로드된 콘텐츠를 재생합니다."];
                 url_path = [NSURL fileURLWithPath:str_file_path];
             } else {
+                [GPAlertUtil alertWithMessage:@"인터넷을 통해 스트리밍되어 재생됩니다."];
                 str_file_path = [GetGPDataCenter.dic_playInfo objectForKey:@"ctVideoLow"];
                 url_path = [NSURL URLWithString:str_file_path];
             }
@@ -290,14 +314,13 @@
             str_file_path = [GetGPDataCenter.dic_playInfo objectForKey:@"chIos"];
             url_path = [NSURL URLWithString:str_file_path];
         }
-
+        
         AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
         [mainDelegate.audioPlayer stop];
         mainDelegate.audioPlayer = [[MPMoviePlayerController alloc] initWithContentURL:url_path];
         mainDelegate.audioPlayer.controlStyle = MPMovieControlStyleFullscreen;
         mainDelegate.audioPlayer.scalingMode = MPMovieScalingModeAspectFit;
         mainDelegate.audioPlayer.view.frame = self.view.bounds;
-        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(MPMoviePlayerDidExitFullscreenNotification)
                                                      name:MPMoviePlayerDidExitFullscreenNotification

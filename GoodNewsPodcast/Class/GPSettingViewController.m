@@ -32,7 +32,7 @@
     _sw_use3G.on = [GPCommonUtil readBoolFromDefault:@"USE_3G"];
     _arr_viewList = [[NSArray alloc] initWithObjects:@"",@"생방송",@"다시보기",@"마이캐스트",@"다운로드",nil];
     
-    _lbl_AppStoreVer.text = [NSString stringWithFormat:@"최신 버전 (%@)",GetGPDataCenter.str_AppStore];
+    _lbl_AppStoreVer.text = [NSString stringWithFormat:@"최신 버전 (%@)",[GetGPDataCenter.str_AppStore length] == 0 ? [iVersion sharedInstance].applicationVersion : GetGPDataCenter.str_AppStore];
     _lbl_BundleVer.text = [NSString stringWithFormat:@"현재 버전 (%@)",[iVersion sharedInstance].applicationVersion];
     
     int menuID = [GPCommonUtil readIntFromDefault:@"ROOT_MENU_ID"];

@@ -33,6 +33,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    CGSize size = MAIN_SIZE();
+    if (!IS_iOS_7) {
+        [self.menuView setFrame:CGRectMake(0, 20, size.width, size.height - 20)];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning

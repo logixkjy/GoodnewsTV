@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GPLiveCastViewController : UIViewController
+@interface GPLiveCastViewController : UIViewController <UIAlertViewDelegate>
 {
     IBOutlet UIImageView    *_img_btn;
     int count;
+    int selbtnIdx;
     NSTimer *timer;
     
     BOOL    isFirst;

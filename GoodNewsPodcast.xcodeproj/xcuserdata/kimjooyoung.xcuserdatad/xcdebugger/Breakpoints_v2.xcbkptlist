@@ -41,13 +41,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GoodNewsPodcast/Class/Cell/GPGNContentCell.m"
-            timestampString = "429378494.736366"
+            filePath = "GoodNewsPodcast/Class/GPDownloadBoxViewController.m"
+            timestampString = "429895870.771346"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
-            landmarkName = "-setButton:"
+            startingLineNumber = "359"
+            endingLineNumber = "359"
+            landmarkName = "-MPMoviePlayerLoadStateDidChangeNotification"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoodNewsPodcast/Class/GPContentsViewController.m"
+            timestampString = "429895870.771346"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "987"
+            endingLineNumber = "987"
+            landmarkName = "-filePlayMovie:selData:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoodNewsPodcast/Class/GPContentsViewController.m"
+            timestampString = "429895870.771346"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "987"
+            endingLineNumber = "987"
+            landmarkName = "-filePlayMovie:selData:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

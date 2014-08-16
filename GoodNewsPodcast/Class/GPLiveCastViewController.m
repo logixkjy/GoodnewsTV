@@ -59,6 +59,7 @@
     [self.arr_btns addObject:self.btn_major_Audio];
     
     count = 5;
+    selbtnIdx = 0;
     isFirst = NO;
     
     str_selCh = @"";
@@ -304,7 +305,21 @@
             img.alpha = 0.4f;
         }
     }
-    [self moveLiveStreamingView:btn.tag];
+    BOOL isUse3G = [GPCommonUtil readBoolFromDefault:@"USE_3G"];
+    selbtnIdx = btn.tag;
+    if (isUse3G) {
+        if (GetGPDataCenter.gpNetowrkStatus == NETWORK_3G_LTE) {
+            [GPAlertUtil alertWithMessage:@"생방송 재생시 3G/LTE 사용됩니다." delegate:self tag:5];
+            return;
+        }
+    } else {
+        if (GetGPDataCenter.gpNetowrkStatus == NETWORK_3G_LTE) {
+            [GPAlertUtil alertWithMessage:netStatus_3G_down delegate:self tag:1];
+            return;
+        }
+    }
+    
+    [self moveLiveStreamingView:selbtnIdx];
 }
 
 - (void)moveLiveStreamingView:(int)idx
@@ -405,6 +420,19 @@
     //[self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 1002) {
+        if (buttonIndex == 0) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:_CMD_MOVE_SETTING_VIEW object:self];
+        }
+    } else if (alertView.tag == 1006) {
+        if (buttonIndex == 0) {
+            [self moveLiveStreamingView:selbtnIdx];
+        }
+    }
+}
+
 #pragma mark -
 #pragma mark Gesture recognizer
 
@@ -440,17 +468,29 @@
 
 - (void)moveAudioPlayView
 {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *str_file_path = @"";
+    NSURL *url_path = nil;
+    
     if ([[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_AUDIO) {
+        str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@_%@.mp3",
+                         [documentPath objectAtIndex:0],
+                         [GetGPDataCenter.dic_playInfo objectForKey:@"prCode"],
+                         [GetGPDataCenter.dic_playInfo objectForKey:@"ctName"],
+                         [GetGPDataCenter.dic_playInfo objectForKey:@"ctSpeaker"]];
+        
+        if ([fileManager fileExistsAtPath:str_file_path]) {
+            [GPAlertUtil alertWithMessage:@"다운로드된 콘텐츠를 재생합니다."];
+        } else {
+            [GPAlertUtil alertWithMessage:@"인터넷을 통해 스트리밍되어 재생됩니다."];
+        }
+        
         GPAudioPlayerViewController *audioPlayer = [self.storyboard instantiateViewControllerWithIdentifier:@"AudioPlayer"];
         audioPlayer.dic_contents_data = [NSMutableDictionary dictionaryWithDictionary:GetGPDataCenter.dic_playInfo];
         [self.navigationController pushViewController:audioPlayer animated:YES];
     }else{
-        
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        
-        NSString *str_file_path = @"";
-        NSURL *url_path = nil;
         if ([[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_VIDEO_NORMAL) {
             str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@_%@_N.mp4",
                              [documentPath objectAtIndex:0],
@@ -459,8 +499,10 @@
                              [GetGPDataCenter.dic_playInfo objectForKey:@"ctSpeaker"]];
             
             if ([fileManager fileExistsAtPath:str_file_path]) {
+                [GPAlertUtil alertWithMessage:@"다운로드된 콘텐츠를 재생합니다."];
                 url_path = [NSURL fileURLWithPath:str_file_path];
             } else {
+                [GPAlertUtil alertWithMessage:@"인터넷을 통해 스트리밍되어 재생됩니다."];
                 str_file_path = [GetGPDataCenter.dic_playInfo objectForKey:@"ctVideoNormal"];
                 url_path = [NSURL URLWithString:str_file_path];
             }
@@ -472,8 +514,10 @@
                              [GetGPDataCenter.dic_playInfo objectForKey:@"ctSpeaker"]];
             
             if ([fileManager fileExistsAtPath:str_file_path]) {
+                [GPAlertUtil alertWithMessage:@"다운로드된 콘텐츠를 재생합니다."];
                 url_path = [NSURL fileURLWithPath:str_file_path];
             } else {
+                [GPAlertUtil alertWithMessage:@"인터넷을 통해 스트리밍되어 재생됩니다."];
                 str_file_path = [GetGPDataCenter.dic_playInfo objectForKey:@"ctVideoLow"];
                 url_path = [NSURL URLWithString:str_file_path];
             }
@@ -496,6 +540,11 @@
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(moviePlayBackDidFinish:)
                                                      name:MPMoviePlayerPlaybackDidFinishNotification
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(MPMoviePlayerLoadStateDidChangeNotification)
+                                                     name:MPMoviePlayerLoadStateDidChangeNotification
                                                    object:nil];
         
         [self.view addSubview:mainDelegate.audioPlayer.view];
