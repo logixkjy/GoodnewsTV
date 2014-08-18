@@ -103,8 +103,13 @@
 
 - (void)moveSettingView
 {
-    GPSettingViewController *settingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingView"];
-    [self.navigationController pushViewController:settingViewController animated:YES];
+    if (IS_iOS_7) {
+        GPSettingViewController *settingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingView"];
+        [self.navigationController pushViewController:settingViewController animated:YES];
+    } else {
+        GPSettingViewController *settingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingView_iOS6"];
+        [self.navigationController pushViewController:settingViewController animated:YES];
+    }
 }
 
 -(void)remoteControlReceivedWithEvent:(UIEvent *)event{
@@ -201,7 +206,6 @@
     NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
     NSString *str_file_path = @"";
-    NSURL *url_path = nil;
     
     if ([[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_AUDIO) {
         str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@_%@.mp3",

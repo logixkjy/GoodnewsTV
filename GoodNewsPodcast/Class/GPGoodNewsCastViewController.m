@@ -282,8 +282,13 @@
 
 - (void)moveSettingView
 {
-    GPSettingViewController *settingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingView"];
-    [self.navigationController pushViewController:settingViewController animated:YES];
+    if (IS_iOS_7) {
+        GPSettingViewController *settingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingView"];
+        [self.navigationController pushViewController:settingViewController animated:YES];
+    } else {
+        GPSettingViewController *settingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingView_iOS6"];
+        [self.navigationController pushViewController:settingViewController animated:YES];
+    }
 }
 
 - (void)connectionNetwork {

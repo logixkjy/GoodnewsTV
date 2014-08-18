@@ -74,14 +74,29 @@
         GPGoodNewsCastViewController *goodNewsCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GoodNewsCast"];
         navigationController.viewControllers = @[goodNewsCastViewController];
     } else if (indexPath.row == 1) {
-        GPLiveCastViewController *liveCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LiveCast"];
-        navigationController.viewControllers = @[liveCastViewController];
+        if (IS_iOS_7) {
+            GPLiveCastViewController *liveCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LiveCast"];
+            navigationController.viewControllers = @[liveCastViewController];
+        } else {
+            GPLiveCastViewController *liveCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LiveCast_iOS6"];
+            navigationController.viewControllers = @[liveCastViewController];
+        }
     } else if (indexPath.row == 2) {
-        GPMyCastViewController *myCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyCast"];
-        navigationController.viewControllers = @[myCastViewController];
+        if (IS_iOS_7) {
+            GPMyCastViewController *myCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyCast"];
+            navigationController.viewControllers = @[myCastViewController];
+        } else {
+            GPMyCastViewController *myCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyCast_iOS6"];
+            navigationController.viewControllers = @[myCastViewController];
+        }
     } else if (indexPath.row == 3) {
-        GPGoodNewsCastViewController *myCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DownloadBox"];
-        navigationController.viewControllers = @[myCastViewController];
+        if (IS_iOS_7) {
+            GPGoodNewsCastViewController *myCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DownloadBox"];
+            navigationController.viewControllers = @[myCastViewController];
+        } else {
+            GPGoodNewsCastViewController *myCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DownloadBox_iOS6"];
+            navigationController.viewControllers = @[myCastViewController];
+        }
     }
     
     self.frostedViewController.contentViewController = navigationController;

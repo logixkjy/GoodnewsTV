@@ -10,6 +10,7 @@
 		311443A81988893600077EAE /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 311443A71988893600077EAE /* libxml2.2.dylib */; };
 		311443AA1988928400077EAE /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 311443A91988928400077EAE /* libz.1.2.5.dylib */; };
 		311443AD1988BFD600077EAE /* SMXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 311443AC1988BFD600077EAE /* SMXMLDocument.m */; };
+		3122466B19A1C15E00CADF3C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3122466A19A1C15E00CADF3C /* Default.png */; };
 		312B5D37197E32B9009B6046 /* GPProgressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 312B5D36197E32B9009B6046 /* GPProgressCell.m */; };
 		312B5D3A197E5249009B6046 /* GPSubMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 312B5D39197E5249009B6046 /* GPSubMainViewController.m */; };
 		313B2DBE1974C1FC000781AC /* GPGNCastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 313B2DBD1974C1FC000781AC /* GPGNCastCell.m */; };
@@ -195,6 +196,7 @@
 		311443A91988928400077EAE /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		311443AB1988BFD600077EAE /* SMXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMXMLDocument.h; sourceTree = "<group>"; };
 		311443AC1988BFD600077EAE /* SMXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMXMLDocument.m; sourceTree = "<group>"; };
+		3122466A19A1C15E00CADF3C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		312B5D35197E32B9009B6046 /* GPProgressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPProgressCell.h; sourceTree = "<group>"; };
 		312B5D36197E32B9009B6046 /* GPProgressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPProgressCell.m; sourceTree = "<group>"; };
 		312B5D38197E5249009B6046 /* GPSubMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPSubMainViewController.h; path = Cell/GPSubMainViewController.h; sourceTree = "<group>"; };
@@ -708,6 +710,7 @@
 		31EDCDA61973759C00F8D50E /* Img */ = {
 			isa = PBXGroup;
 			children = (
+				3122466A19A1C15E00CADF3C /* Default.png */,
 				98EF73351997B6A500677725 /* LaunchImages_640-1136.png */,
 				98021B06198BDA9600347EF3 /* player_time_handle.png */,
 				3192338F198B9AE5000B1E25 /* loading_01@2x.png */,
@@ -898,7 +901,7 @@
 				31EDCD4D19736DD300F8D50E /* Sources */,
 				31EDCD4E19736DD300F8D50E /* Frameworks */,
 				31EDCD4F19736DD300F8D50E /* Resources */,
-				9808BBB81987FF480031232F /* ShellScript */,
+				3122466C19A1D13200CADF3C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -978,6 +981,7 @@
 				31923396198B9AE5000B1E25 /* loading_04@2x.png in Resources */,
 				31EDCDE51973759C00F8D50E /* icon_move.png in Resources */,
 				314D3E251982C6A20079A974 /* player_btn_stop_press.png in Resources */,
+				3122466B19A1C15E00CADF3C /* Default.png in Resources */,
 				31EDCDE71973759C00F8D50E /* icon_setting_normal.png in Resources */,
 				31E8FE3319890C800029D294 /* live_icon_check.png in Resources */,
 				31EDCDEA1973759C00F8D50E /* mask_circle_140.png in Resources */,
@@ -1067,7 +1071,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9808BBB81987FF480031232F /* ShellScript */ = {
+		3122466C19A1D13200CADF3C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
 			files = (
@@ -1263,7 +1267,7 @@
 					"$(PROJECT_DIR)/GoodNewsPodcast/Class/common/FMDB",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ED4AD76F-6235-4C64-809D-497BEF6B8DC8";
+				PROVISIONING_PROFILE = "f7f54ae0-5985-496a-a450-014ca5886e78";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -1395,7 +1399,7 @@
 					"$(PROJECT_DIR)/GoodNewsPodcast/Class/common/FMDB",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5ECEF98E-DC76-4A4F-91AE-F3E7AA79CE82";
+				PROVISIONING_PROFILE = "e5aac782-211e-45a8-bd90-25d2d3647786";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;

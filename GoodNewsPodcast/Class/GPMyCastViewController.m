@@ -103,8 +103,13 @@
 
 - (void)moveSettingView
 {
-    GPSettingViewController *settingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingView"];
-    [self.navigationController pushViewController:settingViewController animated:YES];
+    if (IS_iOS_7) {
+        GPSettingViewController *settingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingView"];
+        [self.navigationController pushViewController:settingViewController animated:YES];
+    } else {
+        GPSettingViewController *settingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingView_iOS6"];
+        [self.navigationController pushViewController:settingViewController animated:YES];
+    }
 }
 
 -(void)remoteControlReceivedWithEvent:(UIEvent *)event{
@@ -347,8 +352,14 @@
 
 - (IBAction)addMyCast
 {
-    GPAddMyCastViewController *addMyCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyCastAdd"];
-    [self presentViewController:addMyCastViewController animated:YES completion:nil];
+    if (IS_iOS_7) {
+        GPAddMyCastViewController *addMyCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyCastAdd"];
+        [self presentViewController:addMyCastViewController animated:YES completion:nil];
+    } else {
+        GPAddMyCastViewController *addMyCastViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MyCastAdd_iOS6"];
+        [self presentViewController:addMyCastViewController animated:YES completion:nil];
+    }
+    
 }
 
 #pragma mark -

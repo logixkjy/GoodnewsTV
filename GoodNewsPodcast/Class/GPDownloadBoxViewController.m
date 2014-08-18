@@ -40,13 +40,12 @@
     [session setCategory:AVAudioSessionCategoryPlayback error:nil];
     [session setActive:YES error:nil];
     
-    if (GetGPDataCenter.gpNetowrkStatus != NETWORK_NONE) {
-        [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
-    } else {
-        _img_btn.hidden = YES;
+    if (GetGPDataCenter.gpNetowrkStatus == NETWORK_NONE) {
         self.sc_selectView.selectedSegmentIndex = 0;
+        
     }
     
+    [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
     isEdit = NO;
     
     self.arr_downList = [[NSMutableArray alloc] initWithCapacity:5];
@@ -163,8 +162,13 @@
 
 - (void)moveSettingView
 {
-    GPSettingViewController *settingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingView"];
-    [self.navigationController pushViewController:settingViewController animated:YES];
+    if (IS_iOS_7) {
+        GPSettingViewController *settingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingView"];
+        [self.navigationController pushViewController:settingViewController animated:YES];
+    } else {
+        GPSettingViewController *settingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingView_iOS6"];
+        [self.navigationController pushViewController:settingViewController animated:YES];
+    }
 }
 
 - (void)fileDownCancel:(NSNotification*)noti
