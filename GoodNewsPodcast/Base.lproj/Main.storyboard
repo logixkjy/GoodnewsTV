@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" initialViewController="XDP-fZ-kTK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="XDP-fZ-kTK">
     <dependencies>
         <deployment version="1552" defaultVersion="1536" identifier="iOS"/>
         <development version="5100" identifier="xcode"/>
@@ -11,7 +11,7 @@
             <objects>
                 <viewController storyboardIdentifier="rootController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XDP-fZ-kTK" customClass="GPRootViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ugE-Qc-n4m">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -25,11 +25,11 @@
             <objects>
                 <viewController storyboardIdentifier="GoodNewsCast" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" customClass="GPGoodNewsCastViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="kyW-L5-PhH">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="6E8-rO-2G8">
@@ -138,7 +138,7 @@
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="kLI-XL-TQG">
-                                <rect key="frame" x="0.0" y="-20" width="320" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
@@ -177,11 +177,11 @@
             <objects>
                 <viewController storyboardIdentifier="menuController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SZE-AR-V8l" customClass="GPMenuViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0IQ-wg-Z8o">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="WWj-vc-Cq0">
-                                <rect key="frame" x="0.0" y="20" width="320" height="528"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view alpha="0.80000000000000004" contentMode="scaleToFill" id="vBK-p5-QPi">
@@ -211,7 +211,7 @@
                                         <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="M8w-Vo-Ah9">
-                                        <rect key="frame" x="0.0" y="44" width="320" height="484"/>
+                                        <rect key="frame" x="0.0" y="44" width="320" height="504"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="separatorColor" red="0.78823529411764703" green="0.78823529411764703" blue="0.78823529411764703" alpha="1" colorSpace="deviceRGB"/>
@@ -220,7 +220,7 @@
                                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZeN-R2-Nq6" id="e3s-xw-1Lm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sidemenu_icon_home.png" id="aM6-fI-FhG">
@@ -250,7 +250,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="YAM-1k-kHf">
-                                <rect key="frame" x="0.0" y="-20" width="320" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
@@ -272,11 +272,11 @@
             <objects>
                 <viewController storyboardIdentifier="ContentsView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EyJ-oC-a2b" customClass="GPContentsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vWA-D5-s59">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="xb8-Aq-B24">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="kZ3-yU-U8W">
@@ -530,7 +530,7 @@
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="imr-Zs-lJc">
-                                <rect key="frame" x="0.0" y="-20" width="320" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
@@ -559,11 +559,11 @@
             <objects>
                 <viewController storyboardIdentifier="MyCast" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Cnl-V5-T8P" customClass="GPMyCastViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m1C-KM-7r4">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="gzH-X3-jk0">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="dQq-Ht-IkS">
@@ -602,7 +602,9 @@
                                             <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QQ9-EK-pnj">
                                                 <rect key="frame" x="0.0" y="0.0" width="46" height="43"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="편집"/>
+                                                <state key="normal" title="편집">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="editTable" destination="Cnl-V5-T8P" eventType="touchUpInside" id="P4x-L7-aiC"/>
                                                 </connections>
@@ -638,7 +640,7 @@
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="gBp-Ir-uPr">
-                                <rect key="frame" x="0.0" y="-20" width="320" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
@@ -667,11 +669,11 @@
             <objects>
                 <viewController storyboardIdentifier="subMainView" id="9Tz-Zj-wRX" customClass="GPSubMainViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nn7-Hi-Z68">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="Ho7-JQ-Xdw">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="Jvn-5d-C1m">
@@ -776,7 +778,7 @@
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ag9-b4-rfU">
-                                <rect key="frame" x="0.0" y="-20" width="320" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
@@ -801,11 +803,11 @@
             <objects>
                 <viewController storyboardIdentifier="DownloadBox" useStoryboardIdentifierAsRestorationIdentifier="YES" id="H42-uQ-Unf" customClass="GPDownloadBoxViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GkO-dm-1kd">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="GB2-xF-Wvj">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="YkC-y5-Dm0">
@@ -850,7 +852,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="x9g-7c-66M">
-                                                <rect key="frame" x="20" y="10" width="280" height="44"/>
+                                                <rect key="frame" x="20" y="10" width="280" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <segments>
@@ -935,7 +937,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" id="xO5-WO-SUD">
-                                                                            <rect key="frame" x="10" y="39" width="245" height="9"/>
+                                                                            <rect key="frame" x="10" y="39" width="245" height="2"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                             <color key="progressTintColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                                                         </progressView>
@@ -1082,7 +1084,7 @@
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="xQT-kW-kDo">
-                                <rect key="frame" x="0.0" y="-20" width="320" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
@@ -1115,11 +1117,11 @@
             <objects>
                 <viewController storyboardIdentifier="SettingView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GKH-aq-k2x" customClass="GPSettingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hsq-Rw-Qvg">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="J0g-OP-2tW">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="Zv1-uA-tOv">
@@ -1212,7 +1214,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SON-Iy-nSX">
-                                                        <rect key="frame" x="275" y="101" width="50" height="44"/>
+                                                        <rect key="frame" x="275" y="101" width="30" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <state key="normal" title="보기">
                                                             <color key="titleColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
@@ -1263,7 +1265,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="nuw-IW-TQC">
-                                                        <rect key="frame" x="248" y="9" width="79" height="27"/>
+                                                        <rect key="frame" x="248" y="9" width="51" height="31"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="onTintColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                                         <connections>
@@ -1288,7 +1290,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gZG-lU-GN5">
-                                                        <rect key="frame" x="274" y="101" width="50" height="44"/>
+                                                        <rect key="frame" x="274" y="101" width="30" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <state key="normal" title="삭제">
                                                             <color key="titleColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
@@ -1334,7 +1336,7 @@
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="hca-Nz-TsB">
-                                <rect key="frame" x="0.0" y="-20" width="320" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
@@ -1360,11 +1362,11 @@
             <objects>
                 <viewController storyboardIdentifier="AudioPlayer" useStoryboardIdentifierAsRestorationIdentifier="YES" id="keS-NJ-qyG" customClass="GPAudioPlayerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q2t-D1-ohP">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="fLu-Ja-Rgz">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="GS1-wa-8zb">
@@ -1480,7 +1482,7 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </view>
                                                     <slider appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" id="lpS-fB-qiS">
-                                                        <rect key="frame" x="64" y="20" width="193" height="25"/>
+                                                        <rect key="frame" x="64" y="20" width="193" height="31"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <connections>
                                                             <action selector="valueChanged" destination="keS-NJ-qyG" eventType="valueChanged" id="vlA-IY-Ljq"/>
@@ -1497,7 +1499,7 @@
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="5oV-xB-Q98">
-                                <rect key="frame" x="0.0" y="-20" width="320" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
@@ -1531,11 +1533,11 @@
             <objects>
                 <viewController storyboardIdentifier="MyCastAdd" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dnx-mJ-UgC" customClass="GPAddMyCastViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SiM-3Y-3IF">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="kxU-BC-CFt">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="8Hb-YI-rzS">
@@ -1550,7 +1552,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eEm-hp-gpf">
-                                                <rect key="frame" x="274" y="7" width="50" height="44"/>
+                                                <rect key="frame" x="274" y="7" width="30" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="닫기">
@@ -1606,7 +1608,7 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="SvY-NY-jE9">
-                                <rect key="frame" x="0.0" y="-20" width="320" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
@@ -1630,11 +1632,11 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
             <objects>
                 <viewController storyboardIdentifier="MCContentsView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KTo-Ut-S7Y" customClass="GPMyCastContentsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lQN-LJ-1Gi">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="6fm-hC-6V1">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="NcB-Mh-hNw">
@@ -1818,7 +1820,7 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="bxP-ax-D39">
-                                <rect key="frame" x="0.0" y="-20" width="320" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
@@ -1848,11 +1850,11 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
             <objects>
                 <viewController storyboardIdentifier="LiveCast" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Cif-Hf-Xzh" customClass="GPLiveCastViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wFm-Y9-MdG">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" restorationIdentifier="LiveTV" id="cU3-2i-Kai">
-                                <rect key="frame" x="0.0" y="-20" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="live_bg.png" id="x1M-iJ-reH">
@@ -2004,11 +2006,11 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
             <objects>
                 <viewController storyboardIdentifier="SettingView_iOS6" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yyS-OH-vBn" customClass="GPSettingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TXs-mb-fRl">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="OMJ-fh-GX2">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="40S-OX-f72">
@@ -2154,7 +2156,7 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="fe9-Bj-WXP">
-                                                        <rect key="frame" x="233" y="9" width="79" height="27"/>
+                                                        <rect key="frame" x="233" y="9" width="51" height="31"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="onTintColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                                         <connections>
@@ -2226,7 +2228,7 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="t62-De-CCT">
-                                <rect key="frame" x="0.0" y="-20" width="320" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
@@ -2252,11 +2254,11 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
             <objects>
                 <viewController storyboardIdentifier="DownloadBox_iOS6" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ypM-eV-kv0" customClass="GPDownloadBoxViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jGh-WU-BTU">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="LEX-NI-f6g">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="HTK-Jx-8sV">
@@ -2301,7 +2303,7 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="gOf-Uf-2LP">
-                                                <rect key="frame" x="10" y="6" width="300" height="44"/>
+                                                <rect key="frame" x="10" y="6" width="300" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <segments>
@@ -2386,7 +2388,7 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" id="TAe-hF-bj4">
-                                                                            <rect key="frame" x="10" y="39" width="245" height="9"/>
+                                                                            <rect key="frame" x="10" y="39" width="245" height="2"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                             <color key="progressTintColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                                                         </progressView>
@@ -2533,7 +2535,7 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="1z7-6V-wBc">
-                                <rect key="frame" x="0.0" y="-20" width="320" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
@@ -2566,11 +2568,11 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
             <objects>
                 <viewController storyboardIdentifier="MyCast_iOS6" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mwd-4Y-80c" customClass="GPMyCastViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mh9-kj-Th7">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="67I-zh-V5a">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="Jaa-Ky-baF">
@@ -2646,7 +2648,7 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="whT-1Y-d1X">
-                                <rect key="frame" x="0.0" y="-20" width="320" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
@@ -2675,11 +2677,11 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
             <objects>
                 <viewController storyboardIdentifier="MyCastAdd_iOS6" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rIm-L0-8B3" customClass="GPAddMyCastViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7sI-Qf-xr1">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="4Hw-fJ-QkV">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="np8-H5-tIs">
@@ -2709,7 +2711,7 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
                                         <color key="backgroundColor" red="0.0" green="0.12549019610000001" blue="0.52156862749999999" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
                                     <view appearanceType="aqua" contentMode="scaleToFill" id="KUJ-BB-XhM">
-                                        <rect key="frame" x="0.0" y="44" width="320" height="504"/>
+                                        <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fgn-iU-y1s">
@@ -2767,11 +2769,11 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
             <objects>
                 <viewController storyboardIdentifier="LiveCast_iOS6" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QW1-Lk-V9a" customClass="GPLiveCastViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="apu-hw-H02">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" restorationIdentifier="LiveTV" id="z4y-bK-Hho">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="live_bg.png" id="gTT-Id-WqH">
