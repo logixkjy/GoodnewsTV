@@ -1584,7 +1584,7 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
                                                 <rect key="frame" x="20" y="164" width="280" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <textField appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://" placeholder="http://" minimumFontSize="17" id="5Ay-lJ-AYd">
+                                            <textField appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="http://" minimumFontSize="17" id="5Ay-lJ-AYd">
                                                 <rect key="frame" x="25" y="166" width="270" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
