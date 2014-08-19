@@ -1468,6 +1468,30 @@
                                                             <action selector="buttonTouchUpInside:" destination="keS-NJ-qyG" eventType="touchUpInside" id="cz1-wZ-0iY"/>
                                                         </connections>
                                                     </button>
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="10l-Mr-Isx">
+                                                        <rect key="frame" x="254" y="105" width="25" height="25"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <state key="normal" image="player_btn_next.png">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <state key="selected" image="player_btn_pause.png"/>
+                                                        <state key="highlighted" image="player_btn_next_press.png"/>
+                                                        <connections>
+                                                            <action selector="buttonTouchUpInside:" destination="keS-NJ-qyG" eventType="touchUpInside" id="KFb-Qz-XH7"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="U3a-sU-dFU">
+                                                        <rect key="frame" x="45" y="105" width="25" height="25"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <state key="normal" image="player_btn_pre.png">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <state key="selected" image="player_btn_pause.png"/>
+                                                        <state key="highlighted" image="player_btn_pre_press.png"/>
+                                                        <connections>
+                                                            <action selector="buttonTouchUpInside:" destination="keS-NJ-qyG" eventType="touchUpInside" id="kIz-SA-G3r"/>
+                                                        </connections>
+                                                    </button>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="player_volum_min.png" id="mTz-XL-io0">
                                                         <rect key="frame" x="45" y="145" width="25" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2946,9 +2970,13 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
         <image name="live_icon_tv.png" width="136" height="136"/>
         <image name="live_icon_tv_press.png" width="136" height="136"/>
         <image name="live_title.png" width="669" height="208"/>
+        <image name="player_btn_next.png" width="50" height="50"/>
+        <image name="player_btn_next_press.png" width="50" height="50"/>
         <image name="player_btn_pause.png" width="84" height="86"/>
         <image name="player_btn_play.png" width="50" height="50"/>
         <image name="player_btn_play_press.png" width="50" height="50"/>
+        <image name="player_btn_pre.png" width="50" height="50"/>
+        <image name="player_btn_pre_press.png" width="50" height="50"/>
         <image name="player_volum_max.png" width="50" height="50"/>
         <image name="player_volum_min.png" width="50" height="50"/>
         <image name="sidemenu_icon_home.png" width="76" height="76"/>

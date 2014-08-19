@@ -90,6 +90,10 @@
             break;
         case 2002:
         {
+            if ([[GetGPDataCenter.dic_playInfo objectForKey:@"ctName"] isEqualToString:[dic_fileinfo objectForKey:@"ctName"]]) {
+                [GPAlertUtil alertWithMessage:@"현재 재생 중인 파일입니다.\n 먼저 종료 후에 삭제하여 주십시요"];
+                return;
+            }
             [GPAlertUtil alertWithMessage:@"파일을 삭제 하시겠습니까?" delegate:self tag:4];
         }
             break;

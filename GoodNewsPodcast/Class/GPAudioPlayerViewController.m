@@ -273,6 +273,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(remoteControlEventNotification:) name:@"RemoteControlEventReceived" object:nil];
     
     self.btn_play.selected = YES;
+    if (mainDelegate.audioPlayer.playbackState != MPMoviePlaybackStatePlaying) {
+        [mainDelegate.audioPlayer play];
+    }
+    
     GetGPDataCenter.isAudioPlaying = YES;
     self.timeProgress.maximumValue = mainDelegate.audioPlayer.duration;
 }
@@ -318,6 +322,8 @@
     self.lbl_playtime.text =@"00:00:00";
     
     self.lbl_lasttime.text = [NSString stringWithFormat:@"-%@",[self convertIntToTime:(int)mainDelegate.audioPlayer.duration]];
+    
+    self.btn_play.selected = NO;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:MPMoviePlayerPlaybackDidFinishNotification
@@ -391,15 +397,27 @@
             
         case 3:
         {
-            [mainDelegate.audioPlayer stop];
-            self.btn_play.selected = NO;
-            self.timeProgress.value = 0;
-            
-            self.lbl_playtime.text = [NSString stringWithFormat:@"%@",[self convertIntToTime:(int)0]];
-            
-            self.lbl_lasttime.text = [NSString stringWithFormat:@"-%@",[self convertIntToTime:fabs((int)(mainDelegate.audioPlayer.duration))]];
+            [mainDelegate.audioPlayer pause];
+            if (mainDelegate.audioPlayer.currentPlaybackTime < 15.0) {
+                mainDelegate.audioPlayer.currentPlaybackTime = 0;
+            } else {
+                mainDelegate.audioPlayer.currentPlaybackTime = mainDelegate.audioPlayer.currentPlaybackTime - 15;
+            }
+            [mainDelegate.audioPlayer play];
         }
             break;
+        case 4:
+        {
+            [mainDelegate.audioPlayer pause];
+            if (mainDelegate.audioPlayer.currentPlaybackTime + 15 > mainDelegate.audioPlayer.duration) {
+                mainDelegate.audioPlayer.currentPlaybackTime = mainDelegate.audioPlayer.duration;
+            } else {
+                mainDelegate.audioPlayer.currentPlaybackTime = mainDelegate.audioPlayer.currentPlaybackTime + 15;
+            }
+            [mainDelegate.audioPlayer play];
+        }
+            break;
+            
         default:
             break;
     }

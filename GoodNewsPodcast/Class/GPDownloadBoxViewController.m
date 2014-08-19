@@ -639,10 +639,6 @@
     if ([[userInfo objectForKey:@"ButtonType"] isEqualToString:@"P"]) {
         [self showPlayerView:dic_fileInfo];
     } else {
-        if ([[GetGPDataCenter.dic_playInfo objectForKey:@"ctName"] isEqualToString:[dic_fileInfo objectForKey:@"ctName"]]) {
-            [GPAlertUtil alertWithMessage:@"현재 재생 중인 파일입니다.\n 먼저 종료 후에 삭제하여 주십시요"];
-            return;
-        }
         [GetGPSQLiteController deleteDownFileWithNo:[[dic_fileInfo objectForKey:@"_ID"] intValue]];
         
         NSFileManager *fileManager = [NSFileManager defaultManager];
