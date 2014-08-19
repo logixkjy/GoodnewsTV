@@ -74,7 +74,10 @@
             [self.btn_cancel setTitle:@"중지" forState:UIControlStateNormal];
             self.lbl_down.text = @"다운로드 중...";
         }
+    } else {
+        self.progress.progress = 0;
     }
+    
 }
 
 - (void)deleteItem

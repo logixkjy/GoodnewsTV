@@ -2424,7 +2424,7 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
                                             </view>
                                             <view contentMode="scaleToFill" id="2tS-aB-LaQ">
                                                 <rect key="frame" x="0.0" y="56" width="320" height="448"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="58" sectionFooterHeight="22" id="MKS-79-JgG">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="448"/>

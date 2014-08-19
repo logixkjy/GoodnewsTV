@@ -107,6 +107,10 @@
             
             self.lbl_lasttime.text = [NSString stringWithFormat:@"-%@",[self convertIntToTime:fabs((int)(GetGPDataCenter.playbackTime-mainDelegate.audioPlayer.duration))]];
             [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePlaybackProgressFromTimer:) userInfo:nil repeats:YES];
+        } else {
+            self.timeProgress.enabled = NO;
+            self.lbl_playtime.text = @"--:--:--";
+            self.lbl_lasttime.text = @"--:--:--";
         }
     }
     

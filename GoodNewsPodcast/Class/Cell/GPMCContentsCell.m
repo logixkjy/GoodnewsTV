@@ -124,7 +124,7 @@
 
 - (void)playFiles:(UIButton*)sender
 {
-    [GPAlertUtil alertWithMessage:@"다운로드된 콘텐츠를 재생합니다."];
+    [self makeToast:@"다운로드된 콘텐츠를 재생합니다."];
     [[NSNotificationCenter defaultCenter] postNotificationName:_CMD_FILE_PLAYING object:self userInfo:dic_fileinfo];
 }
 

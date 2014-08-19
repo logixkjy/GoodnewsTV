@@ -22,6 +22,7 @@
 #import "AppDelegate.h"
 #import "GPAlertUtil.h"
 #import "GPSQLiteController.h"
+#import "UIView+Toast.h"
 #endif
 
 //#define NSLog( s, ... )

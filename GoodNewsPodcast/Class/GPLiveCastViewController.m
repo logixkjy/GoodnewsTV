@@ -482,9 +482,9 @@
                          [GetGPDataCenter.dic_playInfo objectForKey:@"ctSpeaker"]];
         
         if ([fileManager fileExistsAtPath:str_file_path]) {
-            [GPAlertUtil alertWithMessage:@"다운로드된 콘텐츠를 재생합니다."];
+            [self.view makeToast:@"다운로드된 콘텐츠를 재생합니다."];
         } else {
-            [GPAlertUtil alertWithMessage:@"인터넷을 통해 스트리밍되어 재생됩니다."];
+            [self.view makeToast:@"인터넷을 통해 스트리밍되어 재생됩니다."];
         }
         
         GPAudioPlayerViewController *audioPlayer = [self.storyboard instantiateViewControllerWithIdentifier:@"AudioPlayer"];
@@ -499,10 +499,10 @@
                              [GetGPDataCenter.dic_playInfo objectForKey:@"ctSpeaker"]];
             
             if ([fileManager fileExistsAtPath:str_file_path]) {
-                [GPAlertUtil alertWithMessage:@"다운로드된 콘텐츠를 재생합니다."];
+                [self.view makeToast:@"다운로드된 콘텐츠를 재생합니다."];
                 url_path = [NSURL fileURLWithPath:str_file_path];
             } else {
-                [GPAlertUtil alertWithMessage:@"인터넷을 통해 스트리밍되어 재생됩니다."];
+                [self.view makeToast:@"인터넷을 통해 스트리밍되어 재생됩니다."];
                 str_file_path = [GetGPDataCenter.dic_playInfo objectForKey:@"ctVideoNormal"];
                 url_path = [NSURL URLWithString:str_file_path];
             }
@@ -514,14 +514,15 @@
                              [GetGPDataCenter.dic_playInfo objectForKey:@"ctSpeaker"]];
             
             if ([fileManager fileExistsAtPath:str_file_path]) {
-                [GPAlertUtil alertWithMessage:@"다운로드된 콘텐츠를 재생합니다."];
+                [self.view makeToast:@"다운로드된 콘텐츠를 재생합니다."];
                 url_path = [NSURL fileURLWithPath:str_file_path];
             } else {
-                [GPAlertUtil alertWithMessage:@"인터넷을 통해 스트리밍되어 재생됩니다."];
+                [self.view makeToast:@"인터넷을 통해 스트리밍되어 재생됩니다."];
                 str_file_path = [GetGPDataCenter.dic_playInfo objectForKey:@"ctVideoLow"];
                 url_path = [NSURL URLWithString:str_file_path];
             }
         } else if ([[GetGPDataCenter.dic_playInfo objectForKey:@"ctFileType"] integerValue] == FILE_TYPE_VIDEO_STREAM ) {
+            [self.view makeToast:@"인터넷을 통해 스트리밍되어 재생됩니다."];
             str_file_path = [GetGPDataCenter.dic_playInfo objectForKey:@"chIos"];
             url_path = [NSURL URLWithString:str_file_path];
         }

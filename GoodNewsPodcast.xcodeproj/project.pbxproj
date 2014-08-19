@@ -62,6 +62,7 @@
 		3177B20619824570002049F9 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3177B20119824570002049F9 /* FMDatabasePool.m */; };
 		3177B20719824570002049F9 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3177B20219824570002049F9 /* FMDatabaseQueue.m */; };
 		3177B20819824570002049F9 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3177B20319824570002049F9 /* FMResultSet.m */; };
+		317A966719A3108C0032F50C /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 317A966619A3108C0032F50C /* UIView+Toast.m */; };
 		31923385198B44BE000B1E25 /* icon_nowPlaying_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 31923383198B44BE000B1E25 /* icon_nowPlaying_normal.png */; };
 		31923386198B44BE000B1E25 /* icon_nowPlaying_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 31923384198B44BE000B1E25 /* icon_nowPlaying_press.png */; };
 		31923389198B7C19000B1E25 /* GPDWContentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 31923388198B7C19000B1E25 /* GPDWContentsCell.m */; };
@@ -288,6 +289,8 @@
 		3177B20119824570002049F9 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
 		3177B20219824570002049F9 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
 		3177B20319824570002049F9 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		317A966519A3108C0032F50C /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
+		317A966619A3108C0032F50C /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		31923383198B44BE000B1E25 /* icon_nowPlaying_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_nowPlaying_normal.png; sourceTree = "<group>"; };
 		31923384198B44BE000B1E25 /* icon_nowPlaying_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_nowPlaying_press.png; sourceTree = "<group>"; };
 		31923387198B7C19000B1E25 /* GPDWContentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPDWContentsCell.h; sourceTree = "<group>"; };
@@ -560,6 +563,15 @@
 			path = "UIKit+AFNetworking";
 			sourceTree = "<group>";
 		};
+		317A966119A2ECCC0032F50C /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				317A966519A3108C0032F50C /* UIView+Toast.h */,
+				317A966619A3108C0032F50C /* UIView+Toast.m */,
+			);
+			path = Toast;
+			sourceTree = "<group>";
+		};
 		31E33645197D09540027A68B /* FMDB */ = {
 			isa = PBXGroup;
 			children = (
@@ -816,6 +828,7 @@
 		31EDCE0D1973C58D00F8D50E /* common */ = {
 			isa = PBXGroup;
 			children = (
+				317A966119A2ECCC0032F50C /* Toast */,
 				98EB200E198C6AFA00605D22 /* CBAutoScrollLabel */,
 				3192338A198B9A25000B1E25 /* ActivityIndicatorCommonViewController.h */,
 				3192338B198B9A25000B1E25 /* ActivityIndicatorCommonViewController.m */,
@@ -1147,6 +1160,7 @@
 				316E8B9C1978ADF5009F0B79 /* AFHTTPSessionManager.m in Sources */,
 				313B2DE51975136A000781AC /* UIImage-TUNinePatch.m in Sources */,
 				31EDCD6519736DD300F8D50E /* AppDelegate.m in Sources */,
+				317A966719A3108C0032F50C /* UIView+Toast.m in Sources */,
 				3192338D198B9A25000B1E25 /* ActivityIndicatorCommonViewController.m in Sources */,
 				31EDCD6119736DD300F8D50E /* main.m in Sources */,
 				31EDCE161973CE3E00F8D50E /* GPAlertUtil.m in Sources */,
@@ -1366,8 +1380,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = armv7;
-				CODE_SIGN_IDENTITY = "iPhone Developer: KANG WOOK BAE (77YZJK2GEW)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: KANG WOOK BAE (77YZJK2GEW)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jaewoo Lee (JV7FM94CF8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jaewoo Lee (JV7FM94CF8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoodNewsPodcast/GoodNewsPodcast-Prefix.pch";
 				INFOPLIST_FILE = "GoodNewsPodcast/GoodNewsPodcast-Info.plist";
@@ -1377,7 +1391,7 @@
 					"$(PROJECT_DIR)/GoodNewsPodcast/Class/common/FMDB",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C8A20B92-D9B8-4FA0-A5C8-F1A957D636DD";
+				PROVISIONING_PROFILE = "c34be402-0ab2-4152-bceb-a21e6780a4fe";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
