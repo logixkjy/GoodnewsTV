@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "REFrostedViewController.h"
+#import "GAITrackedViewController.h"
 #import "GPDownloadController.h"
 #import "GPMoviePlayerViewController.h"
+#import "CoreDataHelper.h"
+#import "FileInfo.h"
 
-@interface GPContentsViewController : UIViewController < UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate > {
+@interface GPContentsViewController : GAITrackedViewController < UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate > {
     IBOutlet UIImageView *_img_back_btn;
     IBOutlet UIImageView *_img_menu_btn;
     
@@ -24,6 +27,7 @@
     NSInteger *int_selType;
     int selBtnType;
     GPDownloadController    *_downCont;
+    CoreDataHelper          *_dataHelper;
     
     int moreViewCnt;
 }

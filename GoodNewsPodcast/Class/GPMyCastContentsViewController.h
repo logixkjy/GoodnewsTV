@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "REFrostedViewController.h"
 #import "GPDownloadController.h"
+#import "GAITrackedViewController.h"
 @import MediaPlayer;
 
-@interface GPMyCastContentsViewController : UIViewController < UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate > {
+@interface GPMyCastContentsViewController : GAITrackedViewController < UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate > {
     IBOutlet UIImageView *_img_back_btn;
     IBOutlet UIImageView *_img_menu_btn;
     

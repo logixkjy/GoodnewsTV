@@ -113,6 +113,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.screenName = @"DownloadBox";
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moveSettingView)
                                                  name:_CMD_MOVE_SETTING_VIEW

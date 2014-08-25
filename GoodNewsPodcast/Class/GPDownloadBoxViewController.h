@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "REFrostedViewController.h"
+#import "GAITrackedViewController.h"
 @import MediaPlayer;
 
-@interface GPDownloadBoxViewController : UIViewController < UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
+@interface GPDownloadBoxViewController : GAITrackedViewController < UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 {
     IBOutlet UIImageView    *_img_btn;
     GPDownloadController    *_downCont;

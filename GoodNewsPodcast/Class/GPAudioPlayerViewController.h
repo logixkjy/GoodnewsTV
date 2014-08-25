@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "REFrostedViewController.h"
+#import "GAITrackedViewController.h"
 #import "CBAutoScrollLabel.h"
 @import MediaPlayer;
 @import AVFoundation;
 @import AudioToolbox;
 
-@interface GPAudioPlayerViewController : UIViewController <AVAudioSessionDelegate> {
+@interface GPAudioPlayerViewController : GAITrackedViewController <AVAudioSessionDelegate> {
     IBOutlet UIImageView *_img_back_btn;
     IBOutlet UIImageView *_img_menu_btn;
     

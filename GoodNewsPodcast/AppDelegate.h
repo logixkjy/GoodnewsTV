@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+
+#import "GAI.h"
 #import "iVersion.h"
 @import MediaPlayer;
 
