@@ -14,6 +14,11 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
+				<string>ios_icon_1024_80</string>
+				<string>ios_icon_1024_58</string>
+				<string>ios_icon_1024_114</string>
+				<string>ios_icon_1024_29</string>
+				<string>ios_icon_1024_57</string>
 				<string>ios_icon_120</string>
 			</array>
 		</dict>
