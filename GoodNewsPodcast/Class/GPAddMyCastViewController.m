@@ -119,6 +119,11 @@
     }
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.tf_xml_address resignFirstResponder];
+    return YES;
+}
 
 - (IBAction)closeAddView
 {

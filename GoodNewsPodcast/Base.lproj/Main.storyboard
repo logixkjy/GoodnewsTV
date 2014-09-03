@@ -1612,7 +1612,10 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
                                                 <rect key="frame" x="25" y="166" width="270" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="URL"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="done"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Dnx-mJ-UgC" id="au5-in-TJg"/>
+                                                </connections>
                                             </textField>
                                             <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RCM-kA-ufw">
                                                 <rect key="frame" x="20" y="205" width="280" height="34"/>
@@ -2756,7 +2759,10 @@ XML은 애플 팟캐스트에 사용하는 RSS2.0과 일부 추가적인 태그�
                                                 <rect key="frame" x="25" y="166" width="270" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="URL"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="done"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="rIm-L0-8B3" id="wcY-eE-a7A"/>
+                                                </connections>
                                             </textField>
                                             <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Zu2-Fc-mlu">
                                                 <rect key="frame" x="20" y="205" width="280" height="34"/>

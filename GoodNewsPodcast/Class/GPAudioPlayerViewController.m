@@ -304,7 +304,9 @@
             case UIEventSubtypeRemoteControlBeginSeekingForward:
             case UIEventSubtypeRemoteControlEndSeekingBackward:
             case UIEventSubtypeRemoteControlEndSeekingForward:
+                break;
             case UIEventSubtypeRemoteControlPreviousTrack:
+                break;
             case UIEventSubtypeRemoteControlNextTrack:
                 
                 break;
@@ -398,24 +400,32 @@
             
         case 3:
         {
-            [mainDelegate.audioPlayer pause];
+            if (self.btn_play.selected) {
+                [mainDelegate.audioPlayer pause];
+            }
             if (mainDelegate.audioPlayer.currentPlaybackTime < 15.0) {
                 mainDelegate.audioPlayer.currentPlaybackTime = 0;
             } else {
                 mainDelegate.audioPlayer.currentPlaybackTime = mainDelegate.audioPlayer.currentPlaybackTime - 15;
             }
-            [mainDelegate.audioPlayer play];
+            if (self.btn_play.selected) {
+                [mainDelegate.audioPlayer play];
+            }
         }
             break;
         case 4:
         {
-            [mainDelegate.audioPlayer pause];
+            if (self.btn_play.selected) {
+                [mainDelegate.audioPlayer pause];
+            }
             if (mainDelegate.audioPlayer.currentPlaybackTime + 15 > mainDelegate.audioPlayer.duration) {
                 mainDelegate.audioPlayer.currentPlaybackTime = mainDelegate.audioPlayer.duration;
             } else {
                 mainDelegate.audioPlayer.currentPlaybackTime = mainDelegate.audioPlayer.currentPlaybackTime + 15;
             }
-            [mainDelegate.audioPlayer play];
+            if (self.btn_play.selected) {
+                [mainDelegate.audioPlayer play];
+            }
         }
             break;
             
@@ -426,9 +436,19 @@
 
 - (IBAction)valueChanged
 {
-    [mainDelegate.audioPlayer pause];
+    if (self.btn_play.selected) {
+        [mainDelegate.audioPlayer pause];
+    }
+    
     [mainDelegate.audioPlayer setCurrentPlaybackTime:self.timeProgress.value];
-    [mainDelegate.audioPlayer play];
+    
+    self.lbl_playtime.text = [NSString stringWithFormat:@"%@",[self convertIntToTime:(int)mainDelegate.audioPlayer.currentPlaybackTime]];
+    
+    self.lbl_lasttime.text = [NSString stringWithFormat:@"-%@",[self convertIntToTime:fabs((int)(mainDelegate.audioPlayer.currentPlaybackTime-mainDelegate.audioPlayer.duration))]];
+    
+    if (self.btn_play.selected) {
+        [mainDelegate.audioPlayer play];
+    }
 }
 
 - (BOOL)shouldAutorotate

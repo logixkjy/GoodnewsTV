@@ -82,11 +82,8 @@
     }
     _img_downPause.backgroundColor = UIColorFromRGB(0x676767);
     _img_downStart.backgroundColor = UIColorFromRGB(0x676767);
-    
     self.arr_downBox = [[NSMutableArray alloc] initWithCapacity:5];
-    self.arr_downBox = [GetGPSQLiteController GetRecordsDownList];
     self.arr_downBoxSection= [[NSMutableArray alloc] initWithCapacity:5];
-    self.arr_downBoxSection = [GetGPSQLiteController GetRecordsDownListSection];
     
     if (!GetGPDataCenter.isFirstView) {
         GetGPDataCenter.isFirstView = !GetGPDataCenter.isFirstView;
@@ -138,6 +135,13 @@
     
     self.btn_nowplay.hidden = !GetGPDataCenter.isAudioPlaying;
     [self.btn_nowplay addTarget:self action:@selector(moveAudioPlayView) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.arr_downBox removeAllObjects];
+    self.arr_downBox = [GetGPSQLiteController GetRecordsDownList];
+    [self.arr_downBoxSection removeAllObjects];
+    self.arr_downBoxSection = [GetGPSQLiteController GetRecordsDownListSection];
+    
+    [self.tb_fileList reloadData];
 }
 
 - (void)viewDidDisappear:(BOOL)animated

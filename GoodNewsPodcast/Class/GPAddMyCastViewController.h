@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GPAddMyCastViewController : UIViewController
+@interface GPAddMyCastViewController : UIViewController <UITextFieldDelegate>
 
 @property (nonatomic, strong) IBOutlet UIButton *btn_mycast_add;
 @property (nonatomic, strong) IBOutlet UITextField *tf_xml_address;
