@@ -99,8 +99,8 @@
         [_img_play setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_downed" ofType:@"png"]]];
         _btn_play.enabled = YES;
         
-        [_btn_play removeTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
-        [_btn_play addTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
+        [_btn_play addTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
+        [_btn_play removeTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
     }
 }
 

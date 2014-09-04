@@ -1509,7 +1509,7 @@
 					"$(PROJECT_DIR)/GoodNewsPodcast/GoogleAnalyticsLibrary",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c34be402-0ab2-4152-bceb-a21e6780a4fe";
+				PROVISIONING_PROFILE = "acb53660-1a6c-4d9f-b104-1c507a47eba6";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;

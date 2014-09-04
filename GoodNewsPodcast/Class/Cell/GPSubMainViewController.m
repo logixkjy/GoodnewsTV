@@ -294,6 +294,9 @@
 
 - (void) moviePlayBackDidFinish:(NSNotification*)notification
 {
+    AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
+    [mainDelegate.audioPlayer stop];
+    [mainDelegate.audioPlayer.view removeFromSuperview];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:MPMoviePlayerDidExitFullscreenNotification

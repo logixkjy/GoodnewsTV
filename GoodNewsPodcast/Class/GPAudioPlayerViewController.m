@@ -57,7 +57,7 @@
         if ([self.dic_contents_data objectForKey:@"ctFileName"] != nil) {
             str_file_path = [str_file_path stringByAppendingPathComponent:[self.dic_contents_data objectForKey:@"ctFileName"]];
         }else {
-            str_file_path = [str_file_path stringByAppendingFormat:@"/%@_%@.mp3", [self.dic_contents_data objectForKey:@"ctEventDate"], [self.dic_contents_data objectForKey:@"ctSpeaker"]];
+            str_file_path = [str_file_path stringByAppendingFormat:@"/%@_%@.mp3", [self.dic_contents_data objectForKey:@"ctName"], [self.dic_contents_data objectForKey:@"ctSpeaker"]];
         }
         
         NSURL *url_path = nil;

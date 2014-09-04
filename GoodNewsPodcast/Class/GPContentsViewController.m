@@ -343,6 +343,9 @@
 
 - (void) moviePlayBackDidFinish:(NSNotification*)notification
 {
+    AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
+    [mainDelegate.audioPlayer stop];
+    [mainDelegate.audioPlayer.view removeFromSuperview];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:MPMoviePlayerDidExitFullscreenNotification
@@ -810,7 +813,7 @@
     str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@_%@.mp3",
                      [documentPath objectAtIndex:0],
                      [self.dic_contents_data objectForKey:@"prCode"],
-                     [self.dic_selected_data objectForKey:@"ctEventDate"],
+                     [self.dic_selected_data objectForKey:@"ctName"],
                      [self.dic_selected_data objectForKey:@"ctSpeaker"]];
     
     if ([fileManager fileExistsAtPath:str_file_path]) {
@@ -1007,7 +1010,7 @@
     str_file_path = [NSString stringWithFormat:@"%@/Contents/%@/%@_%@.mp3",
                      [documentPath objectAtIndex:0],
                      [dic_data objectForKey:@"prCode"],
-                     [dic_data objectForKey:@"ctEventDate"],
+                     [dic_data objectForKey:@"ctName"],
                      [dic_data objectForKey:@"ctSpeaker"]];
     
     url_path = [NSURL fileURLWithPath:str_file_path];
