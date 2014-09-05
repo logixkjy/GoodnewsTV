@@ -857,7 +857,7 @@
 //        
 //        url_path = [NSURL fileURLWithPath:str_file_path];
 //    }
-    
+    [self.view makeToast:@"다운로드된 콘텐츠를 재생합니다."];
     AppDelegate *mainDelegate = MAIN_APP_DELEGATE();
     [mainDelegate.audioPlayer stop];
     mainDelegate.audioPlayer = [[MPMoviePlayerController alloc] initWithContentURL:url_path];
@@ -913,9 +913,11 @@
                      [dic_data objectForKey:@"ctSpeaker"]];
     
     url_path = [NSURL fileURLWithPath:str_file_path];
-    
+    [self.view makeToast:@"다운로드된 콘텐츠를 재생합니다."];
+    [self.dic_selected_data removeAllObjects];
+    self.dic_selected_data = [NSMutableDictionary dictionaryWithDictionary:dic_data];
     GPAudioPlayerViewController *audioPlayer = [self.storyboard instantiateViewControllerWithIdentifier:@"AudioPlayer"];
-    [self.dic_selected_data setObject:[self.dic_contents_data objectForKey:@"prThumbS"] forKey:@"prThumb"];
+    [self.dic_selected_data setObject:[self.dic_contents_data objectForKey:@"prThumb"] forKey:@"prThumb"];
     audioPlayer.dic_contents_data = [NSMutableDictionary dictionaryWithDictionary:self.dic_selected_data];
     audioPlayer.prCode = [self.dic_contents_data objectForKey:@"prCode"];
     [self.navigationController pushViewController:audioPlayer animated:YES];

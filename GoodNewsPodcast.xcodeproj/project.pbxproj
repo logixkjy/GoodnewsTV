@@ -1398,7 +1398,7 @@
 					"$(PROJECT_DIR)/GoodNewsPodcast/GoogleAnalyticsLibrary",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f7f54ae0-5985-496a-a450-014ca5886e78";
+				PROVISIONING_PROFILE = "f8755478-61e5-48e4-be36-c8ec007bc0f5";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -1497,8 +1497,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = armv7;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jaewoo Lee (JV7FM94CF8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jaewoo Lee (JV7FM94CF8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: KANG WOOK BAE (77YZJK2GEW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: KANG WOOK BAE (77YZJK2GEW)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoodNewsPodcast/GoodNewsPodcast-Prefix.pch";
 				INFOPLIST_FILE = "GoodNewsPodcast/GoodNewsPodcast-Info.plist";
@@ -1509,7 +1509,7 @@
 					"$(PROJECT_DIR)/GoodNewsPodcast/GoogleAnalyticsLibrary",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "acb53660-1a6c-4d9f-b104-1c507a47eba6";
+				PROVISIONING_PROFILE = "C8A20B92-D9B8-4FA0-A5C8-F1A957D636DD";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -1532,7 +1532,7 @@
 					"$(PROJECT_DIR)/GoodNewsPodcast/GoogleAnalyticsLibrary",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e5aac782-211e-45a8-bd90-25d2d3647786";
+				PROVISIONING_PROFILE = "5ECEF98E-DC76-4A4F-91AE-F3E7AA79CE82";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;

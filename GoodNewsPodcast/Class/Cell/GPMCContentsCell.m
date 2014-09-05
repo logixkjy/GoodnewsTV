@@ -99,8 +99,8 @@
         [_img_play setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon_downed" ofType:@"png"]]];
         _btn_play.enabled = YES;
         
-        [_btn_play addTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
         [_btn_play removeTarget:self action:@selector(fileDownload:) forControlEvents:UIControlEventTouchUpInside];
+        [_btn_play addTarget:self action:@selector(playFiles:) forControlEvents:UIControlEventTouchUpInside];
     }
 }
 
@@ -124,7 +124,6 @@
 
 - (void)playFiles:(UIButton*)sender
 {
-    [self makeToast:@"다운로드된 콘텐츠를 재생합니다."];
     [[NSNotificationCenter defaultCenter] postNotificationName:_CMD_FILE_PLAYING object:self userInfo:dic_fileinfo];
 }
 
