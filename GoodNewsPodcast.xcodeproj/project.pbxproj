@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3106326E19A5B4060068CB9C /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3106326D19A5B4060068CB9C /* libGoogleAnalyticsServices.a */; };
 		311443A81988893600077EAE /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 311443A71988893600077EAE /* libxml2.2.dylib */; };
 		311443AA1988928400077EAE /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 311443A91988928400077EAE /* libz.1.2.5.dylib */; };
 		311443AD1988BFD600077EAE /* SMXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 311443AC1988BFD600077EAE /* SMXMLDocument.m */; };
@@ -195,6 +194,7 @@
 		98021B07198BDA9600347EF3 /* player_time_handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 98021B06198BDA9600347EF3 /* player_time_handle.png */; };
 		9808BBB71987F2A90031232F /* GPAddMyCastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9808BBB61987F2A90031232F /* GPAddMyCastViewController.m */; };
 		9814FAAF1986AC160025C40B /* AFDownloadRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9814FAAE1986AC160025C40B /* AFDownloadRequestOperation.m */; };
+		98E916FD19C093490035BEFB /* libFlurry_5.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98E916FC19C093490035BEFB /* libFlurry_5.3.0.a */; };
 		98EB2011198C6AFA00605D22 /* CBAutoScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EB2010198C6AFA00605D22 /* CBAutoScrollLabel.m */; };
 		98EF73361997B6A500677725 /* LaunchImages_640-1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 98EF73351997B6A500677725 /* LaunchImages_640-1136.png */; };
 		98FF3679198AAA02003F89A5 /* iVersion.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 98FF3676198AAA02003F89A5 /* iVersion.bundle */; };
@@ -212,17 +212,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3106326319A5B4060068CB9C /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
-		3106326419A5B4060068CB9C /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
-		3106326519A5B4060068CB9C /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
-		3106326619A5B4060068CB9C /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProduct.h; sourceTree = "<group>"; };
-		3106326719A5B4060068CB9C /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProductAction.h; sourceTree = "<group>"; };
-		3106326819A5B4060068CB9C /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommercePromotion.h; sourceTree = "<group>"; };
-		3106326919A5B4060068CB9C /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
-		3106326A19A5B4060068CB9C /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
-		3106326B19A5B4060068CB9C /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
-		3106326C19A5B4060068CB9C /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
-		3106326D19A5B4060068CB9C /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		311443A71988893600077EAE /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		311443A91988928400077EAE /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		311443AB1988BFD600077EAE /* SMXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMXMLDocument.h; sourceTree = "<group>"; };
@@ -499,6 +488,8 @@
 		9808BBB61987F2A90031232F /* GPAddMyCastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPAddMyCastViewController.m; sourceTree = "<group>"; };
 		9814FAAD1986AC160025C40B /* AFDownloadRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadRequestOperation.h; sourceTree = "<group>"; };
 		9814FAAE1986AC160025C40B /* AFDownloadRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadRequestOperation.m; sourceTree = "<group>"; };
+		98E916FB19C093490035BEFB /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		98E916FC19C093490035BEFB /* libFlurry_5.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_5.3.0.a; sourceTree = "<group>"; };
 		98EB200F198C6AFA00605D22 /* CBAutoScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAutoScrollLabel.h; sourceTree = "<group>"; };
 		98EB2010198C6AFA00605D22 /* CBAutoScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAutoScrollLabel.m; sourceTree = "<group>"; };
 		98EF73351997B6A500677725 /* LaunchImages_640-1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImages_640-1136.png"; sourceTree = "<group>"; };
@@ -515,7 +506,7 @@
 				311443AA1988928400077EAE /* libz.1.2.5.dylib in Frameworks */,
 				311443A81988893600077EAE /* libxml2.2.dylib in Frameworks */,
 				31E1C3C9197FD1AE00E66DE0 /* libsqlite3.0.dylib in Frameworks */,
-				3106326E19A5B4060068CB9C /* libGoogleAnalyticsServices.a in Frameworks */,
+				98E916FD19C093490035BEFB /* libFlurry_5.3.0.a in Frameworks */,
 				31EDCD5719736DD300F8D50E /* CoreGraphics.framework in Frameworks */,
 				31EDCD5919736DD300F8D50E /* UIKit.framework in Frameworks */,
 				31EDCD5519736DD300F8D50E /* Foundation.framework in Frameworks */,
@@ -535,24 +526,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3106326219A5B4060068CB9C /* GoogleAnalyticsLibrary */ = {
-			isa = PBXGroup;
-			children = (
-				3106326319A5B4060068CB9C /* GAI.h */,
-				3106326419A5B4060068CB9C /* GAIDictionaryBuilder.h */,
-				3106326519A5B4060068CB9C /* GAIEcommerceFields.h */,
-				3106326619A5B4060068CB9C /* GAIEcommerceProduct.h */,
-				3106326719A5B4060068CB9C /* GAIEcommerceProductAction.h */,
-				3106326819A5B4060068CB9C /* GAIEcommercePromotion.h */,
-				3106326919A5B4060068CB9C /* GAIFields.h */,
-				3106326A19A5B4060068CB9C /* GAILogger.h */,
-				3106326B19A5B4060068CB9C /* GAITrackedViewController.h */,
-				3106326C19A5B4060068CB9C /* GAITracker.h */,
-				3106326D19A5B4060068CB9C /* libGoogleAnalyticsServices.a */,
-			);
-			path = GoogleAnalyticsLibrary;
-			sourceTree = "<group>";
-		};
 		313B2DC81975136A000781AC /* NinePatch */ = {
 			isa = PBXGroup;
 			children = (
@@ -705,7 +678,7 @@
 		31EDCD5A19736DD300F8D50E /* GoodNewsPodcast */ = {
 			isa = PBXGroup;
 			children = (
-				3106326219A5B4060068CB9C /* GoogleAnalyticsLibrary */,
+				98E916FA19C093490035BEFB /* Flurry */,
 				3164518B19A4865F004059DD /* CoreData */,
 				31EDCDA61973759C00F8D50E /* Img */,
 				31EDCD89197370AA00F8D50E /* Class */,
@@ -981,6 +954,15 @@
 				31EDCE251973DF6A00F8D50E /* SBJsonWriter.m */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		98E916FA19C093490035BEFB /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				98E916FB19C093490035BEFB /* Flurry.h */,
+				98E916FC19C093490035BEFB /* libFlurry_5.3.0.a */,
+			);
+			path = Flurry;
 			sourceTree = "<group>";
 		};
 		98EB200E198C6AFA00605D22 /* CBAutoScrollLabel */ = {
@@ -1386,8 +1368,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = armv7;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Good News Mission (73U6WHU2LG)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Good News Mission (73U6WHU2LG)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: KANG WOOK BAE (77YZJK2GEW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: KANG WOOK BAE (77YZJK2GEW)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoodNewsPodcast/GoodNewsPodcast-Prefix.pch";
 				INFOPLIST_FILE = "GoodNewsPodcast/GoodNewsPodcast-Info.plist";
@@ -1395,10 +1377,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GoodNewsPodcast/Class/common/FMDB",
-					"$(PROJECT_DIR)/GoodNewsPodcast/GoogleAnalyticsLibrary",
+					"$(PROJECT_DIR)/GoodNewsPodcast/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f8755478-61e5-48e4-be36-c8ec007bc0f5";
+				PROVISIONING_PROFILE = "0af3d714-751c-47bb-9f7f-ff0be4dc0bd1";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -1506,7 +1488,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GoodNewsPodcast/Class/common/FMDB",
-					"$(PROJECT_DIR)/GoodNewsPodcast/GoogleAnalyticsLibrary",
+					"$(PROJECT_DIR)/GoodNewsPodcast/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "C8A20B92-D9B8-4FA0-A5C8-F1A957D636DD";
@@ -1529,7 +1511,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GoodNewsPodcast/Class/common/FMDB",
-					"$(PROJECT_DIR)/GoodNewsPodcast/GoogleAnalyticsLibrary",
+					"$(PROJECT_DIR)/GoodNewsPodcast/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5ECEF98E-DC76-4A4F-91AE-F3E7AA79CE82";

@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "REFrostedViewController.h"
-#import "GAITrackedViewController.h"
 
-@interface GPMyCastViewController : GAITrackedViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
+@interface GPMyCastViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
 {
     IBOutlet UIImageView    *_img_btn;
     

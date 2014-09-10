@@ -8,13 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "REFrostedViewController.h"
-#import "GAITrackedViewController.h"
 #import "GPDownloadController.h"
 #import "GPMoviePlayerViewController.h"
 #import "CoreDataHelper.h"
 #import "FileInfo.h"
 
-@interface GPContentsViewController : GAITrackedViewController < UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate > {
+@interface GPContentsViewController : UIViewController < UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate > {
     IBOutlet UIImageView *_img_back_btn;
     IBOutlet UIImageView *_img_menu_btn;
     

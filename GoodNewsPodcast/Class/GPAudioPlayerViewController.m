@@ -180,7 +180,6 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    self.screenName = @"ContentsView";
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     [self becomeFirstResponder];
     

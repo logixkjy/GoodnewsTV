@@ -41,7 +41,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.screenName = @"subMainView";
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moveSettingView)
                                                  name:_CMD_MOVE_SETTING_VIEW

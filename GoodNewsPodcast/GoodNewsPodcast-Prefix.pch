@@ -23,7 +23,8 @@
 #import "GPAlertUtil.h"
 #import "GPSQLiteController.h"
 #import "UIView+Toast.h"
+#import "Flurry.h"
 #endif
 
-//#define NSLog( s, ... )
+#define NSLog( s, ... )
 #define printf( s, ...)

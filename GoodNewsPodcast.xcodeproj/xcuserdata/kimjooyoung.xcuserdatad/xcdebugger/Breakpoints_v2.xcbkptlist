@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoodNewsPodcast/Class/GPDownloadBoxViewController.m"
-            timestampString = "429895870.771346"
+            timestampString = "432050498.024763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "359"
-            endingLineNumber = "359"
-            landmarkName = "-MPMoviePlayerLoadStateDidChangeNotification"
+            startingLineNumber = "358"
+            endingLineNumber = "358"
+            landmarkName = "-moveAudioPlayView"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoodNewsPodcast/Class/GPContentsViewController.m"
-            timestampString = "429895870.771346"
+            timestampString = "432050498.024763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "987"
-            endingLineNumber = "987"
+            startingLineNumber = "986"
+            endingLineNumber = "986"
             landmarkName = "-filePlayMovie:selData:"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoodNewsPodcast/Class/GPContentsViewController.m"
-            timestampString = "431570121.869402"
+            timestampString = "432050498.024763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1006"
-            endingLineNumber = "1006"
+            startingLineNumber = "1005"
+            endingLineNumber = "1005"
             landmarkName = "-filePlayAudio:"
             landmarkType = "5">
          </BreakpointContent>

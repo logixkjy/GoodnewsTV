@@ -23,17 +23,9 @@
 {
     // Override point for customization after application launch.
     
-    // 옵션: 자동으로 Google Analytics에 처리하지 않은 예외를 전송.
-    [[GAI sharedInstance] setTrackUncaughtExceptions:YES];
+    [Flurry setCrashReportingEnabled:YES];
     
-    // 옵션: Google Analytics에 전송하는 주기 기본값은 120초이다.
-    [[GAI sharedInstance] setDispatchInterval:30];
-    
-    // 옵션: Google Analytics SDK의 로그 레벨을 지정
-    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
-    
-    // 필수: 발급받은 UA-XXXX-Y 형식의 추적 ID를 넣어준다.
-    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-54050642-1"];
+    [Flurry startSession:@"HFNSDDFJX2FHS2HH3C7F"];
     
     if (IS_iOS_7) {
         [application setStatusBarStyle:UIStatusBarStyleLightContent];

@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GAITrackedViewController.h"
 
-@interface GPLiveCastViewController : GAITrackedViewController <UIAlertViewDelegate>
+@interface GPLiveCastViewController : UIViewController <UIAlertViewDelegate>
 {
     IBOutlet UIImageView    *_img_btn;
     int count;

@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "REFrostedViewController.h"
-#import "GAITrackedViewController.h"
 
-@interface GPGoodNewsCastViewController : GAITrackedViewController < UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate >
+@interface GPGoodNewsCastViewController : UIViewController < UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate >
 {
     IBOutlet UIImageView    *_img_btn;
     

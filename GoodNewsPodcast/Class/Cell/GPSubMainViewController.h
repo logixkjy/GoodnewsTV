@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "REFrostedViewController.h"
-#import "GAITrackedViewController.h"
 
-@interface GPSubMainViewController : GAITrackedViewController < UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate >
+@interface GPSubMainViewController : UIViewController < UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate >
 {
     IBOutlet UIImageView *_img_back_btn;
     IBOutlet UIImageView *_img_menu_btn;
